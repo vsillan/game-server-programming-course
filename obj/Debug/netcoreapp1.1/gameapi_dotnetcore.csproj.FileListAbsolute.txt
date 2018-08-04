@@ -1,8 +1,0 @@
-c:\dev\gameapi_dotnetcore\bin\Debug\netcoreapp1.1\gameapi_dotnetcore.deps.json
-c:\dev\gameapi_dotnetcore\bin\Debug\netcoreapp1.1\gameapi_dotnetcore.runtimeconfig.json
-c:\dev\gameapi_dotnetcore\bin\Debug\netcoreapp1.1\gameapi_dotnetcore.runtimeconfig.dev.json
-c:\dev\gameapi_dotnetcore\bin\Debug\netcoreapp1.1\gameapi_dotnetcore.dll
-c:\dev\gameapi_dotnetcore\bin\Debug\netcoreapp1.1\gameapi_dotnetcore.pdb
-c:\dev\gameapi_dotnetcore\obj\Debug\netcoreapp1.1\gameapi_dotnetcore.AssemblyInfo.cs
-c:\dev\gameapi_dotnetcore\obj\Debug\netcoreapp1.1\gameapi_dotnetcore.dll
-c:\dev\gameapi_dotnetcore\obj\Debug\netcoreapp1.1\gameapi_dotnetcore.pdb

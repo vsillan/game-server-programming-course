@@ -7,7 +7,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}/gameapi_dotnetcore.csproj"
+                "${workspaceRoot}/game_server/gameapi_dotnetcore.csproj"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
