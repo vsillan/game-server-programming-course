@@ -39,7 +39,7 @@ Project: 3.10 2018
 
 ## Completing the course without class room participation
 
-It's highly recommended to participate in the lectures because the concepts taught in the course have been generally hard for students to grasp - usually being able to ask questions and get personal support helps ensures success in the course. In addition to support, being present in the lectures gives you more chances to demonstrate your skills and affect your grade positively.
+It's highly recommended to participate in the lectures because the concepts taught in the course have been generally hard for students to grasp - usually being able to ask questions and get personal support ensures success in the course. In addition to support, being present in the lectures gives you more chances to demonstrate your skills and affect your grade positively.
 
 But if you nevertheless can not participate in the lectures, the course can be completed by doing the assignments and the project within the deadlines.
 
