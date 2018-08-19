@@ -4,6 +4,18 @@ This is a course about game server programming made for Metropolia UAS Game Deve
 
 The technologies chosen for this course are ASP.NET Core and MongoDB. The main reasons for choosing these particular technologies are that they are open source and capable of handling demands of global scale online games.
 
+``!! Note that not all of the presentations are available in the repository just yet !!``
+
+## The weekly schedule
+
+1. Introduction to game servers, C# for server development
+2. C# for server development; Basics of ASP.NET Core Web API
+3. Continuing on ASP.NET Core Web API; REST-architecture
+4. Intro to NoSQL databases; Basics of MongoDB
+5. Continuing on MongoDB
+6. Basics of server security
+7. Building scalable, stable, and fault tolerant servers; Student presentations
+
 ## Grading
 
 The course grading scheme is straightforward:
