@@ -1,0 +1,147 @@
+Sammonpuistikko : 3
+Hietaniemenkatu : 5
+Eteläinen Hesperiankatu : 14
+Kesäkatu : 15
+Rajasaarentie : 4
+Korjaamo : 4
+Olympiastadion : 5
+Maistraatintori : 0
+Messeniuksenkatu : 0
+Esterinportti : 0
+Uimastadion : 0
+Rautatieläisenkatu : 6
+Veturitori : 10
+Ratapihantie : 2
+Venttiilikuja : 14
+Linnanmäki : 6
+Brahen puistikko : 2
+Fleminginkatu : 0
+Gebhardinaukio : 3
+Jäähalli : 6
+Stenbäckinkatu : 12
+Töölöntulli : 8
+Meilahden sairaala : 7
+Jalavatie : 1
+Kuusitie : 0
+Mäkelänkatu : 29
+Kaivopuisto : 26
+Tilkanvierto : 2
+Lintulahdenkatu : 0
+Laivasillankatu : 1
+Näkinsilta : 11
+Kapteeninpuistikko : 10
+Viiskulma : 12
+Arielinkatu : 7
+Sepänkatu : 14
+Kalasataman metroasema : 14
+Hietalahdentori : 17
+Teurastamo : 4
+Designmuseo : 4
+Päijänteentie : 3
+Vanha kirkkopuisto : 9
+Pernajantie : 5
+Erottaja : 16
+Seurasaari : 25
+Saunalahdentie : 6
+Torpanranta : 8
+Laajalahden aukio : 7
+Munkkiniemen aukio : 2
+Huopalahdentie : 18
+Professorintie : 15
+Teollisuuskatu : 1
+Kasarmitori : 0
+Ulvilantie : 0
+Elimäenkatu : 4
+Unioninkatu : 13
+Muusantori : 13
+Kanavaranta : 22
+Paavalinpuisto : 7
+Merisotilaantori : 11
+Haukilahdenkatu : 14
+Senaatintori : 27
+Velodrominrinne : 9
+Ritarikatu : 2
+Sofianlehdonkatu : 11
+Liisanpuistikko : 11
+Arabian kauppakeskus : 13
+Varsapuistikko : 2
+Arabiankatu : 13
+Porthania : 19
+Kaironkatu : 12
+Rautatientori / itä : 25
+Verkatehtaanpuisto : 5
+Kaisaniemenpuisto : 21
+Intiankatu : 8
+Töölönlahdenkatu : 21
+Koskelantie : 18
+Rautatientori / länsi : 24
+Kiasma : 23
+Käpyläntie : 3
+Mannerheimintie : 14
+Pohjolankatu : 5
+Narinkka : 4
+Pohjolanaukio : 9
+Kampin metroasema : 1
+Käpylän asema : 10
+Eerikinkatu : 0
+Juhana Herttuan tie : 17
+Lastenlehto : 1
+Toinen linja : 14
+Baana : 0
+Töölönlahden puisto : 4
+Itämerentori : 17
+Ruomelantie : 7
+Marian Sairaala : 0
+Friisinkalliontie : 7
+Eläinmuseo : 1
+Kuunkatu : 12
+Kauppakorkeakoulu : 3
+Olarinkatu : 6
+Kansallismuseo : 4
+Piispansilta : 14
+Suomenlahdentie : 16
+Apollonkatu : 14
+Kalastajantie : 7
+Töölönkatu : 7
+Sepetlahdentie : 6
+Töölöntori : 6
+Matinkartanontie : 9
+Ooppera : 13
+Nokkala : 13
+Hakaniemen metroasema : 17
+Ympyrätalo : 17
+Haapaniemenkatu : 10
+Karhupuisto : 2
+Sörnäisten metroasema : 5
+Brahen kenttä : 4
+Diakoniapuisto : 4
+Kauppatori : 8
+Mastokatu : 6
+Melkonkuja : 4
+Itälahdenkatu : 5
+Heikkilänaukio : 8
+Heikkiläntie : 6
+Gyldenintie : 9
+Lahnalahdentie : 13
+Luoteisväylä : 4
+Lauttasaaren ostoskeskus : 3
+Lauttasaarensilta : 4
+Porkkalankatu : 1
+Länsisatamankatu : 9
+Messitytönkatu : 10
+Jätkäsaarenlaituri : 11
+Tyynenmerenkatu : 23
+Hylkeenpyytäjänkatu : 13
+Ehrenströmintie : 7
+Ulvilanpuisto : 2
+Albertinkatu : 19
+Munkkivuoren ostoskeskus : 16
+Kalevankatu : 0
+Niemenmäenkuja : 12
+Vihdintie : 3
+Kriikunakuja : 16
+Tilkantori : 16
+Korppaanmäentie : 6
+Tenholantie : 8
+Radiokatu : 0
+Hertanmäenkatu : 3
