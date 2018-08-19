@@ -27,9 +27,9 @@ After this course you should undertand what Web APIs enable, limit and what need
 
 ### What do we actually do?
 
-Create Web APIs for games using ``ASP.NET Core`` (C#)
+Create Web APIs for games using **ASP.NET** Core (C#)
 
-Learn and use ``MongoDb`` as a database for the Web API
+Learn and use **MongoDb** as a database for the Web API
 
 Implement some of the patterns that make up a solid game server
 
@@ -50,7 +50,7 @@ Online games that aim to be played by significant amount of players can _not_ su
 
 Note:
 
-- It's important to understand the possibilities of ``NoSQL`` databases especially in terms of performance, availability and scalability
+- It's important to understand the possibilities of **NoSQL** databases especially in terms of performance, availability and scalability
 - There are myriad of things that could be taught in a game server programming course. These are things that I feel generally apply to a great variety of projects - even outside games.
 
 ---
@@ -90,7 +90,7 @@ Note:
 - Player to player interaction: can be anything from real-time multiplayer to chat and facilitating in-game economies
 - Persisting the data can be: saving profiles, maintaining a game world etc.
 - Authorizing the player actions is key to competitive games, the assumption is that the client can always be hacked and thus all critical client actions should be verified by the server
-- Data analytics is a growing field in gaming (many games that are provided as service usually have a person or even a team dedicated to data analytics)
+- Data analytics is a growing field in gaming (many games that are provided as a service usually have a person or even a team dedicated to data analytics)
 
 ---
 
@@ -122,7 +122,7 @@ Note:
 
 ---
 
-### I'm an client coder/artist/designer/etc. Why should I care about server programming?
+### I'm a client programmer/artist/designer/insert-role-here. Why should I care about server programming?
 
 To understand the
 
@@ -166,7 +166,7 @@ Third party services provide readymade solutions for common problems:
   
 These can reduce the game server development time significantly
 
-There are many viable providers out there such as ``GameSparks`` and ``PlayFab``
+There are many viable providers out there such as **GameSparks** and **PlayFab**
 
 ---
 
@@ -277,19 +277,25 @@ Note:
 
 ---
 
-## Cloud Services would need it's own course...
+## Cloud Services would require a course of their own...
 
 ---
 
 ### Cloud services
 
-- Nowadays most games are deployed to cloud
-- Cloud can scale up and down very quickly
-- Most commonly used cloud providers (for games) are Amazon AWS and Microsoft Azure
-- Cloud based solutions are viable even for smaller game studios
-- Out the box solutions for many services needed by an online game
-- Ease of deploying to datacenters around the world
-- There are four different cloud computing service models: IaaS, PaaS, SaaS and FaaS
+Nowadays most games are deployed to cloud
+
+Cloud can scale up and down very quickly
+
+Most commonly used cloud providers (for games) are Amazon AWS and Microsoft Azure
+
+Viable even for smaller game studios
+
+Out the box solutions
+
+Ease of deploying to datacenters around the world
+
+There are four different cloud computing service models: IaaS, PaaS, SaaS and FaaS
 
 Note:
 
@@ -324,7 +330,7 @@ Note:
 
 ---
 
-### What do I need to know? 
+### Things you need to know
 
 How to create good Web APIs
 
