@@ -187,10 +187,12 @@ A lambda expression has the following form:
 An example of a lambda expression:
 
 ```C#
-x => x * x	// ‘function’ that has a parameter x in which x is multiplied with x and the result is 			     returned
+x => x * x	
+// ‘function’ that has a parameter x in which x 
+// is multiplied with x and the result is returned
 ```
 
-A lambda expression’s code can be a statement block instead of an expression
+A lambda expression can be a statement block instead of an expression
 
 ```C#
 x => { return x * x; };
