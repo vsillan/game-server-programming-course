@@ -18,11 +18,13 @@ The technologies chosen for this course are ASP.NET Core and MongoDB. The main r
 
 ## Way of working
 
-Read the articles from reading lists before the lectures the concepts are .
+Read the articles from the reading lists before the lectures where the concepts are presented.
 
-Try to complete the assignments on the same week they are presented. The final deadline is two weeks from the week they are presented to make it possible to ask questions about the assignments during the lectures. _No assignments are accepted after the final deadline._
+Try to complete the assignments on the same week they are presented. The final deadline is two weeks from the week they are presented. This is to make it possible to ask questions about the assignments during the next week's class room time. The assignments should be put inside your own GitHub (or similar) repository where I can have access to them.
 
 The project assignment will be presented on week 2 and it's recommended to start working on it as soon as possible after that.
+
+_No assignments are accepted after the final deadline._
 
 ## Tools used in the course
 
