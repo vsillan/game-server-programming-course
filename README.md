@@ -16,6 +16,13 @@ The technologies chosen for this course are ASP.NET Core and MongoDB. The main r
 6. Basics of server security
 7. Building scalable, stable, and fault tolerant servers; Student presentations
 
+## Tools used in the course
+
+- VSCode: https://code.visualstudio.com/download
+- .Net core SDK: https://www.microsoft.com/net/download
+- Omnisharp plugin for VSCode: https://github.com/OmniSharp/omnisharp-vscode
+- MongoDb: https://www.mongodb.com/download-center?jmp=nav#community
+
 ## Grading
 
 The course grading scheme is straightforward:
