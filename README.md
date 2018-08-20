@@ -16,12 +16,22 @@ The technologies chosen for this course are ASP.NET Core and MongoDB. The main r
 6. Basics of server security
 7. Building scalable, stable, and fault tolerant servers; Student presentations
 
+## Way of working
+
+Read the articles from reading lists before the lectures the concepts are .
+
+Try to complete the assignments on the same week they are presented. The final deadline is two weeks from the week they are presented to make it possible to ask questions about the assignments during the lectures. _No assignments are accepted after the final deadline._
+
+The project assignment will be presented on week 2 and it's recommended to start working on it as soon as possible after that.
+
 ## Tools used in the course
 
 - VSCode: https://code.visualstudio.com/download
 - .Net core SDK: https://www.microsoft.com/net/download
 - Omnisharp plugin for VSCode: https://github.com/OmniSharp/omnisharp-vscode (you can download this inside VSCode from the extensions tab!)
 - MongoDb: https://www.mongodb.com/download-center?jmp=nav#community
+
+If you are running Windows and your VSCode uses ``powershell`` in the terminal, I recommend that you change it to ``CMD``.
 
 ## Grading
 
