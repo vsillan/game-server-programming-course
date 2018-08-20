@@ -23,7 +23,7 @@ static void Main(string[] args)
 
 It will make the application to print the commandline argument passed.
 
-Run the app with the following command ``dotnet run station_name`` inside the project folder.
+Run the app with the following command ``dotnet run station_name`` inside the project folder (``station_name`` is just a random string passed to the application at this point).
 
 ---
 
