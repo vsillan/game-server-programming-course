@@ -20,7 +20,7 @@ The technologies chosen for this course are ASP.NET Core and MongoDB. The main r
 
 - VSCode: https://code.visualstudio.com/download
 - .Net core SDK: https://www.microsoft.com/net/download
-- Omnisharp plugin for VSCode: https://github.com/OmniSharp/omnisharp-vscode
+- Omnisharp plugin for VSCode: https://github.com/OmniSharp/omnisharp-vscode (you can download this inside VSCode from the extensions tab!)
 - MongoDb: https://www.mongodb.com/download-center?jmp=nav#community
 
 ## Grading
