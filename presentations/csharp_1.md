@@ -125,11 +125,15 @@ Only one catch clause is executed
 
 ---
 
-### The catch clause(2)
+### The catch clause
 
 Evaluating which catch clause to execute is done from top to bottom
 
 More specific exceptions must be placed above the more generic
+
+---
+
+### The catch clause
 
 ```C#
 static void Main (string[] args) {
@@ -145,6 +149,9 @@ static void Main (string[] args) {
 	}
 	catch (OverflowException ex) {
 		Console.WriteLine ("You've given me more than a byte!");
+	}
+	catch (Exception ex) {
+		Console.WriteLine ("We caught something else)
 	}
 }
 ```
@@ -213,13 +220,15 @@ InnerException - The inner exception (if any) that caused the outer exception
 
 All servers need to deal with more than one thing happening at a time (concurrency)
 
-- Clients are sending requests simultaneously
-
 Multithreading is the way of creating concurrency -> Tasks are a higher-level abstraction on top of threads
 
 Many libraries provide asynchronous versions of operations which utilize Tasks
 
 Thus, it’s important to know the basics of using Tasks
+
+Note:
+
+- Clients are sending requests simultaneously
 
 ---
 
