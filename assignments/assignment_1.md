@@ -60,10 +60,11 @@ Create a class called RealTimeCityBikeDataFetcher which implements the ICityBike
 
 ### Hints for implementation:
 
-- You can use System.Net.Http.HttpClient to do the request with a method called ``GetAsync``
+- You can use ``System.Net.Http.HttpClient`` to do the request with a method called ``GetStringAsync``
 - Remember to use ``async`` and ``await`` keywords in the implementation of a asynchronous method
-- When you have the HttpResponseMessage from ``GetAsync``, find a way to read it as a byte array and then convert it to string using ``System.Text.Encoding.UTF8.GetString``
-- Copy paste the API Url into your browser and check what it returns, find a way to deserialize the string to a C# object using ``JsonConvert.DeserializeObject``
+- Copy paste the API Url into your browser and check what it returns
+- Next you need to define your own ``BikeRentalStationList`` class that correspond the Json the API returns
+- Deserialize the string to a C# object using ``JsonConvert.DeserializeObject<BikeRentalStationList>``
 - Find the information you are looking for (bike count in a certain station) and return it as a result from the method
 - In the Main method of your application you need to use ``Task.Wait()`` when calling a method with a Task as the return type (there can't be asynchronous code in the main method)
 

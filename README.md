@@ -40,7 +40,7 @@ If you are running Windows and your VSCode uses ``powershell`` in the terminal, 
 
 The course grading scheme is straightforward:
 
-There is a total of 100 points to be gained from the course
+There is a total of 100 points to be gained from the course.
 
 - 50 points come from the assignments (points are gained by completing the assignments)
 - The other 50 comes from the project (points reflect the quality of the project)
