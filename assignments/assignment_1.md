@@ -42,15 +42,12 @@ public interface ICityBikeDataFetcher
 
 ## 3. Add a dependency
 
-Next we will add a dependency to a JSON-library which we will use to parse the JSON-payload returned from the API into a C# object graph. Add the following to your "projectname.csproj" -file (between the <Project> -tags):
+Next we will add a dependency to a JSON-library which we will use to parse the JSON-payload returned from the API into a C# object graph.
 
-```
-<ItemGroup>
-  <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-</ItemGroup>
-```
+Inside the project folder:
 
-Use ``dotnet restore`` command to resolve the dependency.
+- Use ``dotnet add package NewtonSoft.Json``
+- Use ``dotnet restore`` command to resolve the dependency.
 
 ---
 
