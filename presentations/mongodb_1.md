@@ -41,14 +41,14 @@ Combine the best features of relational databases and distributed key-value stor
 
 Ad hoc queries – no need to define queries that the system will accept in advance
 
-- Just like with relational databases
-
 Secondary indexes
 
 Only a few configuration parameters
 
 Note:
 
+- Just like with relational databases
+- Adhoc queries
 - JSON is an acronym for JavaScript Object Notation. JSON structures are comprised of keys and values, and they can nest arbitrarily deep. They’re analogous to the dictionaries and hash maps of other  programming languages. 
 - JSON is simple, intuitive and human friendly
 - Which features?
@@ -346,7 +346,9 @@ Read
 
 ### Updating documents
 
+```js
 db.collection.update({"_id" : ObjectId("4b2b9f67a1f631733d917a7c")},  objectToUpdate)
+```
 
 Update() replaces the object
 
@@ -356,7 +358,9 @@ First parameter is the query for finding the object to replace
 
 ### Deleting documents
 
+```js
 db.collection.remove({"_id" : ObjectId("4b2b9f67a1f631733d917a7c")})
+```
 
 The parameter is a query. All the matching objects will be removed.
 
