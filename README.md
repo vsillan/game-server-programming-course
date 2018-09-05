@@ -33,6 +33,7 @@ _No assignments are accepted after the final deadline._
 - Omnisharp plugin for VSCode called ``C#``: https://github.com/OmniSharp/omnisharp-vscode (you can download this inside VSCode from the extensions tab! Search for "C#".)
 - ``C# Extensions`` plugin for VSCode (you can download this from VSCode as well. Search for ``C# extendsions``).
 - MongoDb: https://www.mongodb.com/download-center?jmp=nav#community
+- PostMan 2: https://www.getpostman.com/apps
 
 If you are running Windows and your VSCode uses ``powershell`` in the terminal, I recommend that you change it to ``CMD``.
 

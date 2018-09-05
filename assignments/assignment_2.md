@@ -31,7 +31,7 @@ public class Player
 }
 ```
 
-``NewPlayer`` classs used to define object that contains the properties than are defined by the client when creating new player. ``Id`` and ``CreationDate`` should be set by the server when the player is created.
+``NewPlayer`` class is used to define object that contains the properties than are defined by the client when creating new player. ``Id`` and ``CreationDate`` should be set by the server when the player is created.
 
 ```
 public class NewPlayer
@@ -40,7 +40,7 @@ public class NewPlayer
 }
 ```
 
-``ModifiedPlayer`` class is used to defined object that contains the properties that can be modified on a player.
+``ModifiedPlayer`` class contains the properties that can be modified on a player.
 
 ```
 public class ModifiedPlayer
@@ -58,11 +58,11 @@ Create the following interface:
 ```
 public interface IRepository
 {
-    public Task<Player> Get(Guid id);
-    public Task<Player[]> GetAll();
-    public Task<Player> Create(Player player);
-    public Task<Player> Modify(Guid id, ModifiedPlayer player);
-    public Task<Player> Delete(Guid id);
+    Task<Player> Get(Guid id);
+    Task<Player[]> GetAll();
+    Task<Player> Create(Player player);
+    Task<Player> Modify(Guid id, ModifiedPlayer player);
+    Task<Player> Delete(Guid id);
 }
 ```
 
