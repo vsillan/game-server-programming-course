@@ -36,6 +36,6 @@ Make sure your NewItem and Item models have a property called:
 
 Create a game rule validation in the ``ItemsProcessor`` class (remember that the _business logic_ should be handled in the ``-Processor`` classes in our architecture).
 
-The rule should be the following: an item of type of ``Sword`` should not be allowed for players below level 3.
+The rule should be the following: an item of type of ``Sword`` should not be allowed for ``Player`` below level 3.
 
-If the rule is not followed, throw your own custom exception (create the exception class first) and catch the exception in an exception filter which should be only applied to that specific endpoint. The exception filter should write a response to the client with a suitable error code and a descriptive error message.
+If the rule is not followed, throw your own custom exception (create the exception class first) and catch the exception in an exception filter which should be only applied to that specific endpoint. The exception filter should write a response to the client with a _suitable error code_ and a _descriptive error message_.

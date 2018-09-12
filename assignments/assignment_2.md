@@ -26,6 +26,7 @@ public class Player
     public Guid Id { get; set; }
     public string Name { get; set; }
     public int Score { get; set; }
+    public int Level { get; set; }
     public bool IsBanned { get; set; }
     public DateTime CreationTime { get; set; }
 }
@@ -110,10 +111,10 @@ public Task<Player> Delete(Guid id);
 
 Register ``PlayersProcessor`` and ``InMemoryRepository`` to the DI-container in ``Startup.cs`` - ``ConfigureServices`` using extension methods.
 
-Register the InMemoryRepository as IRepository into the dependency injection container to enable changing the implementation later on when we start using MongoDB as the database.
+Registering the ``InMemoryRepository`` as ``IRepository`` into the dependency injection container enables changing the implementation later on when we start using ``MongoDB`` as the database.
 
 ---
 
 ## 6. Test
 
-Use a tool such as PostMan to test that the requests to all endpoints are processed succesfully.
+Use a tool such as ``PostMan`` to test that the requests to all endpoints are processed succesfully.
