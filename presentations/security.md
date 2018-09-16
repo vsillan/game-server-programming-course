@@ -27,10 +27,6 @@ Security should be considered from the beginning of the development
 9. (Using Components with known vulnerabilities)
 10. Insufficient loggin & monitoring
 
-Note:
-
-All but #4 is relevant in our Web API
-
 ---
 
 ## Injection
@@ -56,15 +52,15 @@ Two main points for prevention
 
 We can also disable javascript in the config file:
 
-``` config
+```config
 security:
   javascriptEnabled:false
 ```
 
 This is how a dangerous statement looks in C#:
 
-``` C#
-new BsonDocument("$where", 
+```C#
+new BsonDocument("$where",
     new BsonJavaScript("function() { return true; }"));
 ```
 
@@ -76,7 +72,7 @@ Malicious user can steal identity of another user
 
 Usually the issue is that the attacker can find identities by brute force
 
-These attacks can be credential stuffing or dictionary attacks among other things
+Examples of attack types are credential stuffing or dictionary attacks
 
 Can be prevented by making automated attacks not work efficiently, using strong password and password recovery process and handling sessions properly
 
@@ -91,8 +87,7 @@ Done by validating the credentials supplied by the user
 Caller provides two basic pieces of information:
 
 - Who the user claims to be
-- How that claim can be verified
-
+- How that claim can be verified
 
 ---
 
@@ -158,15 +153,14 @@ In the context of securing a service, a token:
 - Identifies the user
 - Contains contents that can be trusted (signed)
 - Can be used in place of credentials (user name and password)
-- Can contain other attributes (claims)
-
+- Can contain other attributes (claims)
 
 Note:
 
 - Web users typically have several existing accounts for popular web services and social media websites
 - A driver’s license is a kind of a token
 - First, your driver’s license is used to identify you. Pretty simple! Next, most people checking your driver’s licensewill trust that it is valid. This is because the license is issued by a government entity and is usually signed in somefashion (e.g., water mark). And because it is trusted, the person checking your license doesn’t need to ask for apassword or PIN or any other proof of identity. And finally, your license includes other attributes beyond justyour identity.
-- In short, a token is just a pile of claims that happens to be signed by a trusted issuer, thus removing the needfor your service to store user names and passwords. This is huge, of course, as not having to store passwords greatlyreduces the risk of your users’ passwords being exposed.
+- In short, a token is just a pile of claims that happens to be signed by a trusted issuer, thus removing the needfor your service to store user names and passwords. This is huge, of course, as not having to store passwords greatlyreduces the risk of your users’ passwords being exposed.
 
 ---
 
@@ -217,7 +211,6 @@ The client then uses the public key to encrypt a random symmetric encryption key
 ---
 
 ### How SSL/TLS works
-  
 
 The server decrypts the symmetric encryption key using its private key and uses the symmetric key to decrypt the URL and data
 
@@ -286,6 +279,18 @@ If processing is not allowed to continue, the service will communicate this to t
 There can be missing security hardening across any part of the application stack or in cloud services
 
 This can mean things anything from having unnecessary features enabled or installed (e.g.unnecessary ports, services, pages, accounts, or privileges) to not using secure settings in frameworks, databases, libraries etc.
+
+Note:
+
+Error handling reveals stack traces or other overly informative error messages to users.
+
+---
+
+### Preventing security misconfiguration
+
+- Configuration should be automated
+- There should be an environment that matches as closely as possible the production environment
+- Dependencies should be kept at minimum level
 
 ---
 
