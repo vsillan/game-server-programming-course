@@ -4,8 +4,6 @@ This is a course about game server programming made for Metropolia UAS Game Deve
 
 The technologies chosen for this course are ASP.NET Core and MongoDB. The main reasons for choosing these particular technologies are that they are open source and capable of handling demands of global scale online games.
 
-``!! Note that not all of the presentations are available in the repository just yet !!``
-
 ## The weekly schedule
 
 1. Introduction to game servers, C# for server development
@@ -30,12 +28,12 @@ _No assignments are accepted after the final deadline._
 
 - VSCode: https://code.visualstudio.com/download
 - .Net core SDK: https://www.microsoft.com/net/download
-- Omnisharp plugin for VSCode called ``C#``: https://github.com/OmniSharp/omnisharp-vscode (you can download this inside VSCode from the extensions tab! Search for "C#".)
-- ``C# Extensions`` plugin for VSCode (you can download this from VSCode as well. Search for ``C# extendsions``).
+- Omnisharp plugin for VSCode called `C#`: https://github.com/OmniSharp/omnisharp-vscode (you can download this inside VSCode from the extensions tab! Search for "C#".)
+- `C# Extensions` plugin for VSCode (you can download this from VSCode as well. Search for `C# extendsions`).
 - MongoDb: https://www.mongodb.com/download-center?jmp=nav#community
 - PostMan 2: https://www.getpostman.com/apps
 
-If you are running Windows and your VSCode uses ``powershell`` in the terminal, I recommend that you change it to ``CMD``.
+If you are running Windows and your VSCode uses `powershell` in the terminal, I recommend that you change it to `CMD`.
 
 ## Grading
 
