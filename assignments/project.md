@@ -19,7 +19,7 @@ You can work alone or have a team of 2-4 people.
 
 ## Presentation / Report
 
-The presentation should focus on the most interesting/demanding/unique features you have made for the project.
+The presentation / report should focus on the most interesting/demanding/unique features you have made for the project.
 
 You have 3 options for the presentation / reporting for the project:
 
