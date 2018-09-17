@@ -17,11 +17,15 @@ You can work alone or have a team of 2-4 people.
 - The amount and quality of the features implemented
 - The quality of the presentation
 
-## Presentation
+## Presentation / Report
 
 The presentation should focus on the most interesting/demanding/unique features you have made for the project.
 
-The projects will be presented on the last lecture. The presentation should be ~15 minutes long.
+You have 3 options for the presentation / reporting for the project:
+
+1. Present the project in class room during on last week's class room sessions. The presentation should be ~15 minutes long.
+2. If you can not participate in the class room sessions, create a video presentation
+3. Or create a report about the implementation in a blog post format
 
 ## Help with the ideas for the project
 
