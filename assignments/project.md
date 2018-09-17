@@ -8,7 +8,7 @@ There are two outputs for this project: the implementation code and a presentati
 
 ## Teams
 
-You can work alone or have a team of 2-3 people.
+You can work alone or have a team of 2-4 people.
 
 ## Evaluation criteria
 
