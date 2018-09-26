@@ -33,3 +33,6 @@ Create an action filter for auditing the usage of delete or ban endpoint in `Pla
 - Who succesfully deleted / banned and when (something like `An request from ip address {insertIpHere} to delete player ended at 9:30:36 12.10 2018`)
 
 Since the filter is using `IRepository`you need to implement this in both `MongoDbRepository` and `InMemoryRepository`.
+
+**Hints**
+- Read from here how to use dependency injection with filters: https://www.devtrends.co.uk/blog/dependency-injection-in-action-filters-in-asp.net-core
