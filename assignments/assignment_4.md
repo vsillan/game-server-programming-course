@@ -27,7 +27,11 @@ When it's time to run your application with MongoDb, remember to replace the ``I
 
 ## MongoDb implementation
 
+To get the MongoDb driver installed, run the following command: ``dotnet add package MongoDb.Driver``.
+
 You need to create a connection to the MongoDb that should be running on your local development machine. If the MongoDb is running with default port, this should work as a connection string: ``mongodb://localhost:27017``.
+
+Look at the example code in this repository to get hints how to use MongoDb with C#.
 
 Your data should follow this format:
 
