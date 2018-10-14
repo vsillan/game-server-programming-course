@@ -27,7 +27,7 @@ Add an another API-key for admin clients. Limit the usage of deleting or banning
 
 ## 3. User action auditing
 
-Create an action filter for auditing the usage of delete or ban endpoint in `PlayersController`. The audit should write to the `IRepository` two things:
+Create an action filter for auditing the usage of delete or ban endpoint in `PlayersController`. The audit should write to the database (through `IRepository`) two things:
 
 - Who started deleted / banned and when (something like `An request from ip address {insertIpHere} to delete player started at 9:30:35 12.10 2018`)
 - Who succesfully deleted / banned and when (something like `An request from ip address {insertIpHere} to delete player ended at 9:30:36 12.10 2018`)
