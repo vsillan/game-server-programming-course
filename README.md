@@ -1,8 +1,12 @@
 # Game Server programming with ASP.NET Core and MongoDB
 
-This is a course about game server programming made for Metropolia UAS Game Development curriculum. The aim of the course is to give an overview of creating Web API's suitable for creating online features typical for games. This is not about creating realtime multiplayer games.
+This is a course about game server programming made for Metropolia UAS Game Development curriculum. The aim of the course is to give an overview of creating Web API's suitable for creating online features typical to games. This course is not about creating realtime multiplayer games.
 
 The technologies chosen for this course are ASP.NET Core and MongoDB. The main reasons for choosing these particular technologies are that they are open source and capable of handling demands of global scale online games.
+
+## Requirements
+
+- Basic object oriented programming skills (C# is not a prerequisite)
 
 ## The weekly schedule
 
@@ -12,17 +16,18 @@ The technologies chosen for this course are ASP.NET Core and MongoDB. The main r
 4. Intro to NoSQL databases; Basics of MongoDB
 5. Continuing on MongoDB
 6. Basics of server security
-7. Building scalable, stable, and fault tolerant servers; Student presentations
+7. Project work
+8. Building scalable, stable, and fault tolerant servers; Student presentations
 
 ## Way of working
 
 Read the articles from the reading lists before the lectures where the concepts are presented.
 
-Try to complete the assignments on the same week they are presented. The final deadline is two weeks from the week they are presented. This is to make it possible to ask questions about the assignments during the next week's class room time. The assignments should be put inside your own GitHub (or similar) repository where I can have access to them.
+Try to complete the assignments on the same week they are presented. _Assignments need to be completed in order because they build on top of each other!_ By not completing the assignments in time, you make it harder for yourself to make progress in the course.
+
+Assignment solutions should be put inside your own GitHub (or similar) repository where I can have access to them.
 
 The project assignment will be presented on week 2 and it's recommended to start working on it as soon as possible after that.
-
-_No assignments are accepted after the final deadline._
 
 ## Tools used in the course
 
