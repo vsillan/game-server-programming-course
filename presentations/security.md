@@ -164,6 +164,10 @@ Note:
 
 ---
 
+# Part 2
+
+---
+
 ## Sensitive data exposure
 
 Data can be vulnerable in two phases: in transit and at rest

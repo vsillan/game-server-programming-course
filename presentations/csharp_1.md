@@ -305,3 +305,19 @@ Many APIs communicate in JSON or XML (or both)
 Many people use Newtonsoft.Json library for handling JSON data with .NET
 
 ---
+
+## Guid
+
+Globally unique identifier
+
+Example: “644e1dd7-2a7f-18fb-b8ed-ed78c3f92c2b”
+
+128-bit integer (16 bytes)
+
+Very low probability of being duplicate
+
+Creation: Guid id = Guid.NewGuid();
+
+Note:
+
+Probablity: This number is equivalent to generating 1 billion UUIDs per second for about 85 years, and a file containing this many UUIDs, at 16 bytes per UUID, would be about 45 exabytes, many times larger than the largest databases currently in existence, which are on the order of hundreds of petabytes. (Wikipedia)
