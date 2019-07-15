@@ -6,8 +6,8 @@
 
 ```C#
 public interface IEnumerator {
-	bool MoveNext();
-	object Current { get; }
+    bool MoveNext();
+    object Current { get; }
 }
 ```
 

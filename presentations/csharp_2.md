@@ -202,5 +202,3 @@ x => { return x * x; };
 Note:
 
 Parentheses can be omitted if there is exactly one parameter
-
----

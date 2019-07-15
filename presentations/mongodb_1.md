@@ -363,5 +363,3 @@ db.collection.remove({"_id" : ObjectId("4b2b9f67a1f631733d917a7c")})
 ```
 
 The parameter is a query. All the matching objects will be removed.
-
----

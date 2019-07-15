@@ -1,4 +1,4 @@
-# Queries
+# MongoDB Queries
 
 ---
 
@@ -534,5 +534,3 @@ db.collection.distinct()
 db.collection.group()
 
 - Similar to map-reduce but simpler and less flexible
-
----
