@@ -4,15 +4,17 @@
 
 ## Web API: what can we do with it?
 
-Great for slower paced (asynchronous) games
+Slower paced (asynchronous) games
 
-Great for validating single player game sessions
+Validating single player game sessions
 
-Great for supporting systems
+Supporting systems
 
 - account management, leaderboards, cloud-saves etc.
 
-Not-so-great for creating real-time multiplayer games
+Note:
+
+Not-so-great for creating real-time multiplayer games!
 
 ---
 
@@ -430,7 +432,11 @@ It’s advisable to use request body to pass objects when possible
 
 - Http verb GET does not allow request body
 
-Request data can come in a variety of formats 
+---
+
+### Model binding: data formats
+
+Request data can come in a variety of formats
 
 - including JSON, XML and many others
 
@@ -500,42 +506,47 @@ public void ConfigureServices(IServiceCollection services){
 }
 ```
 
+IServiceCollection has methods AddTransient, AddScoped and AddSingleton for defining the lifetime for a service
+
 Note:
 - Explain that dependencies can be complex graphs
 
 ---
 
-### Dependency injection: service lifetimes
-
-Transient
+### Dependency injection: service lifetimes - Transient
 
 - Transient lifetime services are created each time they are requested
 - This lifetime works best for lightweight, stateless services
 
 ---
 
-### Dependency injection: service lifetimes
-
-Scoped
+### Dependency injection: service lifetimes - Scoped
 
 - Scoped lifetime services are created once per request
 
-Singleton
+---
+
+### Dependency injection: service lifetimes - Singleton
 
 - Singleton lifetime services are created the first time they are requested
 - Every subsequent request will use the same instance
 
-IServiceCollection has methods AddTransient, AddScoped and AddSingleton for defining the lifetime for a service
-
 ---
 
-### The processing pipeline beyond the controller in our Web API
+### The processing pipeline beyond the controller in _our_ Web API
 
-![ASP.NET beyond controller](/resources/web-api-beyond-controller.png)
+Controller -> Repository -> Database
 
-(This is up to the application developer to decide)
+Controller has the following responsibilities:
+
+- Defining web API routes
+- Handling business logic
+
+Repository handles the data access logic
 
 Note:
+
+This is up to the application developer to decide
 
 Repository pattern: Essentially, it provides an abstraction of data, so that your application can work with a simple abstraction that has an interface approximating that of a collection.
 

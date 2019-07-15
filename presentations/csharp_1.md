@@ -52,7 +52,7 @@ public interface IAnimal {
     void MakeSound();
 }
 public class Cat : IAnimal {
-    public void MakeSound(){ 
+    public void MakeSound(){
 		// meow
 	}
 }
@@ -146,9 +146,6 @@ static void Main (string[] args) {
 	}
 	catch (FormatException ex) {
 		Console.WriteLine ("That's not a number!");
-	}
-	catch (OverflowException ex) {
-		Console.WriteLine ("You've given me more than a byte!");
 	}
 	catch (Exception ex) {
 		Console.WriteLine ("We caught something else)
@@ -290,6 +287,8 @@ A simple example:
 
 Notation used to describe objects
 
+Many APIs communicate in JSON or XML (or both)
+
 Language independent
 
 Has the following datatypes:
@@ -300,9 +299,7 @@ Has the following datatypes:
 - Boolean
 - null
 
-Many APIs communicate in JSON or XML (or both)
-
-Many people use Newtonsoft.Json library for handling JSON data with .NET
+Newtonsoft.Json library is often used for handling JSON data with .NET
 
 ---
 
