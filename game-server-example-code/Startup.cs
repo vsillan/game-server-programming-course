@@ -1,11 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using game_server.Middleware;
-using game_server.Players;
+﻿using game_server.Middleware;
 using game_server.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -26,8 +22,7 @@ namespace game_server
         {
             services.AddMvc();
 
-            // Register PlayersProcessor and IRepository implementation to the DI-container
-            services.AddTransient<PlayersProcessor>();
+            // Register IRepository implementation to the DI-container
             services.AddSingleton<IRepository, MongoDbRepository>();
         }
 

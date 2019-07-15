@@ -12,7 +12,7 @@ Implement CRUD-operations and data classes for ``Item`` (see the previous assign
 
 You probably need at least the following new classes:
 
-``Item``, ``NewItem``, ``ModifiedItem``, ``ItemsController`` and ``ItemsProcessor``
+``Item``, ``NewItem``, ``ModifiedItem``, ``ItemsController``
 
 Items should be owned by the players. Find a way to implement this.
 
@@ -34,7 +34,7 @@ Make sure your NewItem and Item models have a property called:
 
 ## 3. Implement a game rule validation
 
-Create a game rule validation in the ``ItemsProcessor`` class (remember that the _business logic_ should be handled in the ``-Processor`` classes in our architecture).
+Implement game rule validation in the ``ItemsContoller``:
 
 The rule should be the following: an item of type of ``Sword`` should not be allowed for ``Player`` below level 3.
 

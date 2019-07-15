@@ -1,16 +1,8 @@
 # Assignment 2
 
-The purpose of the following exercises is to get you familiar with writing API-endpoints using layered architecture. Layered architecture means that we divide the responsibilities related to handling the requests between different classes.
-
-It's generally a bad practice to write the business logic and data access logic inside the controller which receives the API requests. This is why we extract the business logic into a class called ``PlayerProcessor`` and the data access logic into a class called ``InMemoryRepository``.
+The purpose of the following exercises is to get you familiar with writing API-endpoints using a layered architecture. Layered architecture means that we divide the responsibilities related to handling the requests between different classes. In our application architecture we have two layers: a controller and a repository.
 
 After the exercises we have implemented CRUD (Create, Read, Update, Delete) operations for the Players API.
-
-**Help**
-
-If you feel that you need more explanation, you can read an implementation example of a TODO-list app from here: https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-vsc?view=aspnetcore-2.1
-
-Please note that the example uses ``Entity Framework`` as the database access technology. That is not something we do in this course so you should skip those parts and use the ``InMemoryRepository`` presented on this assignment.
 
 ---
 
@@ -67,33 +59,17 @@ public interface IRepository
 }
 ```
 
-Create a class called ``InMemoryRepository`` which implements the interface. Utilize a datastructure of your choice to get, create, modify and delete players in memory.
+Create a class called ``InMemoryRepository`` which implements the interface. Utilize a datastructure (array/list/dictionary... etc.) which makes most sense to create, modify and delete players in memory.
 
 ---
 
-## 3. Create PlayersProcessor class
+## 3. Create a PlayersController class
 
-The responbility of the processor class is to handle the business logic. This can include things such as generating IDs when creating a player and deciding which properties to change when modifying a player.
+The first responsibility of the controller is to define the endpoints for the API. Define the routes using attribute routing according to REST-principles.
 
-``PlayersProcessor`` should get ``IRepository`` through dependency injection and use it to do data access operations.
+The second responsibility is to handle the business logic. This can include things such as generating IDs when creating a player and deciding which properties to change when modifying a player.
 
-Create a class called ``PlayersProcessor``. Add and implement the following methods:
-
-```
-public Task<Player> Get(Guid id);
-public Task<Player[]> GetAll();
-public Task<Player> Create(NewPlayer player);
-public Task<Player> Modify(Guid id, ModifiedPlayer player);
-public Task<Player> Delete(Guid id);
-```
-
----
-
-## 4. Create a PlayersController class
-
-The responsibility of the controller is to define the endpoints for the API. Define the routes using attribute routing according to REST-principles.
-
-``PlayersController`` should get ``PlayersProcessor`` through dependency injection and use it to delegate the request processing.
+``PlayersController`` should get ``IRepository`` through dependency injection and use it to delegate the request processing.
 
 Create a class called ``PlayersController``. Add and implement the following methods:
 
@@ -107,14 +83,14 @@ public Task<Player> Delete(Guid id);
 
 ---
 
-## 5. Register PlayerProcessor and Repository to DI-container
+## 4. Register IRepository to DI-container
 
-Register ``PlayersProcessor`` and ``InMemoryRepository`` to the DI-container in ``Startup.cs`` - ``ConfigureServices`` using extension methods.
+Register ``InMemoryRepository`` to the DI-container in ``Startup.cs`` - ``ConfigureServices`` using an extension method.
 
 Registering the ``InMemoryRepository`` as ``IRepository`` into the dependency injection container enables changing the implementation later on when we start using ``MongoDB`` as the database.
 
 ---
 
-## 6. Test
+## 5. Test
 
 Use a tool such as ``PostMan`` to test that the requests to all endpoints are processed succesfully.

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using game_server.Validation;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using game_server.Repositories;
 
 namespace game_server.Players
 {
@@ -11,12 +12,12 @@ namespace game_server.Players
     public class PlayersController : ControllerBase
     {
         private readonly ILogger<PlayersController> _logger;
-        private readonly PlayersProcessor _playerProcessor;
+        private readonly IRepository _repository;
 
-        public PlayersController(ILogger<PlayersController> logger, PlayersProcessor playersProcessor)
+        public PlayersController(ILogger<PlayersController> logger, IRepository repository)
         {
             _logger = logger;
-            _playerProcessor = playersProcessor;
+            _repository = repository;
         }
 
         [HttpGet]
@@ -30,17 +31,23 @@ namespace game_server.Players
         [Route("{playerId}")]
         public Task<Player> Get(string playerId)
         {
-            
+
             throw new NotImplementedException();
         }
 
         [HttpPost]
         [Route("")]
         [ValidateModel]
-        public Task<Player> Create(NewPlayer newPlayer)
+        public async Task<Player> Create(NewPlayer newPlayer)
         {
             _logger.LogInformation("Creating player with name " + newPlayer.Name);
-            return _playerProcessor.CreatePlayer(newPlayer);
+            var player = new Player()
+            {
+                Id = Guid.NewGuid(),
+                Name = newPlayer.Name
+            };
+            await _repository.CreatePlayer(player);
+            return player;
         }
 
         [HttpDelete]
