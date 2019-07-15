@@ -5,11 +5,11 @@
 ## Attributes
 
 ```C#
-[Route(”/api/players/", Name = "CreatePlayerRoute")]
+[Route("/api/players/", Name = "CreatePlayerRoute")]
 [ValidateModel]
 [HttpPost]
 public async Task<IHttpActionResult> CreatePlayer(
-    HttpRequestMessage requestMessage, 
+    HttpRequestMessage requestMessage,
     NewPlayer newPlayer) { ...}
 ```
 
@@ -75,7 +75,9 @@ Allow extending a type with new methods without altering the original definition
 
 An extension method is a static method of a static class, where the this modifier is applied to the first parameter
 
-Example:
+---
+
+### Extension method example
 
 ```C#
 public static class StringHelper {
@@ -105,8 +107,15 @@ Just syntactic sugar
 - Language-integrated query
 - Extension methods (and query expressions) for querying collections and other data sources
 - Basically replacing foreach loops with the LINQ approach
-- Commonly used with C# code
+- Very common to see LINQ being used in C# code
 - Typical examples are .ToArray() and .First()
+
+Easily converting a list to an array:
+
+```C#
+var list = new List<int>();
+var array = list.ToArray();
+```
 
 ---
 
