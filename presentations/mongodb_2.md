@@ -1,4 +1,4 @@
-# MongoDB Queries
+# MongoDB Part 2: queries
 
 ---
 

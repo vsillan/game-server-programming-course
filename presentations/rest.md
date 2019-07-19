@@ -231,6 +231,7 @@ Sorting
 
 ---
 
+
 ### Result filtering, sorting & searching
 
 Searching

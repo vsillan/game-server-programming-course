@@ -1,4 +1,4 @@
-# MongoDB
+# MongoDB Part 1: basics
 
 ---
 
