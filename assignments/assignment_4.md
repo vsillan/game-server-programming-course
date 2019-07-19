@@ -6,7 +6,7 @@ The purpose of this assignment is to learn to write code that accesses data in M
 
 Currently your ``IRepository`` interface should look roughly like this:
 
-```
+```C#
 public interface IRepository
 {
     Task<Player> CreatePlayer(Player player);
@@ -38,5 +38,3 @@ Your data should follow this format:
 - You can name your database to ``game``
 - Players should be stored in a collection called ``players``
 - ``Items`` should be stored in a list inside ``Player`` model
-
----

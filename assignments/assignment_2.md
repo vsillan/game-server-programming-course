@@ -12,7 +12,7 @@ Create the following classes.
 
 ``Player`` class is used to define objects that are persisted and served to the client.
 
-```
+```C#
 public class Player
 {
     public Guid Id { get; set; }
@@ -26,7 +26,7 @@ public class Player
 
 ``NewPlayer`` class is used to define object that contains the properties than are defined by the client when creating new player. ``Id`` and ``CreationDate`` should be set by the server when the player is created.
 
-```
+```C#
 public class NewPlayer
 {
     public string Name { get; set; }
@@ -35,7 +35,7 @@ public class NewPlayer
 
 ``ModifiedPlayer`` class contains the properties that can be modified on a player.
 
-```
+```C#
 public class ModifiedPlayer
 {
     public int Score { get; set; }
@@ -48,7 +48,7 @@ The responsibility of the ``Repository`` is to handle accessing and persisting o
 
 Create the following interface:
 
-```
+```C#
 public interface IRepository
 {
     Task<Player> Get(Guid id);
@@ -73,7 +73,7 @@ The second responsibility is to handle the business logic. This can include thin
 
 Create a class called ``PlayersController``. Add and implement the following methods:
 
-```
+```C#
 public Task<Player> Get(Guid id);
 public Task<Player[]> GetAll();
 public Task<Player> Create(NewPlayer player);

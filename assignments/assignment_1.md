@@ -1,4 +1,3 @@
-
 # Assignment 1
 
 The purpose of the following exercise is to get you familiar with the more advanced .NET concepts to get you ready to do some serious server programming.
@@ -14,7 +13,7 @@ Create a console application in a empty folder with ``dotnet new console`` -comm
 
 Start by modifying the Program.cs with the following lines of code:
 
-```
+```C#
 static void Main(string[] args)
 {
     Console.WriteLine(args[0]);
@@ -31,7 +30,7 @@ Run the app with the following command ``dotnet run station_name`` inside the pr
 
 Create the following interface:
 
-```
+```C#
 public interface ICityBikeDataFetcher
 {
     Task<int> GetBikeCountInStation(string stationName);
