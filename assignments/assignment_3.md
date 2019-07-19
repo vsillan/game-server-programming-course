@@ -1,8 +1,8 @@
 # Assignment 3
 
-Following exercises will make you gain more experience in implementing RESTful APIs with the addition of doing server-side validation for the data that the client is sending. 
+Following exercises will make you gain more experience in implementing RESTful APIs with the addition of doing server-side validation for the data that the client is sending.
 
-It is immensily important to get the validation on server-side right (especially) for competetive multiplayer games.
+It is immensily important to get the validation on server-side right (especially) for competetive multiplayer games to make sure that players can't cheat in the game by sending illegal data.
   
 ---
 
@@ -10,32 +10,36 @@ It is immensily important to get the validation on server-side right (especially
 
 Implement CRUD-operations and data classes for ``Item`` (see the previous assignment for help if needed).
 
-You probably need at least the following new classes:
+You need at least the following new classes:
 
 ``Item``, ``NewItem``, ``ModifiedItem``, ``ItemsController``
 
-Items should be owned by the players. Find a way to implement this.
+Items should be owned by the players which means that we want to add a list of items (List<Item>) to the player model.
 
 The RESTful routes for the items resource should start with ``.../api/players/{playerId}/items``.
 
 ---
 
-## 2. Model validation using attributes and filters
+## 2. Model validation using attributes
 
-Implement model validation for NewItem model.
+``NewItem`` and ``Item`` models should have the following properties:
 
-Make sure your NewItem and Item models have a property called:
+- int Level
+- ItemType Type (define the ``ItemType`` enum yourself with values SWORD, POTION and SHIELD)
+- DateTime CreationDate
 
-- "Level" and it hits a range from 1 to 99
-- "Type" which is an allowed type for an Item (define the allowed types)
-- "CreationDate" which is a valid date from the past (Create custom validation attribute)
+Define the following validations for the model using attributes:
+
+- "Level can be only within the range from 1 to 99
+- "Type" is one of the types defined in the ``ItemType`` enum
+- "CreationDate" is a date from the past (Create custom validation attribute)
 
 ---
 
-## 3. Implement a game rule validation
+## 3. Implement a game rule validation in Controller
 
-Implement game rule validation in the ``ItemsContoller``:
+Implement a game rule validation for the ``[POST]`` (the one that creates a new item) endpoint in the ``ItemsContoller``:
 
-The rule should be the following: an item of type of ``Sword`` should not be allowed for ``Player`` below level 3.
+The rule should be: an item of type of ``Sword`` should not be allowed for a ``Player`` below level 3.
 
-If the rule is not followed, throw your own custom exception (create the exception class first) and catch the exception in an exception filter which should be only applied to that specific endpoint. The exception filter should write a response to the client with a _suitable error code_ and a _descriptive error message_.
+If the rule is not followed, throw your own custom exception (create the exception class) and catch the exception in an ``exception filter``. The ``exception filter`` should write a response to the client with a _suitable error code_ and a _descriptive error message_. The ``exception filter`` should be only applied to that specific endpoint.

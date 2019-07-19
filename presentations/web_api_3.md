@@ -89,9 +89,9 @@ Before a server stores data in a database, the server must validate the data (mo
 - Appropriately formatted
 - Conforms the rules of the application
 
-Model validation is done with action filters
+Model validation is done automatically when Controller is decorated with [ApiContoller] attribute
 
-Model validation occurs prior to each controller action being invoked
+- Returns HTTP Code 400 (Bad Request) when model is not valid
 
 Note:
 
@@ -115,28 +115,6 @@ public class Item{
 	public double Weight { get; set; }
 }
 ```
-
----
-
-### Model validation: Implementation with Action filter
-
-Action filter is a good place to perform the validation
-
-- Needs to happen after model binding
-- Happens before request reaches the action method
-- Prevents code duplication
-
----
-
-### Model validation: Implementation with Action filter
-
-Action method has the responsibility to inspect ModelState.IsValid and react accordingly
-
-- The usual reaction is to return an error response to the client
-
-The request is considered valid if the ActionExecutingContext has not been assigned a result
-
-- If not assigned, ASP.NET MVC will invoke the controller action method
 
 ---
 

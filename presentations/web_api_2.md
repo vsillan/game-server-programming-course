@@ -151,7 +151,7 @@ You can also create your own error handling middleware
 
 ```C#
 public class CustomExceptionHandlerMiddleware {
-	private readonly RequestDelegate _next;
+    private readonly RequestDelegate _next;
 	public CustomExceptionHandlerMiddleware(RequestDelegate next) {
 		_next = next;
 	}
