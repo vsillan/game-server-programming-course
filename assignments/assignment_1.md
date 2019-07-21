@@ -1,6 +1,6 @@
 # Assignment 1
 
-The purpose of the following exercise is to get you familiar with the more advanced .NET concepts to get you ready to do some serious server programming.
+The purpose of the following exercise is to get you familiar with .NET concepts to get you ready to do some serious server programming.
 
 The exercise uses an API for the HSL City Bikes. If you don't care for City Bikes you can feel free to do a variation of this exercise with any other public API. Here are some game related API's (some of which might require registeration):
 https://www.programmableweb.com/news/top-10-games-apis-eve-online-riot-games-battle.net/analysis/2015/11/25

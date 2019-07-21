@@ -93,4 +93,4 @@ Registering the ``InMemoryRepository`` as ``IRepository`` into the dependency in
 
 ## 5. Test
 
-Use a tool such as ``PostMan`` to test that the requests to all endpoints are processed succesfully.
+Use ``PostMan`` to test that the requests to all endpoints are processed succesfully.

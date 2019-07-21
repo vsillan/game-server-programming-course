@@ -31,41 +31,21 @@ Positional parameters correspond to parameters of the attribute type’s public 
 
 ---
 
-## Generics
+## Guid
 
-```C#
-public class Stack<T> {
-	int position;
-	T[] data = new T[100];
-	public void Push (T obj) { data[position++] = obj; }
-	public T Pop() { return data[--position]; }
-}
+Globally unique identifier
 
-```
+Example: “644e1dd7-2a7f-18fb-b8ed-ed78c3f92c2b”
 
-Stack<int> fills in the type parameter T with the type argument int
+128-bit integer (16 bytes)
 
-Stack<T> is an open type, whereas Stack<int> is a closed type
+Very low probability of being duplicate
 
-At runtime, all generic type instances are closed
+Creation: Guid id = Guid.NewGuid();
 
 Note:
 
-Explain with an example why generics are useful
-
-Why not hardcode a separate version for each type
-
-Why not have just a stack with type “object”
-
----
-
-### Generics
-
-A mechanism for writing reusable code across different types
-
-Generics, when compared to inheritance, can increase type safety and reduce casting and boxing
-
-Classes, interfaces and methods can be generic
+Probablity: This number is equivalent to generating 1 billion UUIDs per second for about 85 years, and a file containing this many UUIDs, at 16 bytes per UUID, would be about 45 exabytes, many times larger than the largest databases currently in existence, which are on the order of hundreds of petabytes. (Wikipedia)
 
 ---
 
@@ -202,3 +182,41 @@ x => { return x * x; };
 Note:
 
 Parentheses can be omitted if there is exactly one parameter
+
+---
+
+## Generics
+
+```C#
+public class Stack<T> {
+	int position;
+	T[] data = new T[100];
+	public void Push (T obj) { data[position++] = obj; }
+	public T Pop() { return data[--position]; }
+}
+
+```
+
+Stack<int> fills in the type parameter T with the type argument int
+
+Stack<T> is an open type, whereas Stack<int> is a closed type
+
+At runtime, all generic type instances are closed
+
+Note:
+
+Explain with an example why generics are useful
+
+Why not hardcode a separate version for each type
+
+Why not have just a stack with type “object”
+
+---
+
+### Generics
+
+A mechanism for writing reusable code across different types
+
+Generics, when compared to inheritance, can increase type safety and reduce casting and boxing
+
+Classes, interfaces and methods can be generic
