@@ -238,15 +238,15 @@ for(i=0; i<200000; i++) { db.numbers.save({num: i}); }
 
 ## Basic Administration
 
-show dbs lists all databases on the system
+``show dbs`` lists all databases on the system
 
-show collections displays a list of all the collections defined in the current database
+``show collections`` displays a list of all the collections defined in the current database
 
-db.stats() and db.collection.stats() display lower-level insight into databases and collections
+``db.stats()`` and ``db.collection.stats()`` display lower-level insight into databases and collections
 
-db.help() prints list of commonly used methods for operation on database objects
+``db.help()`` prints list of commonly used methods for operation on database objects
 
-db.foo.help() prints list of methods for collections
+``db.foo.help()`` prints list of methods for collections
 
 Note:
 
@@ -347,7 +347,10 @@ Read
 ### Updating documents
 
 ```js
-db.collection.update({"_id" : ObjectId("4b2b9f67a1f631733d917a7c")},  objectToUpdate)
+db.collection.update(
+    {"_id" : ObjectId("4b2b9f67a1f631733d917a7c")},  
+    objectToUpdate
+)
 ```
 
 Update() replaces the object
@@ -359,7 +362,9 @@ First parameter is the query for finding the object to replace
 ### Deleting documents
 
 ```js
-db.collection.remove({"_id" : ObjectId("4b2b9f67a1f631733d917a7c")})
+db.collection.remove(
+    {"_id" : ObjectId("4b2b9f67a1f631733d917a7c")}
+)
 ```
 
 The parameter is a query. All the matching objects will be removed.

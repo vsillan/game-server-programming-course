@@ -1,45 +1,96 @@
-# Assignment 3
+# Assignment 2
 
-Following exercises will make you gain more experience in implementing RESTful APIs with the addition of doing server-side validation for the data that the client is sending.
+The purpose of the following exercises is to get you familiar with writing API-endpoints using a layered architecture. Layered architecture means that we divide the responsibilities related to handling the requests between different classes. In our application architecture we have two layers: a controller and a repository.
 
-It is immensily important to get the validation on server-side right (especially) for competetive multiplayer games to make sure that players can't cheat in the game by sending illegal data.
-  
----
-
-## 1. CRUD-operations for ``Item``
-
-Implement CRUD-operations and data classes for ``Item`` (see the previous assignment for help if needed).
-
-You need at least the following new classes:
-
-``Item``, ``NewItem``, ``ModifiedItem``, ``ItemsController``
-
-Items should be owned by the players which means that we want to add a list of items (List<Item>) to the player model.
-
-The RESTful routes for the items resource should start with ``.../api/players/{playerId}/items``.
+After the exercises we have implemented CRUD (Create, Read, Update, Delete) operations for the Players API.
 
 ---
 
-## 2. Model validation using attributes
+## 1. Create Model classes
 
-``NewItem`` and ``Item`` models should have the following properties:
+Create the following classes.
 
-- int Level
-- ItemType Type (define the ``ItemType`` enum yourself with values SWORD, POTION and SHIELD)
-- DateTime CreationDate
+``Player`` class is used to define objects that are persisted and served to the client.
 
-Define the following validations for the model using attributes:
+```C#
+public class Player
+{
+    public Guid Id { get; set; }
+    public string Name { get; set; }
+    public int Score { get; set; }
+    public int Level { get; set; }
+    public bool IsBanned { get; set; }
+    public DateTime CreationTime { get; set; }
+}
+```
 
-- "Level can be only within the range from 1 to 99
-- "Type" is one of the types defined in the ``ItemType`` enum
-- "CreationDate" is a date from the past (Create custom validation attribute)
+``NewPlayer`` class is used to define object that contains the properties than are defined by the client when creating new player. ``Id`` and ``CreationDate`` should be set by the server when the player is created.
+
+```C#
+public class NewPlayer
+{
+    public string Name { get; set; }
+}
+```
+
+``ModifiedPlayer`` class contains the properties that can be modified on a player.
+
+```C#
+public class ModifiedPlayer
+{
+    public int Score { get; set; }
+}
+```
+
+## 2. Create InMemoryRepository class and IRepository interface
+
+The responsibility of the ``Repository`` is to handle accessing and persisting objects.
+
+Create the following interface:
+
+```C#
+public interface IRepository
+{
+    Task<Player> Get(Guid id);
+    Task<Player[]> GetAll();
+    Task<Player> Create(Player player);
+    Task<Player> Modify(Guid id, ModifiedPlayer player);
+    Task<Player> Delete(Guid id);
+}
+```
+
+Create a class called ``InMemoryRepository`` which implements the interface. Utilize a datastructure (array/list/dictionary... etc.) which makes most sense to create, modify and delete players in memory.
 
 ---
 
-## 3. Implement a game rule validation in Controller
+## 3. Create a PlayersController class
 
-Implement a game rule validation for the ``[POST]`` (the one that creates a new item) endpoint in the ``ItemsContoller``:
+The first responsibility of the controller is to define the endpoints for the API. Define the routes using attribute routing according to REST-principles.
 
-The rule should be: an item of type of ``Sword`` should not be allowed for a ``Player`` below level 3.
+The second responsibility is to handle the business logic. This can include things such as generating IDs when creating a player and deciding which properties to change when modifying a player.
 
-If the rule is not followed, throw your own custom exception (create the exception class) and catch the exception in an ``exception filter``. The ``exception filter`` should write a response to the client with a _suitable error code_ and a _descriptive error message_. The ``exception filter`` should be only applied to that specific endpoint.
+``PlayersController`` should get ``IRepository`` through dependency injection and use it to delegate the request processing.
+
+Create a class called ``PlayersController``. Add and implement the following methods:
+
+```C#
+public Task<Player> Get(Guid id);
+public Task<Player[]> GetAll();
+public Task<Player> Create(NewPlayer player);
+public Task<Player> Modify(Guid id, ModifiedPlayer player);
+public Task<Player> Delete(Guid id);
+```
+
+---
+
+## 4. Register IRepository to DI-container
+
+Register ``InMemoryRepository`` to the DI-container in ``Startup.cs`` - ``ConfigureServices`` using an extension method.
+
+Registering the ``InMemoryRepository`` as ``IRepository`` into the dependency injection container enables changing the implementation later on when we start using ``MongoDB`` as the database.
+
+---
+
+## 5. Test
+
+Use a tool such as ``PostMan`` to test that the requests to all endpoints are processed succesfully.

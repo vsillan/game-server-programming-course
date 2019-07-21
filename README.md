@@ -10,20 +10,21 @@ The technologies chosen for this course are ASP.NET Core and MongoDB. The main r
 
 ## The weekly schedule
 
-1. Introduction to game servers, C# for server development
-2. C# for server development; Basics of ASP.NET Core Web API
-3. Continuing on ASP.NET Core Web API; REST-architecture
-4. Intro to NoSQL databases; Basics of MongoDB
-5. Continuing on MongoDB
-6. Basics of server security
+1. Intro to game server programming; C# for server development (part 1)
+2. C# for server development (part 2)
+3. ASP.NET Core Web API (part 1); REST-architecture
+4. ASP.NET Core Web API (part 2);
+5. Intro to NoSQL databases; MongoDB (part 1)
+6. MongoDB (part 2)
 7. Project work
-8. Building scalable, stable, and fault tolerant servers; Student presentations
+8. Student presentations
 
 ## Way of working
 
 Read the articles from the reading lists before the lectures where the concepts are presented.
 
 Try to complete the assignments on the same week they are presented. _Assignments need to be completed in order because they build on top of each other!_ By not completing the assignments in time, you make it harder for yourself to make progress in the course.
+
 
 Assignment solutions should be put inside your own GitHub (or similar) repository where I can have access to them.
 

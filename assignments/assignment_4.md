@@ -1,40 +1,45 @@
-# Assignment 4
+# Assignment 3
 
-The purpose of this assignment is to learn to write code that accesses data in MongoDb database. You will create a class ``MongoDbRepository`` which has the responbility to do everything that is related accessing data in MongoDb. It will replace your existing ``InMemoryRepository``.
+Following exercises will make you gain more experience in implementing RESTful APIs with the addition of doing server-side validation for the data that the client is sending.
 
-``MongoDbRepository`` should also implement the ``IRepository`` interface - just like the ``InMemoryRepository`` does.
+It is immensily important to get the validation on server-side right (especially) for competetive multiplayer games to make sure that players can't cheat in the game by sending illegal data.
+  
+---
 
-Currently your ``IRepository`` interface should look roughly like this:
+## 1. CRUD-operations for ``Item``
 
-```C#
-public interface IRepository
-{
-    Task<Player> CreatePlayer(Player player);
-    Task<Player> GetPlayer(Guid playerId);
-    Task<Player[]> GetAllPlayers();
-    Task<Player> UpdatePlayer(Player player);
-    Task<Player> DeletePlayer(Guid playerId;
+Implement CRUD-operations and data classes for ``Item`` (see the previous assignment for help if needed).
 
-    Task<Item> CreateItem(Guid playerId, Item item);
-    Task<Item> GetItem(Guid playerId, Guid itemId);
-    Task<Item[]> GetAllItems(Guid playerId);
-    Task<Item> UpdateItem(Guid playerId, Item item);
-    Task<Item> DeleteItem(Guid playerId, Item item);
-}
-```
+You need at least the following new classes:
 
-When it's time to run your application with MongoDb, remember to replace the ``InMemoryRepository`` registeration with the new ``MongoDbRepository`` in the DI-Container! (``Startup.cs``)
+``Item``, ``NewItem``, ``ModifiedItem``, ``ItemsController``
 
-## MongoDb implementation
+Items should be owned by the players which means that we want to add a list of items (List<Item>) to the player model.
 
-To get the MongoDb driver installed, run the following command: ``dotnet add package MongoDb.Driver``.
+The RESTful routes for the items resource should start with ``.../api/players/{playerId}/items``.
 
-You need to create a connection to the MongoDb that should be running on your local development machine. If the MongoDb is running with default port, this should work as a connection string: ``mongodb://localhost:27017``.
+---
 
-Look at the example code in this repository to get hints how to use MongoDb with C#.
+## 2. Model validation using attributes
 
-Your data should follow this format:
+``NewItem`` and ``Item`` models should have the following properties:
 
-- You can name your database to ``game``
-- Players should be stored in a collection called ``players``
-- ``Items`` should be stored in a list inside ``Player`` model
+- int Level
+- ItemType Type (define the ``ItemType`` enum yourself with values SWORD, POTION and SHIELD)
+- DateTime CreationDate
+
+Define the following validations for the model using attributes:
+
+- "Level can be only within the range from 1 to 99
+- "Type" is one of the types defined in the ``ItemType`` enum
+- "CreationDate" is a date from the past (Create custom validation attribute)
+
+---
+
+## 3. Implement a game rule validation in Controller
+
+Implement a game rule validation for the ``[POST]`` (the one that creates a new item) endpoint in the ``ItemsContoller``:
+
+The rule should be: an item of type of ``Sword`` should not be allowed for a ``Player`` below level 3.
+
+If the rule is not followed, throw your own custom exception (create the exception class) and catch the exception in an ``exception filter``. The ``exception filter`` should write a response to the client with a _suitable error code_ and a _descriptive error message_. The ``exception filter`` should be only applied to that specific endpoint.

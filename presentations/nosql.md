@@ -73,7 +73,7 @@ Common characteristics:
 Note:
 
 - Open source is at the moment a common characteristic
-- Some databases are designed to operate best (or only) with specialized storage and processing hardware. With a NoSQL database, cheap off‐the‐shelf servers can be used. 
+- Some databases are designed to operate best (or only) with specialized storage and processing hardware. With a NoSQL database, cheap off‐the‐shelf servers can be used.
 - Schema-less is not the whole truth. Application always defines an implicit schema (schema on read). 
 - Explain: Why no schema makes the development faster
 

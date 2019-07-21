@@ -1,38 +1,81 @@
-# Assignment 6
+# Assignment 5
 
-## 1. API-key authentication
+With these exercises you will learn more about creating queries and aggregation against MongoDb. You will also learn how to utilize more advanced query parameters with the Web API.
 
-The purpose of this exercise is to learn to implement a custom middleware for the Web API request processing pipeline. The middleware presented here will check for an **API-key** which is a simple way of preventing unwanted parties from accessing the API. You will also learn how to use JSON config files.
+You can select from the following assignments the ones that interest you the most. Do atleast ``3 queries`` and ``1 aggregation`` but doing more will yield you extra points.
 
-Create an authentication middleware which checks the request header for an API-key. The middleware should work as the following:
+There is some help provided for some of the API urls but some of them you have to think on your own.
 
-- Return HTTP code `400` (bad request) if `x-api-key` header is missing
-- Return HTTP code `403` (forbidden) if the API-key does not match the one configured for the server
-- If everything is okay, proceed forward in the request processing pipeline without responding to the client
+---
 
-The API-key should be defined in the configuration file `appsettings.json`.
+## Queries
 
-**Implementation hints**
+### 1. Ranges
 
-- Create a middleware (there is an example in the Web API slides) called `AuthMiddleware`
-- Use `HttpContext` object to find the headers and for sending response to the client
-- Register the `AuthMiddleware` in the `Startup.cs`
-- Pass an api-key from a configuration file `appsettings.json` to the middleware through dependecy injenction
+Get ``Players`` who have more than x score
 
-## 2. API-key authorization
+**hints:**
 
-Add an another API-key for admin clients. Limit the usage of deleting or banning players to only those clients who have the admin API-key.
+Specify the x in the query like this: ``...api/players?minScore=x``
 
-- Read more on how to do it from here: https://docs.microsoft.com/en-us/aspnet/core/security/authorization/claims?view=aspnetcore-2.1
+### 2. Selector matching
 
-## 3. User action auditing
+Get ``Player`` with a name
 
-Create an action filter for auditing the usage of delete or ban endpoint in `PlayersController`. The audit should write to the database (through `IRepository`) two things:
+**hints:**
 
-- Who started deleted / banned and when (something like `An request from ip address {insertIpHere} to delete player started at 9:30:35 12.10 2018`)
-- Who succesfully deleted / banned and when (something like `An request from ip address {insertIpHere} to delete player ended at 9:30:36 12.10 2018`)
+Make sure the API can handle routes ``...api/players/{name}`` _and_ ``..api/players/{id}``
 
-Since the filter is using `IRepository`you need to implement this in both `MongoDbRepository` and `InMemoryRepository`.
+You can use attribute constraints or use a query parameter like this: ``...api/players?name={name}``
 
-**Hints**
-- Read from here how to use dependency injection with filters: https://www.devtrends.co.uk/blog/dependency-injection-in-action-filters-in-asp.net-core
+### 3. Set operators
+
+Add ``Tags`` for the ``Player`` model ( ``Tags`` can be a list of enum values) and create a query that returns the ``Players`` that have a certain tag.
+
+### 4. Sub documents queries
+
+Find ``Players`` who have ``Item`` with certain property
+
+### 5. Size
+
+Get ``Players`` with certain amount of ``Items`` by using size method
+
+### 6. Update
+
+Update ``Player`` name without fetching the ``Player``
+
+### 7. Increment
+
+Increment ``Player`` score without fetching the ``Player``
+
+### 8. Push
+
+Add ``Item`` to the item list propery on the ``Player``
+
+### 9. Pop and increment as an atomic operation
+
+Remove from ``Item`` from ``Player`` and add some score for the ``Player``. You can think of this as a ``Player`` selling an ``Item`` and getting score as a reward.
+
+**hints:**
+
+The route should be ``..api/players/{playerId}/items/`` with DELETE Http verb.
+
+### 10. Sorting
+
+Get top 10 ``Players`` by score in descending order
+
+---
+
+## Aggregation
+
+### 11. Aggregation exercise based on the example in the slides
+
+Find out what is the most common level for a player (example in the slides).
+
+### 12. Intermediate aggregation exercise
+
+Get the item counts for different prices for items.
+
+### 13. Difficult aggregation exercise
+
+Get the average score for players who were created between two dates using aggregation.

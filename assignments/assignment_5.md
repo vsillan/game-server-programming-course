@@ -1,81 +1,40 @@
-# Assignment 5
+# Assignment 4
 
-With these exercises you will learn more about creating queries and aggregation against MongoDb. You will also learn how to utilize more advanced query parameters with the Web API.
+The purpose of this assignment is to learn to write code that accesses data in MongoDb database. You will create a class ``MongoDbRepository`` which has the responbility to do everything that is related accessing data in MongoDb. It will replace your existing ``InMemoryRepository``.
 
-You can select from the following assignments the ones that interest you the most. Do atleast ``3 queries`` and ``1 aggregation`` but doing more will yield you extra points.
+``MongoDbRepository`` should also implement the ``IRepository`` interface - just like the ``InMemoryRepository`` does.
 
-There is some help provided for some of the API urls but some of them you have to think on your own.
+Currently your ``IRepository`` interface should look roughly like this:
 
----
+```C#
+public interface IRepository
+{
+    Task<Player> CreatePlayer(Player player);
+    Task<Player> GetPlayer(Guid playerId);
+    Task<Player[]> GetAllPlayers();
+    Task<Player> UpdatePlayer(Player player);
+    Task<Player> DeletePlayer(Guid playerId;
 
-## Queries
+    Task<Item> CreateItem(Guid playerId, Item item);
+    Task<Item> GetItem(Guid playerId, Guid itemId);
+    Task<Item[]> GetAllItems(Guid playerId);
+    Task<Item> UpdateItem(Guid playerId, Item item);
+    Task<Item> DeleteItem(Guid playerId, Item item);
+}
+```
 
-### 1. Ranges
+When it's time to run your application with MongoDb, remember to replace the ``InMemoryRepository`` registeration with the new ``MongoDbRepository`` in the DI-Container! (``Startup.cs``)
 
-Get ``Players`` who have more than x score
+## MongoDb implementation
 
-**hints:**
+To get the MongoDb driver installed, run the following command: ``dotnet add package MongoDb.Driver``.
 
-Specify the x in the query like this: ``...api/players?minScore=x``
+You need to create a connection to the MongoDb that should be running on your local development machine. If the MongoDb is running with default port, this should work as a connection string: ``mongodb://localhost:27017``.
 
-### 2. Selector matching
+Look at the example code in this repository to get hints how to use MongoDb with C#.
 
-Get ``Player`` with a name
+Your data should follow this format:
 
-**hints:**
-
-Make sure the API can handle routes ``...api/players/{name}`` _and_ ``..api/players/{id}``
-
-You can use attribute constraints or use a query parameter like this: ``...api/players?name={name}``
-
-### 3. Set operators
-
-Add ``Tags`` for the ``Player`` model ( ``Tags`` can be a list of enum values) and create a query that returns the ``Players`` that have a certain tag.
-
-### 4. Sub documents queries
-
-Find ``Players`` who have ``Item`` with certain property
-
-### 5. Size
-
-Get ``Players`` with certain amount of ``Items`` by using size method
-
-### 6. Update
-
-Update ``Player`` name without fetching the ``Player``
-
-### 7. Increment
-
-Increment ``Player`` score without fetching the ``Player``
-
-### 8. Push
-
-Add ``Item`` to the item list propery on the ``Player``
-
-### 9. Pop and increment as an atomic operation
-
-Remove from ``Item`` from ``Player`` and add some score for the ``Player``. You can think of this as a ``Player`` selling an ``Item`` and getting score as a reward.
-
-**hints:**
-
-The route should be ``..api/players/{playerId}/items/`` with DELETE Http verb.
-
-### 10. Sorting
-
-Get top 10 ``Players`` by score in descending order
-
----
-
-## Aggregation
-
-### 11. Aggregation exercise based on the example in the slides
-
-Find out what is the most common level for a player (example in the slides).
-
-### 12. Intermediate aggregation exercise
-
-Get the item counts for different prices for items.
-
-### 13. Difficult aggregation exercise
-
-Get the average score for players who were created between two dates using aggregation.
+- You can name your database to ``game``
+- Players should be stored in a collection called ``players``
+- ``Items`` should be stored in a list inside ``Player`` model
