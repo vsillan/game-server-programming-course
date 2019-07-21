@@ -6,6 +6,16 @@ After the exercises we have implemented CRUD (Create, Read, Update, Delete) oper
 
 ---
 
+## Preparation
+
+### Create new Web API project
+
+- Create a folder called ``GameWebApi``
+- Move to the folder
+- Run ``dotnet new webapi``
+
+``
+
 ## 1. Create Model classes
 
 Create the following classes.

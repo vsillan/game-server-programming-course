@@ -2,23 +2,25 @@
 
 The purpose of the following exercise is to get you familiar with .NET concepts to get you ready to do some serious server programming.
 
-## Create a new project
+## Preparation
+
+### Create a new project
 
 Create a new console application that can be used to run the following exercises. You can find guidance from the previous assignment if you don't remember how to do it.
 
-## Create two new classes and an interface
+### Create two new classes and an interface
 
 ```C#
+public interface IPlayer
+{
+    int Score { get; set; }
+}
+
 public class Player : IPlayer
 {
     public Guid Id { get; set; }
     public int Score { get; set; }
     public List<Item> Items { get; set; }
-}
-
-public interface IPlayer
-{
-    int Score { get; set; }
 }
 
 public class Item
@@ -87,6 +89,6 @@ public class Game<T> where T : IPlayer
 }
 ```
 
-Write an another class that implements the IPlayer interface called ``DifferentPlayer``.
+Write an another class that implements the IPlayer interface called ``PlayerForAnotherGame``.
 
-Write code that demonstrates that you can instantiate the generic ``Game`` class and call ``GetTop10Players`` with both ``Player`` and ``DifferentPlayer``.
+Write code that demonstrates that you can instantiate the generic ``Game`` class and call ``GetTop10Players`` with both ``Player`` and ``PlayerForAnotherGame``.
