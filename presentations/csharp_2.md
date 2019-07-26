@@ -157,6 +157,50 @@ app.Use(async (context, next) => {
 
 ---
 
+## Action-delegate
+
+Action is a delegate type defined in the System namespace
+
+```C#
+public delegate void Print(string value);
+
+public static void ConsolePrint(string value) {
+    Console.WriteLine(value);
+}
+
+public static void PrintTest() {
+    Print printFunction = ConsolePrint;
+    printFunction("test");
+}
+
+public static void PrintTestWithAction() {
+    Action<string> printFunction = ConsolePrint;
+    printFunction("test");
+}
+```
+
+Note:
+
+- Can have up to 16 parameters
+
+---
+
+## Func-delegate
+
+Func is the similar as Action-delegate but it has a return value
+
+``Func<int>`` is a delegate that takes a function that:
+
+- has no parameters
+- returns an ``int``
+
+``Func<int, int>`` is a delegate that takes a function that:
+
+- has one parameter with ``int``-type
+- returns an ``int``
+
+---
+
 ## Lambda expressions
 
 A lambda expression is an unnamed method written in place of a delegate instance
@@ -197,9 +241,9 @@ public class Stack<T> {
 
 ```
 
-Stack<int> fills in the type parameter T with the type argument int
+``Stack<int>`` fills in the type parameter T with the type argument int
 
-Stack<T> is an open type, whereas Stack<int> is a closed type
+``Stack<T>`` is an open type, whereas ``Stack<int>`` is a closed type
 
 At runtime, all generic type instances are closed
 
