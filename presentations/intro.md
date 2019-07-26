@@ -12,13 +12,6 @@ Building Web APIs for games.
 
 Broaden your knowledge on different database systems to ``NoSQL`` territory
 
-Learn patterns for implementing servers with following qualities:
-
-- security
-- stability
-- scalability
-- fault tolerancy
-
 Note:
 
 After this course you should undertand what Web APIs enable, limit and what needs to be considered in the implementation.
@@ -31,12 +24,11 @@ Create Web APIs for games using **ASP.NET** Core (C#)
 
 Learn and use **MongoDb** as a database for the Web API
 
-Implement some of the patterns that make up a solid game server
+Implement some common patterns that make up a solid game server
 
 Note:
 
 - We focus on APIs they are more general purpose than real-time implementations
-- Some of the patterns presented in this course are not implemented on application level. The implementation for those is out of the scope of this course.
 
 ---
 
@@ -55,19 +47,11 @@ Note:
 
 ---
 
-### The Schedule
-
-1. Introduction to game servers, C# for server development 
-2. C# for server development; Basics of ASP.NET Core Web API
-3. Continuing on ASP.NET Core Web API; REST-architecture
-4. Intro to NoSQL databases; Basics of MongoDB
-5. Continuing on MongoDB
-6. Basics of server security
-7. Building scalable, stable, and fault tolerant servers; Student presentations
-
----
-
 ## Game server development
+
+Note:
+
+- Go through the Readme.md before moving forward
 
 ---
 
@@ -348,6 +332,4 @@ Techniques for creating robust realtime experiences
 
 Note:
 
-In this course we'll focus on the first 4
-
----
+In this course we'll focus mostly on the first 2 and bit on 3 and 4.
