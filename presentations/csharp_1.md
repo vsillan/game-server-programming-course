@@ -2,6 +2,27 @@
 
 ---
 
+## Properties
+
+A flexible and concise way of manipulating and reading a private field
+
+Properties are actually special methods called accessors
+
+Can be read-write / read-only / write-only
+
+```C#
+public class Game {
+    // An auto-implemented read-write property
+    public int PlayerCount { get; set; }
+
+    private bool _gameOver;
+    // A read-write property with explicit backing field
+    public bool GameOver { get { return _gameOver; } set { _gameover = value; } }
+}
+```
+
+---
+
 ## Interfaces
 
 ```C#
