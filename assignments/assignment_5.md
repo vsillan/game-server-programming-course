@@ -1,4 +1,6 @@
-# Assignment 4
+# Assignment 5
+
+_This assignment builds on top of the ``GameWebApi`` project created in assignment 3 and extended in assignment 4._
 
 The purpose of this assignment is to learn to write code that accesses data in MongoDb database. You will create a class ``MongoDbRepository`` which has the responbility to do everything that is related accessing data in MongoDb. It will replace your existing ``InMemoryRepository``.
 

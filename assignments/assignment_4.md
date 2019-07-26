@@ -1,4 +1,6 @@
-# Assignment 3
+# Assignment 4
+
+_This assignment builds on top of the ``GameWebApi`` project created in assignment 3._
 
 Following exercises will make you gain more experience in implementing RESTful APIs with the addition of doing server-side validation for the data that the client is sending.
 

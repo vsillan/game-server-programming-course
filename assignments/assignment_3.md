@@ -1,4 +1,4 @@
-# Assignment 2
+# Assignment 3
 
 The purpose of the following exercises is to get you familiar with writing API-endpoints using a layered architecture. Layered architecture means that we divide the responsibilities related to handling the requests between different classes. In our application architecture we have two layers: a controller and a repository.
 
@@ -18,7 +18,7 @@ After the exercises we have implemented CRUD (Create, Read, Update, Delete) oper
 
 ## 1. Create Model classes
 
-Create the following classes.
+Create the following classes in separate files inside the project folder:
 
 ``Player`` class is used to define objects that are persisted and served to the client.
 
@@ -56,7 +56,7 @@ public class ModifiedPlayer
 
 The responsibility of the ``Repository`` is to handle accessing and persisting objects.
 
-Create the following interface:
+Create the following interface in a new file:
 
 ```C#
 public interface IRepository

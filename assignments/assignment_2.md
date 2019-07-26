@@ -10,6 +10,8 @@ Create a new console application that can be used to run the following exercises
 
 ### Create two new classes and an interface
 
+Create the following classes and interface in separate files inside the project folder.
+
 ```C#
 public interface IPlayer
 {

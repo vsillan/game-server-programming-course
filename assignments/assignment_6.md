@@ -1,4 +1,6 @@
-# Assignment 5
+# Assignment 6
+
+_This assignment builds on top of the ``GameWebApi`` project created in assignment 3 and extended in assignment 4 and 5._
 
 With these exercises you will learn more about creating queries and aggregation against MongoDb. You will also learn how to utilize more advanced query parameters with the Web API.
 
