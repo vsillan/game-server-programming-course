@@ -18,7 +18,7 @@ Compiles in Max OS X, Windows, and most flavors of Linux
 
 Note:
 
-The GNU-AGPL is subject to some controversy. What this licensing means in practice is that the source code is freely available and the contributions from the community are encouraged. The primary limitation of the GNU-AGPL is that any modifications made to the source code must be published publicly for the benefit of the community
+The GNU-AGPL is subject to some controversy. What this licensing means in practice is that the source code is freely available and the contributions from the community are encouraged. The primary limitation of the GNU-AGPL is that any modifications made to the source code must be published publicly for the benefit of the community.
 
 Who uses MongoDB:
 
@@ -49,11 +49,11 @@ Note:
 
 - Just like with relational databases
 - Adhoc queries
-- JSON is an acronym for JavaScript Object Notation. JSON structures are comprised of keys and values, and they can nest arbitrarily deep. They’re analogous to the dictionaries and hash maps of other  programming languages. 
+- JSON is an acronym for JavaScript Object Notation. JSON structures are comprised of keys and values, and they can nest arbitrarily deep. They’re analogous to the dictionaries and hash maps of other programming languages.
 - JSON is simple, intuitive and human friendly
 - Which features?
-- Key-value  stores,  because  of their  simplicity,  are  extremely  fast  and  relatively  easy to scale. 
-- Relational databases are more difficult to scale, at least horizontally, but admit a rich  data  model  and  a  powerful  query  language.
+- Key-value stores, because of their simplicity, are extremely fast and relatively easy to scale.
+- Relational databases are more difficult to scale, at least horizontally, but admit a rich data model and a powerful query language.
 - Key-value stores only support queries with key
 - With big data sets indexes are necessary
 - Configuration: for example the memory management is offloaded to the OS kernel
@@ -76,26 +76,26 @@ MongoDB v1.0 was released in November 2009
 
 Note:
 
-- software platform-as-a-service, composed of an application server and a database, that  would host web applications and scale them as needed. 
+- software platform-as-a-service, composed of an application server and a database, that would host web applications and scale them as needed.
 
 ---
 
 ## Example of MongoDB document
 
 ```json
-{ 
-	"_id" : "57ade8face4bf5361c4268d6", 
-	"Name" : "john", 
-	"Score" : 7, 
-	"IsBanned" : false, 
-	"CreationDate" : ISODate("2016-08-12T15:19:22.492Z"), 
-	"Items" : [ 
-		{ 
-			"_id" : "57ade921ce4bf5361c4268d7", 
-			"Price" : 5, 
-			"ItemType" : 0 
-		} 
-	] 
+{
+  "_id": "57ade8face4bf5361c4268d6",
+  "Name": "john",
+  "Score": 7,
+  "IsBanned": false,
+  "CreationDate": ISODate("2016-08-12T15:19:22.492Z"),
+  "Items": [
+    {
+      "_id": "57ade921ce4bf5361c4268d7",
+      "Price": 5,
+      "ItemType": 0
+    }
+  ]
 }
 ```
 
@@ -104,7 +104,7 @@ Note:
 - Set of property names and their values
 - Documents can contain subdocuments
 - What’s important to note here is that a document-oriented data model naturally represents data in an aggregate form, allowing you towork with an object holistically
-- Documents don’t need to conform to predefined schema
+- Documents don’t need to conform to predefined schema
 
 ---
 
@@ -129,16 +129,14 @@ Note:
 ## Simple query example
 
 ```js
-db.players.find(
-{
-	"_id" : "57ade8face4bf5361c4268d6"
-})
+db.players.find({
+  _id: "57ade8face4bf5361c4268d6"
+});
 
-db.players.find(
-{
-	"Score" : 7,
-	"IsBanned" : false
-})
+db.players.find({
+  Score: 7,
+  IsBanned: false
+});
 ```
 
 ---
@@ -163,7 +161,7 @@ MongoDB’s relevance to analytics derives from its speed and from two key featu
 
 Atomic updates let clients efficiently increment counters and push values onto arrays
 
-Capped collections, often useful for logging,  feature  fixed  allocation,  which  lets  them  age  out  automatically
+Capped collections, often useful for logging, feature fixed allocation, which lets them age out automatically
 
 ---
 
@@ -214,7 +212,7 @@ Note:
 
 Database tuning, which in most RDBMSs means tinkering with a wide array of parameters controlling memory allocation and the like, has become something of a black art
 
-MongoDB’s design philosophy dictates that memory management is better handled by the operating system than by a DBA or application developer
+MongoDB’s design philosophy dictates that memory management is better handled by the operating system than by a DBA or application developer
 
 ---
 
@@ -229,28 +227,30 @@ Connects to a specified mongod process
 Most commands are issued using JavaScript expressions
 
 Shell is also a JavaScript interpreter so code like this can be run:
-
+
 ```js
-for(i=0; i<200000; i++) { db.numbers.save({num: i}); }
+for (i = 0; i < 200000; i++) {
+  db.numbers.save({ num: i });
+}
 ```
 
 ---
 
 ## Basic Administration
 
-``show dbs`` lists all databases on the system
+`show dbs` lists all databases on the system
 
-``show collections`` displays a list of all the collections defined in the current database
+`show collections` displays a list of all the collections defined in the current database
 
-``db.stats()`` and ``db.collection.stats()`` display lower-level insight into databases and collections
+`db.stats()` and `db.collection.stats()` display lower-level insight into databases and collections
 
-``db.help()`` prints list of commonly used methods for operation on database objects
+`db.help()` prints list of commonly used methods for operation on database objects
 
-``db.foo.help()`` prints list of methods for collections
+`db.foo.help()` prints list of methods for collections
 
 Note:
 
-- Some of the values provided in these result documents are useful only in complicated debugging situations
+- Some of the values provided in these result documents are useful only in complicated debugging situations
 
 ---
 
@@ -283,7 +283,7 @@ Note:
 
 In RDBMS, column names are always kept separate from the rows they refer to
 
-On the server side, querying a large document requires that the document be copied into a buffer before being  sent  to  the  client.  This  copying  can  get  expensive,  especially  (as  is  often  the case)  when  the  client  doesn’t  need  the  entire  document. In  addition,  once  sent, there’s the work of transporting the document across the network and then deserializing it on the driver side. This can become especially costly if large batches of multimegabyte documents are being requested at once
+On the server side, querying a large document requires that the document be copied into a buffer before being sent to the client. This copying can get expensive, especially (as is often the case) when the client doesn’t need the entire document. In addition, once sent, there’s the work of transporting the document across the network and then deserializing it on the driver side. This can become especially costly if large batches of multimegabyte documents are being requested at once
 
 ---
 
@@ -329,42 +329,49 @@ Note:
 
 ---
 
-## Creating and Reading documents
+## Inserting documents
 
-Create
+```C#
+await _collection.InsertOneAsync(player);
+```
 
-- db.collection.insert({“foo” : “bar”})
-- Inserts the document as it is
-- If _id field is not passed, it will be automatically generated
+Inserts the object as a document
 
-Read
+If the \_id field is not passed, it will be automatically generated
 
-- db.collection.findOne({“foo” : “bar”})
-- FindOne() returns the first occurrence of a object matching the query
+---
+
+## Reading documents
+
+```C#
+FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(p => p.Score, 5);
+Player player = await _collection.Find(filter).FirstAsync();
+```
+
+Find returns the documents matching the filter
+
+FirstAsync is used to stop the query to the first match
 
 ---
 
 ### Updating documents
 
-```js
-db.collection.update(
-    {"_id" : ObjectId("4b2b9f67a1f631733d917a7c")},  
-    objectToUpdate
-)
+```C#
+FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(p => p.Id, player.Id);
+await _collection.ReplaceOneAsync(filter, player);
 ```
 
-Update() replaces the object
+First parameter is the query for finding the document to replace
 
-First parameter is the query for finding the object to replace
+Replaces all the values in the document are replaced with the properties in the `Player`
 
 ---
 
 ### Deleting documents
 
-```js
-db.collection.remove(
-    {"_id" : ObjectId("4b2b9f67a1f631733d917a7c")}
-)
+```C#
+FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(p => p.Id, playerId);
+await _collection.FindOneAndDeleteAsync(filter);
 ```
 
-The parameter is a query. All the matching objects will be removed.
+All documents matching the filter will be removed
