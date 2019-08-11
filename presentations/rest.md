@@ -14,7 +14,7 @@ Note:
 Typical URIs:
 
 - GET /api/players/
-- GET /api/players/{id} 
+- GET /api/players/{id}
 - POST /api/players/
 - PUT /api/players/{id}
 - DELETE /api/players/{id}

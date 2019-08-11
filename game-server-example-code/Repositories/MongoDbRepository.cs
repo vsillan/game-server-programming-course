@@ -1,8 +1,9 @@
+using System.Collections.Immutable;
+using System.Linq;
 using System;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Bson;
-using System.Collections.Generic;
 using game_server.Players;
 
 namespace game_server.Repositories
@@ -15,7 +16,7 @@ namespace game_server.Repositories
         public MongoDbRepository()
         {
             var mongoClient = new MongoClient("mongodb://localhost:27017");
-            IMongoDatabase database = mongoClient.GetDatabase("Game");
+            var database = mongoClient.GetDatabase("Game");
             _collection = database.GetCollection<Player>("players");
             _bsonDocumentCollection = database.GetCollection<BsonDocument>("players");
         }
@@ -28,20 +29,20 @@ namespace game_server.Repositories
 
         public async Task<Player[]> GetAllPlayers()
         {
-            List<Player> players = await _collection.Find(new BsonDocument()).ToListAsync();
+            var players = await _collection.Find(new BsonDocument()).ToListAsync();
             return players.ToArray();
         }
 
         public Task<Player> GetPlayer(Guid id)
         {
-            FilterDefinition<Player> filter = Builders<Player>.Filter.Eq("_id", id);
+            var filter = Builders<Player>.Filter.Eq(p => p.Id, id);
             return _collection.Find(filter).FirstAsync();
         }
 
         public async Task<Player[]> GetBetweenLevelsAsync(int minLevel, int maxLevel)
         {
-            FilterDefinition<Player> filter = Builders<Player>.Filter.Gte("Level", 18) & Builders<Player>.Filter.Lte("Level", 30);
-            List<Player> players = await _collection.Find(filter).ToListAsync();
+            var filter = Builders<Player>.Filter.Gte(p => p.Level, 18) & Builders<Player>.Filter.Lte(p => p.Level, 30);
+            var players = await _collection.Find(filter).ToListAsync();
             return players.ToArray();
         }
 
@@ -58,15 +59,16 @@ namespace game_server.Repositories
 
         public async Task<Player> UpdatePlayer(Player player)
         {
-            var filter = Builders<Player>.Filter.Eq("_id", player.Id);
+            FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(p => p.Id, player.Id);
             await _collection.ReplaceOneAsync(filter, player);
             return player;
         }
 
         public async Task<Player[]> GetAllSortedByScoreDescending()
         {
-            SortDefinition<Player> sortDef = Builders<Player>.Sort.Descending(p => p.Score);
-            List<Player> players = await _collection.Find(new BsonDocument()).Sort(sortDef).ToListAsync();
+            var sortDef = Builders<Player>.Sort.Descending(p => p.Score);
+            var players = await _collection.Find(new BsonDocument()).Sort(sortDef).ToListAsync();
+
             return players.ToArray();
         }
 
@@ -82,9 +84,10 @@ namespace game_server.Repositories
             return player;
         }
 
-        public Task<Player> DeletePlayer(Guid playerId)
+        public async Task<Player> DeletePlayer(Guid playerId)
         {
-            throw new NotImplementedException();
+            FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(p => p.Id, playerId);
+            return await _collection.FindOneAndDeleteAsync(filter);
         }
 
         public Task<Item> CreateItem(Guid playerId, Item item)

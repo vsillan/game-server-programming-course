@@ -1,4 +1,4 @@
-# MongoDB Part 2: queries
+# MongoDB Part 2: Most important Queries, Updates and Aggregration
 
 ---
 
@@ -6,7 +6,7 @@
 
 MongoDB has its own JSON-like query language
 
-You can perform ad hoc queries on the database using the find or findOne functions 
+You can perform ad hoc queries on the database using the find or findOne functions
 
 **Query selectors** can be used to match documents
 
@@ -39,22 +39,23 @@ Queries can be restricted by adding key-value pairs to the query document
 
 ### Queries: Find method
 
-Example: db.players.find({name: john})
-
 Example in C#:
 
 ```C#
-FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(“Name", name);
-Player player = await collection.Find(filter).FirstAsync();
+FilterDefinition<Player> filter =
+    Builders<Player>.Filter.Eq(p => p.Name, name);
+
+Player player =
+    await collection.Find(filter).FirstAsync();
 ```
 
 ---
 
 ### Query cursor
 
-When you call find the database is not queried immediately
+When you call find, the database is _NOT_ queried immediately
 
-The database returns results from find using a cursor
+The database returns results from find using a **cursor**
 
 Cursor allows to control the eventual output of a query
 
@@ -62,11 +63,17 @@ Almost every method on a cursor object returns the cursor itself so that you can
 
 ---
 
-### Query cursor
+### Query cursor example
 
 ```C#
-SortDefinition<Player> sortDef = Builders<Player>.Sort.Ascending("Level");
-IFindFluent<Player, Player> cursor = 	collection.Find("").Sort(sortDef).Limit(1).Skip(10);
+SortDefinition<Player> sortDef = 
+    Builders<Player>.Sort.Ascending("Level");
+
+IFindFluent<Player, Player> cursor =
+    collection.Find("")
+        .Sort(sortDef)
+        .Limit(1)
+        .Skip(10);
 ```
 
 Query is executed when results are requested from the cursor:
@@ -79,25 +86,23 @@ List<Player> players = await cursor.ToListAsync();
 
 ### Query selectors: Comparisons
 
-$lt == lower than ( < )
+**$lt** == lower than (<)
 
-$lte == lower than or equal ( <= )
+**$lte** == lower than or equal (<=)
 
-$gt == greater than ( > )
+**$gt** == greater than (>)
 
-$gte == greater than or equal ( >= )
-
-Example in Mongo Shell:
-
-```js
-db.players.find({”level" : {"$gte" : 18, "$lte" : 30}})
-```
+**$gte** == greater than or equal (>=)
 
 Example in C#:
 
 ```C#
-FilterDefinition<Player> filter = Builders<Player>.Filter.Gte("Level", 18) & Builders<Player>.Filter.Lte("Level", 30);
-List<Player> players = await collection.Find(filter).ToListAsync();
+FilterDefinition<Player> filter = 
+    Builders<Player>.Filter.Gte("Level", 18) 
+    & Builders<Player>.Filter.Lte("Level", 30);
+
+List<Player> players = 
+    await collection.Find(filter).ToListAsync();
 ```
 
 Note:
@@ -105,8 +110,8 @@ Note:
 - Range queries will match only if they have same type as the value to be compared against
 - Generally you should not store more than one type for key within the same collection
 - (e.g. db.players.find({score: {$gte: 100, $lte: 200}})
-- When using the set operators, keep in mind that $in and $all can take advantage of indexes, but $nin can’t and thus requires a collection scan. If you use $nin, try to use it in combination with another query term that does use an index. 
-- Make example of using set
+- When using the set operators, keep in mind that $in and $all can take advantage of indexes, but $nin can’t and thus requires a collection scan. If you use $nin, try to use it in combination with another query term that does use an index.
+- Make example of using set
 
 ---
 
@@ -120,33 +125,48 @@ Each takes a list of one or more values as predicate
 
 **$nin** – returns a document if none of the given values matches the search key
 
-Example: db.players.find({”Level" : {"$in" : [1, 10, 20]}})
-
-Note:o
-
-- Returns all players who have level of 1 or 10 or 20
+``` C#
+var filter =
+    Builders<Player>.Filter.In(
+        p => p.Level,
+        new[] { 10, 20, 30 }
+    );
+```
 
 ---
 
-### Query selectors: Boolean operators
+### Query selectors: Boolean operators (1)
 
 **$ne** – not equal
 
 **$not** – negates the result of another MongoDB operator or regular expression query
 
-**$or** – expresses a logical disjunction of two values for two different keys
-
-**$and** – both selectors match for the document
-
-**$exists** – used for querying documents containing  a particular key, needed because collections don’t enforce schema
+**$exists** – used for querying documents containing a particular key, needed because collections don’t enforce schema
 
 Note:
 
 - $ne can not take advantage of indexes
 - Do not use $not if there exists a negated form for the operator (e.g. $in and $nin)
 - If possible values are scoped to the same key, use $in instead
-- $and and $or take array of query selectors, where each selector can be arbitrarily complexand may itself contain other query operators. 
-- MongoDB interprets all query selectors containing more than one key by ANDing the conditions, you should use $and only when you can’t express an AND in a simpler way.
+
+---
+
+### Query selectors: Boolean operators (2)
+
+**$or** – expresses a logical disjunction of two values for two different keys
+
+**$and** – both selectors match for the document
+
+```C#
+var f1 = Builders<Player>.Filter.Eq(p => p.Name, "John");
+var f2 = Builders<Player>.Filter.Gt(p => p.Level, 10);
+var andFilter = Builders<Player>.Filter.And(f1, f2);
+```
+
+Note:
+
+- $and and $or take array of query selectors, where each selector can be arbitrarily complexand may itself contain other query operators.
+- MongoDB interprets all query selectors containing more than one key by ANDing the conditions, you should use $and only when you can’t express an AND in a simpler way.
 
 ---
 
@@ -172,11 +192,15 @@ Note:
 
 Querying for matching value in array uses the same syntax as querying a single value
 
-- Db.players.find({‘Tags’ : “active”}) // would find player with Tags : [“active”, “novice”]
+This, for example, would find a player with Tags “active” and “novice”
 
-Dot notation can be used for querying value in specific position of the array
+```C#
+var filter =
+    Builders<Player>.Filter.Eq(p => p.Tags, "active");
 
-- Db.players.find({‘Tags.0’ : “active”})
+var player =
+    _collection.Find(filter).FirstAsync();
+```
 
 **$size** – allows to query for an array by its size
 
@@ -184,58 +208,76 @@ Dot notation can be used for querying value in specific position of the array
 
 ### Querying sub-documents
 
-It’s possible to query sub objects by separating relevant keys with . (dot)
+**$elemMatch** can be used to perform queries on the subdocuments
 
-. (dot) means “reach into an embedded document”
-
-Example: db.players.find({'Items._id' : '57ade921ce4bf5361c4268d7‘})
-
-**$elemMatch** can be used to combine multiple conditions for same sub-document
-
-
-```js
-db.players.find({”Items" : {"$elemMatch" : {”Type" : ”Sword",
-				          ”Level" : {"$gte" : 5}}}})
+```C#
+var playersWithWeapons =
+    Builders<Player>.Filter.ElemMatch<Item>(
+        p => p.Items,
+        Builders<Item>.Filter.Eq(
+            i => i.ItemType,
+            ItemType.Weapon
+        )
+    );
 ```
 
 ---
 
-### Query cursor options
+### Query cursor options: **Projections**
 
 Query cursor options can be used to constrain the result set
 
-**Projections**
+Returns only specific fields of the document
 
-- Returns only specific fields of the document
-- $slice operator can be used for pagination for arrays within documents
+```C#
+var projection =
+    Builders<Player>.Projection.As<PlayerWithLimitedProps>();
 
-**Sorting**
-
-- Can be used for sorting any result in ascending or descending order
-- Can be used with one or more fields
+var limitedPlayer =
+    await _collection.Find(filter).Project(projection).FirstAsync();
+```
 
 ---
 
-### Query cursor options
+### Query cursor options: **Sorting**
 
-**Skip and limit**
+Can be used for sorting any result in ascending or descending order
+
+Can be used with one or more fields
+
+```C#
+SortDefinition<Player> sortDef =
+    Builders<Player>.Sort.Ascending("Level");
+
+IFindFluent<Player, Player> cursor =
+    collection.Find("").Sort(sortDef);
+```
+
+---
+
+### Query cursor options: **Skip and limit**
 
 - Skip documents and limit documents returned by the query
 - Beware of skipping large number of documents because it gets ineffective
 
+```C#
+IFindFluent<Player, Player> cursor = 
+    collection.Find("").Limit(1).Skip(10);
+```
+
 Note:
 
-- Especially in cases where you have large documents, using a projection will minimize the costs of network latency and deserialization.
+- Especially in cases where you have large documents, using a projection will minimize the costs of network latency and deserialization.
 
 ---
 
-## Updates and deletes
+## Updates
 
 ---
 
 ### Updates
 
-Documents can be replaced completely 
+Documents can be replaced completely
 
 Specific fields can be updated independently
 
@@ -301,7 +343,7 @@ Note:
 
 ### Atomic operations
 
-findAndModify –command 
+**findAndModify** –command
 
 Any one document can be updated atomically
 
@@ -342,15 +384,15 @@ Three methods for aggregation:
 
 **Aggregation pipeline**
 
-**Map-reduce **
+**Map-reduce**
 
 **Single purpose aggregation methods**
 
 ---
 
-### Aggregation example
+### Aggregation example description
 
-Find out what is the most common level for a player
+Find out what are the most common level for the players
 
 1. Project the levels out of each player document
 2. Group the levels by the number, counting the number of occurrences
@@ -361,13 +403,13 @@ Find out what is the most common level for a player
 
 ### Aggregation example
 
-```js
-db.players.aggregate(
-	{"$project" : {"Level" : 1}},
-	{"$group" : {"_id" : "$Level", "Count" : {"$sum" : 1 }}},
-	{"$sort" : {“Count" :  -1}},
-	{"$limit" :  3}
-)
+```C#
+var levelCounts =
+    _collection.Aggregate()
+        .Project(p => p.Level)
+        .Group(l => l, p => new LevelCount { Id = p.Key, Count = p.Sum() })
+        .SortByDescending(l => l.Count)
+        .Limit(3);
 ```
 
 Note:
@@ -378,18 +420,18 @@ Note:
 
 {“$group” : {“_id” : “$Level”, “Count” “ {“$sum” : 1 }}}
 
-- This groups the levels by number and increments “Count"  for each document a level appears in
+- This groups the levels by number and increments “Count" for each document a level appears in
 
-{"$sort" : {“Count" :  -1}}
+{"$sort" : {“Count" : -1}}
 
 - This reorders the result documents by the “Count" field from greatest to least
 
-{"$limit" :  3}
+{"$limit" : 3}
 
 - This limits the result set to the first three result documents
 
-- Project: The syntax is similar to the field selector used in querying: you can select fields to project by specifying " fieldname" : 1 or exclude fields with " fieldname" : 0. After this operation, each document in the results looks like: {"_id" : id, "author" : " authorName"}. These resulting documents only exists in memory and are not written to disk anywhere
-- Group: This groups the authors by name and increments "count" for each document an author appears in. First, we specify the field we want to group by, which is "author" . This is indicated by the "_id" : "$author" field. You can picture this as: after the group there will be one result document per author, so "author" becomes the unique identifier("_id" ). The second field means to add 1 to a "count" field for each document in the group. Note that the incoming documents do not have a "count" field; this is a new field created by the "$group"
+- Project: The syntax is similar to the field selector used in querying: you can select fields to project by specifying " fieldname" : 1 or exclude fields with " fieldname" : 0. After this operation, each document in the results looks like: {"\_id" : id, "author" : " authorName"}. These resulting documents only exists in memory and are not written to disk anywhere
+- Group: This groups the authors by name and increments "count" for each document an author appears in. First, we specify the field we want to group by, which is "author" . This is indicated by the "\_id" : "$author" field. You can picture this as: after the group there will be one result document per author, so "author" becomes the unique identifier("_id" ). The second field means to add 1 to a "count" field for each document in the group. Note that the incoming documents do not have a "count" field; this is a new field created by the "$group"
 
 ---
 
@@ -397,11 +439,11 @@ Note:
 
 Transform and combine documents in a collection
 
-Objects are transformed as they pass through a series of pipeline operators 
+Objects are transformed as they pass through a series of pipeline operators
 
-- Such as filtering, projecting, grouping, sorting, limiting, and skipping
+- Such as filtering, grouping and sortingg
 
-Pipeline operators need not produce one output document for every input document: operators may 
+Pipeline operators need not produce one output document for every input document: operators may
 also generate new documents or filter out documents
 
 ---
@@ -451,49 +493,55 @@ Takes a number, n, and returns the first n resulting documents
 
 Takes a number, n, and discards the first n documents from the result set
 
+---
+
+### Aggregation pipeline operators
+
 **$unwind**
 
 Unwinding turns each field of an array into a separate document
 
+```C#
+var allItems =
+    await _collection.Aggregate()
+        .Unwind(p => p.Items)
+        .As<Item>()
+        .ToListAsync();
+```
+
 ---
 
-### Aggregation pipeline: $group
+### Aggregation pipeline: **$group**
 
 Grouping allows you to group documents based on certain fields and combine their values
 
-When you choose a field or fields to group by, you pass it to the $group function as the group’s "_id" field
+When you choose a field or fields to group by, you pass it to the $group function as the group’s "\_id" field
 
-{"$group" : {"_id" : "$Level"}}
+```C#
+_collection.Aggregate()
+        .Project(p => p.Level)
+        .Group(l => l, p => new LevelCount { Id = p.Key, Count = p.Sum() })
+```
 
 ---
 
-### Aggregation pipeline: $group
+### Aggregation pipeline: **$group**
 
-There are several operators which can be used with $group
+There are several operators which can be used with **$group**, such as:
 
 - $sum
-- $avg
 - $max
 - $min
 - $first
 - $last
-- $addToSet
-- $push
 
 ---
 
-### Aggregation pipeline: $project
+### Aggregation pipeline: **$project**
 
 Much more powerful in the pipeline than it is in the “normal” query language
 
 Allows to extract fields from subdocuments, rename fields, and perform operations on them
-
-```js
-// Selecting fields works as in normal queries
-db.players.aggregate({"$project" : {"Name" : 1, "_id" : 0}})
-// Renaming example:
-db.players.aggregate({"$project" : {"PlayerId" : "$_id", "_id" : 0}})
-```
 
 ---
 
@@ -520,17 +568,27 @@ Somewhat complex to use
 
 ---
 
-### Single purpose aggregation methods
+### Single purpose aggregation methods: **Count**
 
-Db.collection.count()
+```C#
+var count =
+    await _collection.CountAsync(
+        Builder<Player>.Filter.Eq(p => p.Level, 3));
+```
 
-- Returns the count of documents qualifying the defined condition(s)
+Returns the count of documents qualifying the defined condition(s)
 
-db.collection.distinct()
+---
 
-- The most simple way of getting distinct values for a key
-- Works for array keys and single value keys
+### Single purpose aggregation methods: **Distinct**
 
-db.collection.group()
+The most simple way of getting distinct values for a key
 
-- Similar to map-reduce but simpler and less flexible
+Works for array keys and single value keys
+
+```C#
+var distinctLevels =
+    await _collection.DistinctAsync(
+        p => p.Level,
+        Builders<Player>.Filter.Empty);
+```
