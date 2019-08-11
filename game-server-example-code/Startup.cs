@@ -1,5 +1,4 @@
-﻿using game_server.Middleware;
-using game_server.Repositories;
+﻿using game_server.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -39,9 +38,6 @@ namespace game_server
             {
                 app.UseHsts();
             }
-
-            // Registers our custom GlobalErrorHandler to the processing pipeline
-            app.UseGlobalErrorHandler();
 
             app.UseMvc();
         }

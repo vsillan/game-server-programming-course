@@ -22,7 +22,19 @@ The RESTful routes for the items resource should start with ``.../api/players/{p
 
 ---
 
-## 2. Model validation using attributes
+## 2. Error handling
+
+Create your own middleware for handling errors called ``ErrorHandlingMiddleware``.
+
+Create your own exception class called ``NotFoundException``.
+
+Throw the ``NotFoundException`` when ``Player`` is not found (incorrect {playerId} passed in the route) when trying to add new ``Item``.
+
+Catch the ``NotFoundException`` in the ``ErrorHandlingMiddleware``. And then on the catch block: set the HTTP status code to 404 (not found) to the ``HttpContext`` that is passed to the middleware.
+
+---
+
+## 3. Model validation using attributes
 
 ``NewItem`` and ``Item`` models should have the following properties:
 
@@ -38,7 +50,7 @@ Define the following validations for the model using attributes:
 
 ---
 
-## 3. Implement a game rule validation in Controller
+## 4. Implement a game rule validation in Controller
 
 Implement a game rule validation for the ``[POST]`` (the one that creates a new item) endpoint in the ``ItemsContoller``:
 
