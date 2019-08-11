@@ -52,7 +52,7 @@ public class ModifiedPlayer
 }
 ```
 
-## 2. Create InMemoryRepository class and IRepository interface
+## 2. Create a FileRepository class and IRepository interface
 
 The responsibility of the ``Repository`` is to handle accessing and persisting objects.
 
@@ -69,7 +69,9 @@ public interface IRepository
 }
 ```
 
-Create a class called ``InMemoryRepository`` which implements the interface. Utilize a datastructure (array/list/dictionary... etc.) which makes most sense to create, modify and delete players in memory.
+Create a class called ``FileRepository`` which implements the interface. The function of the class is to persist and manipulate the ``Player`` objects in a text file. The text file name should be ``game-dev.txt``. You can use, for example, ``File.ReadAllText`` and ``File.WriteAllText`` methods for the implementation.
+
+You don't need to care about concurrent access to the file at this point.
 
 ---
 
@@ -95,9 +97,9 @@ public Task<Player> Delete(Guid id);
 
 ## 4. Register IRepository to DI-container
 
-Register ``InMemoryRepository`` to the DI-container in ``Startup.cs`` - ``ConfigureServices`` using an extension method.
+Register ``FileRepository`` to the DI-container in ``Startup.cs`` - ``ConfigureServices`` using an extension method.
 
-Registering the ``InMemoryRepository`` as ``IRepository`` into the dependency injection container enables changing the implementation later on when we start using ``MongoDB`` as the database.
+Registering the ``FileRepository`` as ``IRepository`` into the dependency injection container enables changing the implementation later on when we start using ``MongoDB`` as the database.
 
 ---
 
