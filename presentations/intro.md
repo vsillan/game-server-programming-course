@@ -8,27 +8,23 @@
 
 ### The focus
 
-Building Web APIs for games.
+Building **Web APIs** for games
 
-Broaden your knowledge on different database systems to ``NoSQL`` territory
-
-Note:
-
-After this course you should undertand what Web APIs enable, limit and what needs to be considered in the implementation.
+Get familiar with **NoSQL** databases
 
 ---
 
 ### What do we actually do?
 
-Create Web APIs for games using **ASP.NET** Core (C#)
+Create Web APIs for games using **ASP.NET Core** (C#)
 
-Learn and use **MongoDb** as a database for the Web API
+Use **MongoDb** as a database for a Web API
 
-Implement some common patterns that make up a solid game server
+Learn some best practices for server development
 
 Note:
 
-- We focus on APIs they are more general purpose than real-time implementations
+- APIs more general purpose than real-time implementations
 
 ---
 
@@ -36,14 +32,15 @@ Note:
 
 Web APIs play an important role in most online games
 
-Relational databases are _not_ commonly used in online games
+NoSQL databases are more suited for **global scale products**
 
-Online games that aim to be played by significant amount of players can _not_ survive without solid architecture behind them
+A solid backend is a must for a succesful online game
 
 Note:
 
-- It's important to understand the possibilities of **NoSQL** databases especially in terms of performance, availability and scalability
-- There are myriad of things that could be taught in a game server programming course. These are things that I feel generally apply to a great variety of projects - even outside games.
+- Import to understand NoSQL databases especially in terms of performance, availability and scalability
+- There are myriad of things that could be taught in a game server programming course
+- These are things that I feel generally apply to a great variety of projects - even outside games
 
 ---
 
@@ -57,43 +54,42 @@ Note:
 
 ### What can we do with a game server?
 
-Player to player interaction
+Player to player interaction <!-- .element: class="fragment" -->
 
-Persist the game data
+Persist the game data <!-- .element: class="fragment" -->
 
-Share collective game state between clients
+Share collective game state between clients <!-- .element: class="fragment" -->
 
-Authorize player actions (prevent cheating)
+Authorize player actions (prevent cheating) <!-- .element: class="fragment" -->
 
-Gather and analyze data analytics
+Gather and analyze data analytics <!-- .element: class="fragment" -->
 
-Do simulation that is too expensive for the client
+Do simulation that is too expensive for the client <!-- .element: class="fragment" -->
 
 Note:
 
 - Player to player interaction: can be anything from real-time multiplayer to chat and facilitating in-game economies
 - Persisting the data can be: saving profiles, maintaining a game world etc.
-- Authorizing the player actions is key to competitive games, the assumption is that the client can always be hacked and thus all critical client actions should be verified by the server
+- Authorizing the player actions is a mustcompetitive games, the assumption is that the client can always be hacked and thus all critical client actions should be verified by the server
 - Data analytics is a growing field in gaming (many games that are provided as a service usually have a person or even a team dedicated to data analytics)
 
 ---
 
 ### The cost
 
-Programming and maintaining the server(s) as long as the game is alive
+Programming and maintaining the server(s) as long as the game is alive <!-- .element: class="fragment" -->
 
-Server-side usually multiplies the complexity of the client
+Server-side usually multiplies the complexity of the client <!-- .element: class="fragment" -->
 
-Servers and network traffic are not free
+Servers and network traffic create operating costs <!-- .element: class="fragment" -->
 
-Popular multiplayer games will be targeted by hackers and cheaters
+Popular multiplayer games will be targeted by hackers and cheaters <!-- .element: class="fragment" -->
 
-Online games often require “extra” features
-
-There is always latency (and the amount varies)
+Online games often require “extra” features <!-- .element: class="fragment" -->
 
 Note:
 
+- There is always latency (and the amount varies)
 - Online games usually require extra features on top of the core gameplay such as chat, matchmaking and leaderboards.
 - Network debugging is a lot more difficult than debugging a single player game
 - Maintenance issue is starting to fade away with the advent of serverless, good 3rd party service providers etc
@@ -121,19 +117,19 @@ To understand the
 
 ---
 
-### A simple game server architecture
+### Example: a simple game server architecture
 
 ![Simple game server architecture](/resources/simple-server-architecture.png)
 
 ---
 
-### FPS game server architecture example
+### Example: FPS game server architecture
 
 ![FPS game server architecture](/resources/fps-server-architecture.png)
 
 ---
 
-## So what about using off-the-shelf solutions?
+## So why to make your own solution?
 
 ---
 
@@ -156,6 +152,8 @@ There are many viable providers out there such as **GameSparks** and **PlayFab**
 
 ### Considerations for 3rd party services
 
+They set limits to your designs
+
 You need to constantly keep track of their service status and upcoming updates (which can change the API)
 
 You are completely relying on the service provider to keep updating the service
@@ -171,8 +169,6 @@ You might be giving access to your valuable data
 Analytics are the most obvious example
 
 Some or all of the code may not be accessible and/or open for modifications
-
-Extending the service might be limited
 
 Pricing model of the service might change
 
@@ -305,7 +301,6 @@ And many more…
 
 Note:
 
-- Azure provides hosted databases such as SQL database, DocumentDB, Table storage, and Redis
 - Also: Message queues, Monitoring and alerts for the servers and services, Hosting for web sites and web APIs, Logs/Analytics and big data services, Push notifications, Content delivery network, Active Directory for authenticating users
 
 ---
@@ -322,13 +317,13 @@ Databases – both traditional SQL and NoSQL databases
 
 How to build scalable, stable, and fault tolerant systems
 
-How to build secure and cheat resistant game servers
+How to build security and cheat resistancy
 
 Viable game server service providers out there
 
-Cloud services and architectures
+Public cloud services
 
-Techniques for creating robust realtime experiences
+Creating robust realtime experiences
 
 Note:
 
