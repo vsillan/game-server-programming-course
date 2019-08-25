@@ -56,9 +56,9 @@ Note:
 
 Player to player interaction <!-- .element: class="fragment" -->
 
-Persist the game data <!-- .element: class="fragment" -->
+Share collective game state between players <!-- .element: class="fragment" -->
 
-Share collective game state between clients <!-- .element: class="fragment" -->
+Persist the game data <!-- .element: class="fragment" -->
 
 Authorize player actions (prevent cheating) <!-- .element: class="fragment" -->
 
@@ -70,7 +70,7 @@ Note:
 
 - Player to player interaction: can be anything from real-time multiplayer to chat and facilitating in-game economies
 - Persisting the data can be: saving profiles, maintaining a game world etc.
-- Authorizing the player actions is a mustcompetitive games, the assumption is that the client can always be hacked and thus all critical client actions should be verified by the server
+- Authorizing the player actions is a mustor  fcompetitive games, the assumption is that the client can always be hacked and thus all critical client actions should be verified by the server
 - Data analytics is a growing field in gaming (many games that are provided as a service usually have a person or even a team dedicated to data analytics)
 
 ---
@@ -89,31 +89,32 @@ Online games often require “extra” features <!-- .element: class="fragment" 
 
 Note:
 
-- There is always latency (and the amount varies)
-- Online games usually require extra features on top of the core gameplay such as chat, matchmaking and leaderboards.
-- Network debugging is a lot more difficult than debugging a single player game
-- Maintenance issue is starting to fade away with the advent of serverless, good 3rd party service providers etc
-- Making real-time online games well is all about hiding the latency
-- Multiplayer games can’t be done in just fire and forget –style
-- Some estimate that it can take 3-4 times as much effort to build a fully fledged multiplayer game vs a similar single player game
+- Maintenance: getting easier with SaaS and PaaS
+- Complexity: There is always latency (and the amount varies)
+- Complexity: Network debugging is a lot more difficult than debugging a local game
+- Complexity: Bandwidth is often more limited than the amount of information that we would like to send (in real-time games)
+- Complexity: Why debugging is hard: a lot of edge cases, latency and jitter can vary considerably, needs more than one client, usually needs special tools
+- Complexity: Some estimate that it can take 3-4 times as much effort to build online vs local game
 - Real time games need to have a lot of users online at all times since they are the content of the game
-- Why debugging is hard: a lot of edge cases, latency and jitter can vary considerably, needs more than one client, usually needs special tools
-- Bandwidth is often more limited than the amount of information that we would like to send (in real-time games)
 
 ---
 
-### I'm a client programmer/artist/designer/insert-role-here. Why should I care about server programming?
+### I'm a client programmer / artist / designer / insert-a-role-here - **Why should I care** about server programming?
 
-To understand the
+To understand <!-- .element: class="fragment" -->
 
-- limitations
-- possibilities
-- cost
-- requirements
+- the limitations <!-- .element: class="fragment" -->
+- the possibilities <!-- .element: class="fragment" -->
+- the cost <!-- .element: class="fragment" -->
+- the requirements <!-- .element: class="fragment" -->
 
 ---
 
-## How does a server solution look like?
+## Alright...
+
+---
+
+## So, how does a server solution look like?
 
 ---
 
@@ -129,55 +130,6 @@ To understand the
 
 ---
 
-## So why to make your own solution?
-
----
-
-### 3rd party services
-
-Third party services provide readymade solutions for common problems:
-
-- Account management
-- Realtime multiplayer
-- Commerce
-- Analytics
-- Social features (chat, leaderboard, friends etc.)
-- And many other things...
-  
-These can reduce the game server development time significantly
-
-There are many viable providers out there such as **GameSparks** and **PlayFab**
-
----
-
-### Considerations for 3rd party services
-
-They set limits to your designs
-
-You need to constantly keep track of their service status and upcoming updates (which can change the API)
-
-You are completely relying on the service provider to keep updating the service
-
-Be sure the development team is active and trustworthy
-
----
-
-### Considerations for 3rd party services
-
-You might be giving access to your valuable data
-
-Analytics are the most obvious example
-
-Some or all of the code may not be accessible and/or open for modifications
-
-Pricing model of the service might change
-
-Note:
-
-- Maybe a story about Omniata analytics
-
----
-
 ## Few important concepts
 
 ---
@@ -186,32 +138,41 @@ Note:
 
 ---
 
-### Peer-to-Peer
+### Peer-to-Peer (client-to-client)
 
-All nodes participating in the same game instance are interconnected with each other
+All clients participating in the same game instance are interconnected with each other  <!-- .element: class="fragment" -->
 
-- Every node can communicate with any other node
+All clients are equal (no hierarchies)  <!-- .element: class="fragment" -->
 
-All nodes are equal (no hierarchies)
+Limited scaling potential <!-- .element: class="fragment" -->
 
-Limited scaling potential since every node is responsible for delivering its status to all other nodes
+- Amount of connections grows exponentially with each client <!-- .element: class="fragment" -->
 
-Has been popular choice in the early days of multiplayer gaming
+Has been popular choice in the early days of multiplayer gaming  <!-- .element: class="fragment" -->
+
+There is no persistence or data collection, cheat prevention is hard, and all simulation is on client side <!-- .element: class="fragment" -->
+
+Note:
+
+- Still viable in games like fighting games where there are limited amount of players in a single match
 
 ---
 
 ### Client-Server
 
-One of the nodes is promoted to a server (can be a dedicated server or one of the clients)
+There is a separate server application <!-- .element: class="fragment" -->
 
-All communications are handled through the server which will distribute the data to the clients
+All communications go through the server <!-- .element: class="fragment" -->
 
-Server is an extra step on the communication but there are various ways to optimize the traffic
+Server is an extra step on the communication <!-- .element: class="fragment" -->
 
-Server can add security to the system
+- But there are various ways to optimize the traffic <!-- .element: class="fragment" -->
+
+Server can add all the good things we have discussed before... <!-- .element: class="fragment" -->
 
 Note:
 
+- In some cases we might have one client promoted to a server
 - Server can filter the data
 - Server can aggregate the packets and smooth out the packet flow
 
@@ -223,41 +184,47 @@ Note:
 
 ### Asynchronous
 
-Players can play with each other without playing it at the same time
+Messaging is not time critical <!-- .element: class="fragment" -->
 
-Game is usually not simulated in real-time on server side
+Players can even play with each other without playing it at the same time <!-- .element: class="fragment" -->
 
-Cheaper to run
+Actions are usually validated against the game state in database <!-- .element: class="fragment" -->
 
-Asynchronous games are usually implemented with TCP protocol
+No need for latency compensation on the client side <!-- .element: class="fragment" -->
 
-No need for latency compensation on the client side
+Cheaper to run than... <!-- .element: class="fragment" -->
+
+Note:
+
+- Asynchronous games are usually implemented with TCP protocol
+- Usually player actions can be authorized by validating the game state of the player in the database/server
 
 ---
 
 ### Synchronous
 
-Players have to be playing the game at the same time
+Messaging is time critical <!-- .element: class="fragment" -->
 
-The game is simulated in real-time on server-side
+Players are playing the game at the same time <!-- .element: class="fragment" -->
 
-More costly to run
+Actions are usually validated against real-time simulation on server-side <!-- .element: class="fragment" -->
 
-Synchronous games are often implemented with UDP
+Often needs latency compensation techniques on the client side <!-- .element: class="fragment" -->
 
-Often needs latency compensation techniques on the client side
+More costly to run <!-- .element: class="fragment" -->
 
 Note:
 
 - Most of the game types can be implemented only as synchronous or only as asynchronous
 - Synchronous games might need as many as 10 updates per second
+- Synchronous games are often implemented with UDP
 - Implementing a game with UDP is more work intensive: handling dropped packets, handling the connection, and flow control
-- Async: The Game doesn’t need to be simulated on server side, usually player actions can be authorized by validating the game state of the player in the database/server
-- Sync: Often have servers that run the game simulation along with the clients as authoritative server
 
 ---
 
-## Cloud Services would require a course of their own...
+## Cloud Services
+
+These would require a course of their own...
 
 ---
 
@@ -265,15 +232,15 @@ Note:
 
 Nowadays most games are deployed to cloud
 
-Cloud can scale up and down very quickly
-
-Most commonly used cloud providers (for games) are Amazon AWS and Microsoft Azure
-
 Viable even for smaller game studios
 
 Out the box solutions
 
+Cloud can scale up and down very quickly
+
 Ease of deploying to datacenters around the world
+
+Most commonly used public clouds are Amazon AWS and Microsoft Azure
 
 There are four different cloud computing service models: IaaS, PaaS, SaaS and FaaS
 
@@ -287,21 +254,19 @@ Note:
 
 ### Commonly used cloud services
 
-Virtual machines running on any common operating system
+PaaS solutions for the code run-time environment <!-- .element: class="fragment" -->
 
-Various hosted databases
+SaaS databases <!-- .element: class="fragment" -->
 
-Load balancers
+Load balancers & Automatic scaling <!-- .element: class="fragment" -->
 
-Automatic scaling
+Various security features <!-- .element: class="fragment" -->
 
-Various security features
-
-And many more…
+And many more… <!-- .element: class="fragment" -->
 
 Note:
 
-- Also: Message queues, Monitoring and alerts for the servers and services, Hosting for web sites and web APIs, Logs/Analytics and big data services, Push notifications, Content delivery network, Active Directory for authenticating users
+- Also things like: Message queues, Monitoring and alerts, Logs, Analytics and big data services, Push notifications, Content delivery network, Account management
 
 ---
 
@@ -311,20 +276,64 @@ Note:
 
 ### Things you need to know
 
-How to create good Web APIs
+How to create good Web APIs <!-- .element: class="fragment" -->
 
-Databases – both traditional SQL and NoSQL databases
+Databases – both traditional SQL and NoSQL databases <!-- .element: class="fragment" -->
 
-How to build scalable, stable, and fault tolerant systems
+How to build scalable, stable, and fault tolerant systems <!-- .element: class="fragment" -->
 
-How to build security and cheat resistancy
+How to build security and cheat resistancy <!-- .element: class="fragment" -->
 
-Viable game server service providers out there
+How to use cloud services <!-- .element: class="fragment" -->
 
-Public cloud services
-
-Creating robust realtime experiences
+Creating robust realtime experiences <!-- .element: class="fragment" -->
 
 Note:
 
 In this course we'll focus mostly on the first 2 and bit on 3 and 4.
+
+---
+
+## But wait, why to make your own solution when there are companies that provide backend as a service?
+
+---
+
+### 3rd party services
+
+Provide readymade solutions for the common problems:
+
+- Account management <!-- .element: class="fragment" -->
+- Realtime multiplayer <!-- .element: class="fragment" -->
+- Commerce <!-- .element: class="fragment" -->
+- Analytics <!-- .element: class="fragment" -->
+- Social features (chat, leaderboard, friends etc.) <!-- .element: class="fragment" -->
+- And many other things... <!-- .element: class="fragment" -->
+  
+These can reduce the game server development time significantly <!-- .element: class="fragment" -->
+
+There are many viable providers out there such as **GameSparks** and **PlayFab** <!-- .element: class="fragment" -->
+
+---
+
+### Considerations for 3rd party services
+
+Limits to your designs <!-- .element: class="fragment" -->
+
+Dependecy to the service provider <!-- .element: class="fragment" -->
+
+Trustworthiness of the service provider <!-- .element: class="fragment" -->
+
+---
+
+### More considerations for 3rd party services
+
+Giving access to your valuable data <!-- .element: class="fragment" -->
+
+Black box implementations: you might not be able see or touch the code <!-- .element: class="fragment" -->
+
+Surpises: updates with breaking changes, company going bankcrupt, downtimes, pricing model changes... <!-- .element: class="fragment" -->
+
+Note:
+
+- Data can be one of the more valuable assets of a game company
+- Maybe a story about the analytics firm X
