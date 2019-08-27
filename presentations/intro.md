@@ -2,11 +2,7 @@
 
 ---
 
-## This course
-
----
-
-### The focus
+## The focus
 
 Building **Web APIs** for games
 
@@ -44,6 +40,17 @@ Note:
 
 ---
 
+### I'm a client programmer / artist / designer / insert-a-role-here - **Why should I care** about server programming?
+
+To understand <!-- .element: class="fragment" -->
+
+- the limitations <!-- .element: class="fragment" -->
+- the possibilities <!-- .element: class="fragment" -->
+- the cost <!-- .element: class="fragment" -->
+- the requirements <!-- .element: class="fragment" -->
+
+---
+
 ## Game server development
 
 Note:
@@ -52,7 +59,7 @@ Note:
 
 ---
 
-### What can we do with a game server?
+### What can we do with a server?
 
 Player to player interaction <!-- .element: class="fragment" -->
 
@@ -96,17 +103,6 @@ Note:
 - Complexity: Why debugging is hard: a lot of edge cases, latency and jitter can vary considerably, needs more than one client, usually needs special tools
 - Complexity: Some estimate that it can take 3-4 times as much effort to build online vs local game
 - Real time games need to have a lot of users online at all times since they are the content of the game
-
----
-
-### I'm a client programmer / artist / designer / insert-a-role-here - **Why should I care** about server programming?
-
-To understand <!-- .element: class="fragment" -->
-
-- the limitations <!-- .element: class="fragment" -->
-- the possibilities <!-- .element: class="fragment" -->
-- the cost <!-- .element: class="fragment" -->
-- the requirements <!-- .element: class="fragment" -->
 
 ---
 
@@ -168,7 +164,7 @@ Server is an extra step on the communication <!-- .element: class="fragment" -->
 
 - But there are various ways to optimize the traffic <!-- .element: class="fragment" -->
 
-Server can add all the good things we have discussed before... <!-- .element: class="fragment" -->
+Server enables all the good things we have discussed before... <!-- .element: class="fragment" -->
 
 Note:
 
@@ -178,7 +174,7 @@ Note:
 
 ---
 
-## The differences between asynchronous and synchronous multiplayer games
+## Asynchronous vs synchronous multiplayer games
 
 ---
 

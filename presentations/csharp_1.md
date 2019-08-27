@@ -4,11 +4,11 @@
 
 ## Properties
 
-A flexible and concise way of manipulating and reading a private field
+A flexible and concise **way of manipulating** and **reading private fields**
 
-Properties are actually special methods called accessors
+Are actually special methods called accessors
 
-Can be read-write / read-only / write-only
+Can be **read-write **/ **read-only** / **write-only**
 
 ```C#
 public class Game {
@@ -17,13 +17,24 @@ public class Game {
 
     private bool _gameOver;
     // A read-write property with explicit backing field
-    public bool GameOver { get { return _gameOver; } set { _gameover = value; } }
+    public bool GameOver {
+        get { return _gameOver; }
+        set { _gameover = value; }
+    }
 }
 ```
 
 ---
 
 ## Interfaces
+
+Similar to a class – but **provides a specification** rather than an implementation
+
+Members are **always public**
+
+Members can be **methods**, **properties**, **events** or **indexers**
+
+Members will be implemented by the classes and structs that implement the interface
 
 ```C#
 public interface IEnumerator {
@@ -32,41 +43,31 @@ public interface IEnumerator {
 }
 ```
 
-Similar to a class – but it provides a specification rather than an implementation
+---
 
-Members are always public
+### Implementing an interface
 
-Members will be implemented by the classes and structs that implement the interface
+Done by providing an implementation for all members
+
+```C#
+public class Countdown : IEnumerator {
+    int count = 11;
+    public bool MoveNext () { return count-- > 0 ; }
+    public object Current { get { return count; } }
+}
+```
 
 A class (or struct) can implement multiple interfaces
 
 ---
 
-### Interfaces
+### Interfaces: benefits
 
-```C#
-public class Countdown : IEnumerator {
-	int count = 11;
-	public bool MoveNext () { return count-- > 0 ; }
-	public object Current { get { return count; } }
-}
-```
+Write reusable code
 
-Implementing an interface means providing a public implementation for all its members
-
-You can implicitly cast an object to any interface that it implements:
-
-```C#
-IEnumerator e = new Countdown();
-while (e.MoveNext())
-Console.Write (e.Current); // 109876543210
-```
+- For objects created from classes **that implement the same interface**
 
 ---
-
-### Interfaces: What can we do with them?
-
-Utilizing the same code with all the classes that derive from same interface:
 
 ```C#
 public interface IAnimal {
@@ -74,8 +75,8 @@ public interface IAnimal {
 }
 public class Cat : IAnimal {
     public void MakeSound(){
-		// meow
-	}
+        // meow
+    }
 }
 public class Dog : IAnimal {
     public void MakeSound() {
@@ -83,40 +84,30 @@ public class Dog : IAnimal {
     }
 }
 ```
-->
 
-```C#
-public MakeNoise(IList<IAnimal> animals) {
-    foreach (IAnimal animal in animals)
-        animal.MakeSound();
+You can call this with object of **Cat** or **Dog**:
+
+```cs
+public MakeNoise(IAnimal animal) {
+	animal.MakeSound();
 }
 ```
 
 ---
 
-### Interfaces: What can we do with them?(2)
+### So why reusable code?
 
-Replacing implementations without changing the user code:
+Change application behavior by changing the implementation <!-- .element: class="fragment" -->
 
-```C#
-IAnimal animal = new Dog();
-animal.MakeSound(); // woof
-
-// OR
-
-IAnimal animal = new Cat();
-animal.MakeSound(); // meow
-```
-
-(Imagine there is 1000 more lines of code using the IAnimal object
+Make testing easier by creating mock implementations <!-- .element: class="fragment" -->
 
 ---
 
 ## Exceptions
 
-A try statement specifies a code block subject to error-handling or cleanup code
+A **try** statement specifies a **code block subject to error-handling or cleanup code**
 
-The catch block executes when an error occurs in the try block
+The **catch** block executes **when exception is thrown** in the try block
 
 ```C#
 try {
@@ -130,31 +121,7 @@ catch(Exception e) {
 
 ---
 
-### The catch clause
-
-A catch clause specifies what type of exception to catch
-
-Must either be System.Exception or a subclass of System.Exception
-
-Catching System.Exception catches all possible errors
-
-Typically you catch more specific exception types
-
-Avoids dealing with situations you were not expecting (e.g. OutOfMemoryException)
-
-Only one catch clause is executed
-
----
-
-### The catch clause
-
-Evaluating which catch clause to execute is done from top to bottom
-
-More specific exceptions must be placed above the more generic
-
----
-
-### The catch clause
+### Example of a catch clause
 
 ```C#
 static void Main (string[] args) {
@@ -173,6 +140,30 @@ static void Main (string[] args) {
 	}
 }
 ```
+
+---
+
+### The catch clause
+
+Specifies what type of exception to catch  <!-- .element: class="fragment" -->
+
+Must either be System.Exception or a subclass of System.Exception  <!-- .element: class="fragment" -->
+
+Catching System.Exception catches all possible errors  <!-- .element: class="fragment" -->
+
+---
+
+### Choosing the catch block
+
+Evaluating which catch clause to execute is done from top to bottom <!-- .element: class="fragment" -->
+
+Only one catch clause is executed  <!-- .element: class="fragment" -->
+
+More specific exceptions must be placed above the more generic <!-- .element: class="fragment" -->
+
+Typically you catch more specific exception types  <!-- .element: class="fragment" -->
+
+- Avoids dealing with situations you were not expecting (e.g. OutOfMemoryException)  <!-- .element: class="fragment" -->
 
 ---
 
@@ -217,8 +208,8 @@ try {
 	Display("John");
 }
 catch (ArgumentNullException e) {
-	Console.WriteLine("Error in displaying the name: " e.Message);
-	throw;
+	Console.WriteLine("Error: " e.Message);
+	throw e;
 }
 ```
 
@@ -226,46 +217,50 @@ catch (ArgumentNullException e) {
 
 ### Key properties in an exception
 
-Stacktrace - A string representing all the methods that are called from the origin of the exception to the catch block
+**Stacktrace** <!-- .element: class="fragment" -->
 
-Message - A string with a description of the error
+- a string representing all the methods that are called from the origin of the exception to the catch block <!-- .element: class="fragment" -->
 
-InnerException - The inner exception (if any) that caused the outer exception
+**Message** <!-- .element: class="fragment" -->
+
+- A string with a description of the error <!-- .element: class="fragment" -->
+
+**InnerException** <!-- .element: class="fragment" -->
+
+- The inner exception (if any) that caused the outer exception <!-- .element: class="fragment" -->
 
 ---
 
-## Tasks and asynchronous programming 
+## Tasks and asynchronous programming
 
-All servers need to deal with more than one thing happening at a time (concurrency)
+Servers often need to deal with more than one thing happening at a time (concurrency) <!-- .element: class="fragment" -->
 
-Multithreading is the way of creating concurrency -> Tasks are a higher-level abstraction on top of threads
+Multithreading is the way of creating concurrency <!-- .element: class="fragment" -->
 
-Many libraries provide asynchronous versions of operations which utilize Tasks
+- Tasks are a higher-level abstraction on top of threads <!-- .element: class="fragment" -->
 
-Thus, it’s important to know the basics of using Tasks
+Many libraries provide asynchronous versions of operations which utilize Tasks <!-- .element: class="fragment" -->
 
-Note:
-
-- Clients are sending requests simultaneously
+Thus, it’s important to know the basics of using Tasks <!-- .element: class="fragment" -->
 
 ---
 
 ### Asynchronous functions
 
-There are keywords async and await for asynchronous programming in C#
+**async** and **await** are keywords used for asynchronous programming in C#
 
-- Let you write asynchronous code with same structure and simplicity as synchronous code
+- These let you write asynchronous code with **same structure and simplicity as synchronous code**
   
 You can apply await-keyword to tasks:
 
 ```C#
 public async Task GetPlayerAndPrintNameAsync(Guid id) {
-	IPlayer player = await database.GetPlayerAsync(id); // GetPlayerAsync returns a Task<IPlayer>
+    // GetPlayerAsync returns a Task<IPlayer>
+	IPlayer player = await database.GetPlayerAsync(id); 
 	Console.WriteLine("Got player named: " +player.Name);
 }
 
 // Synchronous version of the same method:
-
 public void GetPlayerAndPrintName(Guid id) {
 	IPlayer player = database.getPlayer(id);
 	Console.WriteLine("Got player named: " +player.Name);
@@ -276,7 +271,7 @@ public void GetPlayerAndPrintName(Guid id) {
 
 ### Asynchronous functions (2)
 
-The async modifier can be applied only to methods (and lambda expressions) that return void or a Task or Task<TResult>
+The **async** modifier can be applied only to methods that return ```void or Task or Task<TResult>```
 
 - There is virtually no reason to return void ever though
 
@@ -289,11 +284,11 @@ You can create your own asynchronous functions but that is out of the scope of t
 A simple example:
 
 ```json
-{ 
+{
 	"_id" : "57ade8face4bf5361c4268d6", 
-	"Name" : "john", 
+	"Name" : "john",
 	"Score" : 7,  
-	"Items" : [ 
+	"Items" : [
 		{ 
 			"_id" : "57ade921ce4bf5361c4268d7", 
 			"ItemType" : 0 
@@ -306,11 +301,11 @@ A simple example:
 
 ### Json
 
-Notation used to describe objects
+Notation used to **describe objects**
 
 Many APIs communicate in JSON or XML (or both)
 
-Language independent
+**Language independent**
 
 Has the following datatypes:
 
