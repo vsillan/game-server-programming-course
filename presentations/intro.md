@@ -20,7 +20,7 @@ Learn some best practices for server development
 
 Note:
 
-- APIs more general purpose than real-time implementations
+- APIs are more general purpose than real-time implementations
 
 ---
 
@@ -34,15 +34,14 @@ A solid backend is a must for a succesful online game
 
 Note:
 
-- Import to understand NoSQL databases especially in terms of performance, availability and scalability
-- There are myriad of things that could be taught in a game server programming course
-- These are things that I feel generally apply to a great variety of projects - even outside games
+- Important to understand NoSQL databases especially in terms of performance, availability and scalability
+- These are things that generally apply to a great variety of projects - even outside games
 
 ---
 
-### I'm a client programmer / artist / designer / insert-a-role-here - **Why should I care** about server programming?
+### I'm a client programmer / artist / designer / insert-a-role-here - **Why should I care about server programming?**
 
-To understand <!-- .element: class="fragment" -->
+To understand: <!-- .element: class="fragment" -->
 
 - the limitations <!-- .element: class="fragment" -->
 - the possibilities <!-- .element: class="fragment" -->
@@ -75,10 +74,10 @@ Do simulation that is too expensive for the client <!-- .element: class="fragmen
 
 Note:
 
-- Player to player interaction: can be anything from real-time multiplayer to chat and facilitating in-game economies
-- Persisting the data can be: saving profiles, maintaining a game world etc.
-- Authorizing the player actions is a mustor  fcompetitive games, the assumption is that the client can always be hacked and thus all critical client actions should be verified by the server
-- Data analytics is a growing field in gaming (many games that are provided as a service usually have a person or even a team dedicated to data analytics)
+- Interaction: can be anything from real-time multiplayer to chat and facilitating in-game economies
+- Persisting data: saving profiles, player items etc.
+- Authorizing: a must for competitive games. The assumption is that the client can always be hacked and thus all critical client actions should be verified by the server
+- Data analytics is a growing field in gaming
 
 ---
 
@@ -100,9 +99,7 @@ Note:
 - Complexity: There is always latency (and the amount varies)
 - Complexity: Network debugging is a lot more difficult than debugging a local game
 - Complexity: Bandwidth is often more limited than the amount of information that we would like to send (in real-time games)
-- Complexity: Why debugging is hard: a lot of edge cases, latency and jitter can vary considerably, needs more than one client, usually needs special tools
-- Complexity: Some estimate that it can take 3-4 times as much effort to build online vs local game
-- Real time games need to have a lot of users online at all times since they are the content of the game
+- Real-time games need to have a lot of users online at all times since they are the content of the game
 
 ---
 
@@ -150,7 +147,7 @@ There is no persistence or data collection, cheat prevention is hard, and all si
 
 Note:
 
-- Still viable in games like fighting games where there are limited amount of players in a single match
+- Still viable in games like fighting games where there are limited amount of players interacting with each other
 
 ---
 
@@ -192,8 +189,7 @@ Cheaper to run than... <!-- .element: class="fragment" -->
 
 Note:
 
-- Asynchronous games are usually implemented with TCP protocol
-- Usually player actions can be authorized by validating the game state of the player in the database/server
+- Usually implemented with TCP protocol
 
 ---
 
@@ -211,10 +207,9 @@ More costly to run <!-- .element: class="fragment" -->
 
 Note:
 
-- Most of the game types can be implemented only as synchronous or only as asynchronous
-- Synchronous games might need as many as 10 updates per second
-- Synchronous games are often implemented with UDP
-- Implementing a game with UDP is more work intensive: handling dropped packets, handling the connection, and flow control
+- Might need as many as 10 updates per second
+- Often implemented with UDP
+- UDP is more work intensive: handling dropped packets, handling the connection, flow control etc.
 
 ---
 
@@ -226,11 +221,13 @@ These would require a course of their own...
 
 ### Cloud services
 
-Nowadays most games are deployed to cloud
+Nowadays **most online games are deployed to cloud**
 
 Viable even for smaller game studios
 
-Out the box solutions
+- No big initial investments - just pay for what you use
+
+Useful **out of the box solutions**
 
 Cloud can scale up and down very quickly
 
@@ -238,17 +235,11 @@ Ease of deploying to datacenters around the world
 
 Most commonly used public clouds are Amazon AWS and Microsoft Azure
 
-There are four different cloud computing service models: IaaS, PaaS, SaaS and FaaS
-
-Note:
-
-- Cloud can answer to most scaling needs if the application is done properly
-- Size of an operations team is a lot smaller than with On Premise solutions
-- Cloud services are paid by the usage
-
 ---
 
 ### Commonly used cloud services
+
+There are four different cloud computing service models: IaaS, PaaS, SaaS and FaaS
 
 PaaS solutions for the code run-time environment <!-- .element: class="fragment" -->
 
@@ -259,10 +250,6 @@ Load balancers & Automatic scaling <!-- .element: class="fragment" -->
 Various security features <!-- .element: class="fragment" -->
 
 And many more… <!-- .element: class="fragment" -->
-
-Note:
-
-- Also things like: Message queues, Monitoring and alerts, Logs, Analytics and big data services, Push notifications, Content delivery network, Account management
 
 ---
 
@@ -286,7 +273,7 @@ Creating robust realtime experiences <!-- .element: class="fragment" -->
 
 Note:
 
-In this course we'll focus mostly on the first 2 and bit on 3 and 4.
+In this course we'll focus mostly on the first 2 - and bit on #3 and #4.
 
 ---
 
@@ -303,11 +290,11 @@ Provide readymade solutions for the common problems:
 - Commerce <!-- .element: class="fragment" -->
 - Analytics <!-- .element: class="fragment" -->
 - Social features (chat, leaderboard, friends etc.) <!-- .element: class="fragment" -->
-- And many other things... <!-- .element: class="fragment" -->
+- etc. <!-- .element: class="fragment" -->
   
 These can reduce the game server development time significantly <!-- .element: class="fragment" -->
 
-There are many viable providers out there such as **GameSparks** and **PlayFab** <!-- .element: class="fragment" -->
+There are many viable providers out there such as GameSparks and PlayFab <!-- .element: class="fragment" -->
 
 ---
 
@@ -332,4 +319,3 @@ Surpises: updates with breaking changes, company going bankcrupt, downtimes, pri
 Note:
 
 - Data can be one of the more valuable assets of a game company
-- Maybe a story about the analytics firm X
