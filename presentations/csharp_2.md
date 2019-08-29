@@ -2,46 +2,17 @@
 
 ---
 
-## Attributes
-
-```C#
-[Route("/api/players/", Name = "CreatePlayerRoute")]
-[ValidateModel]
-[HttpPost]
-public async Task<IHttpActionResult> CreatePlayer(
-    HttpRequestMessage requestMessage,
-    NewPlayer newPlayer) { ...}
-```
-
-Attributes are an extensible mechanism for adding custom information to code elements
-
-Attribute parameters fall into one of two categories: positional or named.
-
-- In the “Route” attribute above, the first argument is a positional parameter; the second is a named parameter.
-
-Note:
-
-You can create your own attributes by extending System.Attribute
-
-- All attribute type names should end with a word “Attribute” by convention
-
-You can specify multiple attributes for a single code element
-
-Positional parameters correspond to parameters of the attribute type’s public constructors. Named parameters correspond to public fields or public properties on the attribute type.
-
----
-
 ## Guid
 
-Globally unique identifier
+Globally unique identifier <!-- .element: class="fragment" -->
 
-Example: “644e1dd7-2a7f-18fb-b8ed-ed78c3f92c2b”
+Example: “644e1dd7-2a7f-18fb-b8ed-ed78c3f92c2b” <!-- .element: class="fragment" -->
 
-128-bit integer (16 bytes)
+128-bit integer (16 bytes) <!-- .element: class="fragment" -->
 
-Very low probability of being duplicate
+Very low probability of being duplicate <!-- .element: class="fragment" -->
 
-Creation: Guid id = Guid.NewGuid();
+Creation: Guid id = Guid.NewGuid(); <!-- .element: class="fragment" -->
 
 Note:
 
@@ -51,9 +22,9 @@ Probablity: This number is equivalent to generating 1 billion UUIDs per second f
 
 ## Extension methods
 
-Allow extending a type with new methods without altering the original definition
+Allow extending a type with new methods without altering the original definition <!-- .element: class="fragment" -->
 
-An extension method is a static method of a static class, where the this modifier is applied to the first parameter
+An extension method is a static method of a static class, where the this modifier is applied to the first parameter <!-- .element: class="fragment" -->
 
 ---
 
@@ -68,7 +39,7 @@ public static class StringHelper {
 }
 ```
 
-Can be called like this: 
+Can be called like this:
 
 ```C#
 bool isCapitalized = “John”.IsCapitalized();
@@ -82,13 +53,50 @@ Just syntactic sugar
 
 ---
 
+## Attributes
+
+```C#
+[Route("/api/players/", Name = "CreatePlayerRoute")]
+[ValidateModel]
+[HttpPost]
+public async Task<IHttpActionResult> CreatePlayer(
+    HttpRequestMessage requestMessage,
+    NewPlayer newPlayer) { ...}
+```
+
+Attributes are an extensible mechanism for adding custom information to code elements <!-- .element: class="fragment" -->
+
+Attribute parameters fall into one of two categories: positional or named <!-- .element: class="fragment" -->
+
+- In the “Route” attribute above, the first argument is a positional parameter; the second is a named parameter <!-- .element: class="fragment" -->
+
+Note:
+
+You can create your own attributes by extending System.Attribute
+
+- All attribute type names should end with a word “Attribute” by convention
+
+You can specify multiple attributes for a single code element
+
+Positional parameters correspond to parameters of the attribute type’s public constructors. Named parameters correspond to public fields or public properties on the attribute type.
+
+---
+
 ## LINQ
 
-- Language-integrated query
-- Extension methods (and query expressions) for querying collections and other data sources
-- Basically replacing foreach loops with the LINQ approach
-- Very common to see LINQ being used in C# code
-- Typical examples are .ToArray() and .First()
+Language-integrated query <!-- .element: class="fragment" -->
+
+Extension methods (and query expressions) for querying collections and other data sources <!-- .element: class="fragment" -->
+
+Basically replacing foreach loops with the LINQ approach <!-- .element: class="fragment" -->
+
+Very common to see LINQ being used in C# code <!-- .element: class="fragment" -->
+
+---
+
+### LINQ example
+
+Typical examples are .ToArray() and .First()
 
 Easily converting a list to an array:
 
@@ -101,7 +109,7 @@ var array = list.ToArray();
 
 ## Delegates
 
-A delegate is an object that knows how to call a method
+A delegate is an **object that knows how to call a method**
 
 The following defines a delegate type called Transformer:
 
@@ -187,7 +195,7 @@ Note:
 
 ## Func-delegate
 
-Func is the similar as Action-delegate but it has a return value
+Func is the similar as Action-delegate but it **has a return value**
 
 ``Func<int>`` is a delegate that takes a function that:
 
@@ -203,7 +211,7 @@ Func is the similar as Action-delegate but it has a return value
 
 ## Lambda expressions
 
-A lambda expression is an unnamed method written in place of a delegate instance
+A lambda expression is an **unnamed method written in place of a delegate instance**
 
 A lambda expression has the following form:
 
@@ -212,7 +220,7 @@ A lambda expression has the following form:
 An example of a lambda expression:
 
 ```C#
-x => x * x	
+x => x * x
 // ‘function’ that has a parameter x in which x 
 // is multiplied with x and the result is returned
 ```
@@ -259,7 +267,7 @@ Why not have just a stack with type “object”
 
 ### Generics
 
-A mechanism for writing reusable code across different types
+A **mechanism for writing reusable code** across different types
 
 Generics, when compared to inheritance, can increase type safety and reduce casting and boxing
 
