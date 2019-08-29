@@ -4,13 +4,13 @@
 
 ## Web API: what can we do with it?
 
-Slower paced (asynchronous) games
+Slower paced (asynchronous) games <!-- .element: class="fragment" -->
 
-Validating single player game sessions
+Validating single player game sessions <!-- .element: class="fragment" -->
 
-Supporting systems
+Supporting systems <!-- .element: class="fragment" -->
 
-- account management, leaderboards, cloud-saves etc.
+- account management, leaderboards, cloud-saves etc. <!-- .element: class="fragment" -->
 
 Note:
 
@@ -21,6 +21,7 @@ Not-so-great for creating real-time multiplayer games!
 ## ASP.NET Core
 
 ASP.NET Core is a framework for building web UI and web APIs
+
 Why ASP.NET Core?
 
 - Cross-platform
@@ -28,12 +29,6 @@ Why ASP.NET Core?
 - Open-source framework
 - Many necessary features built-in such as logging, environment-based configuration, dependency injection etc.
 - Cloud-ready
-
-Note:
-
-- Was developed as an alternative for Windows Communication Foundation (WCF)
-- Not just large enterprises talking with each other anymore, now a developer needed to be able to whip up a JavaScript application, or 99-cent mobile app, in a matter of days
-- Controller method need only return the raw data value, and this value will be automatically converted to JSON or XML, (format is decided by the client)
 
 ---
 
@@ -154,28 +149,28 @@ Connection: Closed
 
 ## Controllers
 
-A controller is used to define and group a set of actions
+A controller is used to define and group a set of actions <!-- .element: class="fragment" -->
 
-An action (or action method) is a method on a controller which handles requests
+An action (or action method) is a method on a controller which handles requests <!-- .element: class="fragment" -->
 
-Controller is an instantiable class in which at least one of the following conditions is true:
+Controller is an instantiable class in which at least one of the following conditions is true: <!-- .element: class="fragment" -->
 
-- Name is suffixed with "Controller“
-- Inherits from a class whose name is suffixed with "Controller"
-- Decorated with the [Controller] attribute
+- Name is suffixed with "Controller“ <!-- .element: class="fragment" -->
+- Inherits from a class whose name is suffixed with "Controller" <!-- .element: class="fragment" -->
+- Decorated with the [Controller] attribute <!-- .element: class="fragment" -->
 
 ---
 
 ### Controller responbilities
 
-In well-factored apps, controller does not directly include data access or business logic
+In well-factored apps, controller does not directly include data access or business logic <!-- .element: class="fragment" -->
 
-- Controller delegates to services handling these responsibilities
+- Controller delegates to services handling these responsibilities <!-- .element: class="fragment" -->
 
-Responsibilities:
+Responsibilities: <!-- .element: class="fragment" -->
 
-- Ensure request data is valid
-- Choose which result for an API should be returned
+- Ensure request data is valid <!-- .element: class="fragment" -->
+- Choose which result for an API should be returned <!-- .element: class="fragment" -->
 
 Note:
 
@@ -189,29 +184,29 @@ Allows service to benefit from model binding, controller-specific and action-spe
 
 Actions can return anything
 
-- frequently return an instance of IActionResult (or Task<IActionResult> for async methods) that produces a response
+- frequently return an instance of IActionResult (or ``Task<IActionResult>`` for async methods) that produces a response
 
 ---
 
 ## Routing to Controller Actions
 
-Routing middleware is used to match the URLs of incoming requests and map them to actions
+Routing middleware is used to match the URLs of incoming requests and map them to actions <!-- .element: class="fragment" -->
 
-Routes are defined in startup code (convention based) or with attributes
+Routes are defined in startup code (convention based) or with attributes <!-- .element: class="fragment" -->
 
-Both ways of routing can be mixed together
+Both ways of routing can be mixed together <!-- .element: class="fragment" -->
 
-If no routing attribute is defined, convention based routing is used
+If no routing attribute is defined, convention based routing is used <!-- .element: class="fragment" -->
 
 ---
 
 ## Routing to Controller Actions
 
-Web API routes are often defined with attribute route – convention based routes are often used for controllers serving HTML pages for browsers
+Web API routes are often defined with attribute route – convention based routes are often used for controllers serving HTML pages for browsers <!-- .element: class="fragment" -->
 
-- Which is why we skip the convention based routes now
+- Which is why we skip the convention based routes now <!-- .element: class="fragment" -->
 
-Attribute routing is enabled when app.UseMvc(…) is called on the Startup.cs -file
+Attribute routing is enabled when app.UseMvc(…) is called on the Startup.cs -file <!-- .element: class="fragment" -->
 
 ---
 
@@ -348,7 +343,7 @@ Controller action can return any of the following:
 
 ### IActionResult
 
-There are many predefined classes implementing IActionResult such as
+There are many predefined classes implementing **IActionResult** such as
 
 - OkResult
 - OkObjectResult
@@ -398,11 +393,11 @@ ASP.NET Core has a built-in DI-container
 
 Note:
 
-If the controllers are going to do anything useful, and if they are going to be implemented in a well-architected manner using SOLID design principles, they will depend heavily upon functionality provided by other classes. 
+If the controllers are going to do anything useful, and if they are going to be implemented in a well-architected manner using SOLID design principles, they will depend heavily upon functionality provided by other classes.
 
 Includes even seemingly harmless classes such as System.DateTime, System.IO.File, System.Environment
 
-A single container instance must meet these criteria: 
+A single container instance must meet these criteria:
 
 - Be created early in the application start-up process
 - Be available at all times while the application is running
@@ -425,30 +420,29 @@ public void ConfigureServices(IServiceCollection services){
 }
 ```
 
-IServiceCollection has methods AddTransient, AddScoped and AddSingleton for defining the lifetime for a service
-
-Note:
-- Explain that dependencies can be complex graphs
+IServiceCollection has methods **AddTransient**, **AddScoped** and **AddSingleton** for defining the lifetime for a service
 
 ---
 
 ### Dependency injection: service lifetimes - Transient
 
-- Transient lifetime services are created each time they are requested
-- This lifetime works best for lightweight, stateless services
+Transient lifetime services are created each time they are requested
+
+This lifetime works best for lightweight, stateless services
 
 ---
 
 ### Dependency injection: service lifetimes - Scoped
 
-- Scoped lifetime services are created once per request
+Scoped lifetime services are created once per request
 
 ---
 
 ### Dependency injection: service lifetimes - Singleton
 
-- Singleton lifetime services are created the first time they are requested
-- Every subsequent request will use the same instance
+Singleton lifetime services are created the first time they are requested
+
+Every subsequent request will use the same instance
 
 ---
 
