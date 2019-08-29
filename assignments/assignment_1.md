@@ -3,6 +3,7 @@
 The purpose of the following exercise is to get you familiar with .NET concepts to get you ready to do some serious server programming.
 
 The exercise uses an API for the HSL City Bikes. If you don't care for City Bikes you can feel free to do a variation of this exercise with any other public API. Here are some game related API's (some of which might require registeration):
+
 https://www.programmableweb.com/news/top-10-games-apis-eve-online-riot-games-battle.net/analysis/2015/11/25
 
 ---
@@ -62,7 +63,7 @@ Create a class called RealTimeCityBikeDataFetcher which implements the ICityBike
 - Next you need to define your own ``BikeRentalStationList`` class that correspond the Json the API returns
 - Deserialize the string to a C# object using ``JsonConvert.DeserializeObject<BikeRentalStationList>``
 - Find the information you are looking for (bike count in a certain station) and return it as a result from the method
-- In the Main method of your application you need to use ``Task.Wait()`` when calling a method with a Task as the return type (there can't be asynchronous code in the main method)
+- You can make your ``Main`` method asynchronous as well! (make it return a **Task**)
 
 ---
 
