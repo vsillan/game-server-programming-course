@@ -114,7 +114,7 @@ A delegate is an **object that knows how to call a method**
 The following defines a delegate type called Transformer:
 
 ```C#
-Delegate int Transformer (int x);
+delegate int Transformer (int x);
 ```
 
 A delegate type defines the kind of method that delegate instances can call:
