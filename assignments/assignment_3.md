@@ -13,8 +13,7 @@ After the exercises we have implemented CRUD (Create, Read, Update, Delete) oper
 - Create a folder called ``GameWebApi``
 - Move to the folder
 - Run ``dotnet new webapi``
-
-``
+- Go to the newly created ``Startup.cs`` class. Remove the line that says ``app.UseHttpsRedirection();``. This is important because the requests to the web api will fail if you don't do this.
 
 ## 1. Create Model classes
 
