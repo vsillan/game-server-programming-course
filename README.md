@@ -65,7 +65,8 @@ You can also affect your grade positively by participating actively in the lectu
 
 The deadlines for the assignments are the following:
 
-TBD.
+- Project: 10.10 2019
+- All assignments: 10.10 2019
 
 ## Completing the course without class room participation
 
