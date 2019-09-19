@@ -41,6 +41,13 @@ The project assignment will be presented on week 2 and it's recommended to start
 
 If you are running Windows and your VSCode uses `powershell` in the terminal, I recommend that you change it to `CMD`.
 
+### Tips for using PostMan
+
+How to make a simple request:
+  - Add API url to the address bar (for example: http://localhost:5000/api/players)
+  - Select a suitable Http verb (for example: GET)
+  - When you want to add a request body: select the "body" tab -> choose "raw" -> change the format from "Text" to "JSON"
+
 ## Grading
 
 The course grading scheme is straightforward:
