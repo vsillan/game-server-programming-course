@@ -4,7 +4,7 @@ _This assignment builds on top of the ``GameWebApi`` project created in assignme
 
 With these exercises you will learn more about creating queries and aggregation against MongoDb. You will also learn how to utilize more advanced query parameters with the Web API.
 
-You can select from the following assignments the ones that interest you the most. Do atleast ``3 queries`` and ``1 aggregation`` but doing more will yield you extra points.
+You can select from the following assignments the ones that interest you the most. Do atleast ``4 queries`` but doing more queries and aggregation exercises will yield you extra points.
 
 There is some help provided for some of the API urls but some of them you have to think on your own.
 
