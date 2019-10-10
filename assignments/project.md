@@ -2,7 +2,7 @@
 
 ## Guidelines
 
-Create a completely new project (or extend a school project if you a suitable one) which demonstrates as well as possible what you have learned about the techologies taught in this course. You can even go deeper into these technologies than we do in this course by exploring the documentations.
+Create a completely new **game server** project (or extend a school project if you a suitable one) which demonstrates as well as possible what you have learned about the techologies taught in this course. You can even go deeper into these technologies than we do in this course by exploring the documentations.
 
 There are two outputs for this project: the implementation code and a presentation focused on the implementation of the project.
 
