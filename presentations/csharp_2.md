@@ -1,4 +1,6 @@
-# C# and .NET essentials for server programming part 2
+# C# and .NET essentials for server programming
+
+## part 2
 
 ---
 
@@ -197,15 +199,15 @@ Note:
 
 Func is the similar as Action-delegate but it **has a return value**
 
-``Func<int>`` is a delegate that takes a function that:
+`Func<int>` is a delegate that takes a function that:
 
 - has no parameters
-- returns an ``int``
+- returns an `int`
 
-``Func<int, int>`` is a delegate that takes a function that:
+`Func<int, int>` is a delegate that takes a function that:
 
-- has one parameter with ``int``-type
-- returns an ``int``
+- has one parameter with `int`-type
+- returns an `int`
 
 ---
 
@@ -221,7 +223,7 @@ An example of a lambda expression:
 
 ```C#
 x => x * x
-// ‘function’ that has a parameter x in which x 
+// ‘function’ that has a parameter x in which x
 // is multiplied with x and the result is returned
 ```
 
@@ -249,9 +251,9 @@ public class Stack<T> {
 
 ```
 
-``Stack<int>`` fills in the type parameter T with the type argument int
+`Stack<int>` fills in the type parameter T with the type argument int
 
-``Stack<T>`` is an open type, whereas ``Stack<int>`` is a closed type
+`Stack<T>` is an open type, whereas `Stack<int>` is a closed type
 
 At runtime, all generic type instances are closed
 

@@ -21,7 +21,7 @@ Note:
 
 ## Definition
 
-Not any specific technology or theory  – concepts that have evolved over many years
+Not any specific technology or theory – concepts that have evolved over many years
 
 Ideas were adopted by independent groups of people who used them to solve their own data problems
 
@@ -74,7 +74,7 @@ Note:
 
 - Open source is at the moment a common characteristic
 - Some databases are designed to operate best (or only) with specialized storage and processing hardware. With a NoSQL database, cheap off‐the‐shelf servers can be used.
-- Schema-less is not the whole truth. Application always defines an implicit schema (schema on read). 
+- Schema-less is not the whole truth. Application always defines an implicit schema (schema on read).
 - Explain: Why no schema makes the development faster
 
 ---
@@ -90,7 +90,7 @@ Note:
 - Graph oriented make the data into even smaller units
 - Graph example: neo4j
 - Key-value: Just a hashmap but persisted on a disc
-- Column: Cassandra, which  implements  many  of  Dynamo’s  scaling  properties  while  providing  a  column-oriented data model inspired by Google’s BigTable. Cassandra is an open source version of a data store built by Facebook for its inbox search feature. The system scaled horizontally to index more than 50 TB of inbox data, allowing for searches on inbox keywords and recipients. Data was indexed by user ID, where each record consisted of an array of search terms for keyword searches and an array of recipient IDs for recipient searches.
+- Column: Cassandra, which implements many of Dynamo’s scaling properties while providing a column-oriented data model inspired by Google’s BigTable. Cassandra is an open source version of a data store built by Facebook for its inbox search feature. The system scaled horizontally to index more than 50 TB of inbox data, allowing for searches on inbox keywords and recipients. Data was indexed by user ID, where each record consisted of an array of search terms for keyword searches and an array of recipient IDs for recipient searches.
 
 ---
 
@@ -133,7 +133,7 @@ Graph databases don’t save the data in aggregates and are generally not distri
 
 Note:
 
-- Draw on board 
+- Draw on board
 - Natural aggregate -> Storing the combination of data that is commonly accessed together
 - High availability means keeping the data accessible even when a limited subset of the database servers are not available
 
@@ -173,7 +173,7 @@ In relational databases the goal is to normalize the data (remove duplicate data
 - Easy to update (updates only to one place)
 - Queries might get complex to implement and slow to execute
 
-In NoSQL data is often deliberately denormalized (stored multiple times) 
+In NoSQL data is often deliberately denormalized (stored multiple times)
 
 - Enables fast query speed and ease of query implementation
 - Updates have to be applied to all the places where a piece of data is stored
@@ -239,7 +239,7 @@ CAP stands for Consistency, Availability, and Partitioning
 
 States that you cannot have all three completely at the same time
 
-Many NoSQL databases allow tuning between levels of consistency and availability 
+Many NoSQL databases allow tuning between levels of consistency and availability
 
 In clustered databases the partitioning is always present so the trade off needs to be made between consistency and availability
 
@@ -267,7 +267,7 @@ When your business requirements are likely to change
 When NoSQL can reduce the technical depth of the system
 
 - Relational databases often contain more features
-- NoSQL databases usually have less and are more specific to certain use cases 
+- NoSQL databases usually have less and are more specific to certain use cases
 - Writing SQL queries can get relatively complex when the simultaneously queried data needs to be split in many tables
 
 ---
@@ -282,7 +282,7 @@ When your team has strong relational database skills and it can get the job done
 
 ---
 
-## Comparison to traditional relational databases
+## Comparison
 
 | Relational                          | NoSQL                                     |
 | ----------------------------------- | ----------------------------------------- |

@@ -103,10 +103,6 @@ Note:
 
 ---
 
-## Alright...
-
----
-
 ## So, how does a server solution look like?
 
 ---
@@ -133,15 +129,15 @@ Note:
 
 ### Peer-to-Peer (client-to-client)
 
-All clients participating in the same game instance are interconnected with each other  <!-- .element: class="fragment" -->
+All clients participating in the same game instance are interconnected with each other <!-- .element: class="fragment" -->
 
-All clients are equal (no hierarchies)  <!-- .element: class="fragment" -->
+All clients are equal (no hierarchies) <!-- .element: class="fragment" -->
 
 Limited scaling potential <!-- .element: class="fragment" -->
 
 - Amount of connections grows exponentially with each client <!-- .element: class="fragment" -->
 
-Has been popular choice in the early days of multiplayer gaming  <!-- .element: class="fragment" -->
+Has been popular choice in the early days of multiplayer gaming <!-- .element: class="fragment" -->
 
 There is no persistence or data collection, cheat prevention is hard, and all simulation is on client side <!-- .element: class="fragment" -->
 
@@ -291,7 +287,7 @@ Provide readymade solutions for the common problems:
 - Analytics <!-- .element: class="fragment" -->
 - Social features (chat, leaderboard, friends etc.) <!-- .element: class="fragment" -->
 - etc. <!-- .element: class="fragment" -->
-  
+
 These can reduce the game server development time significantly <!-- .element: class="fragment" -->
 
 There are many viable providers out there such as GameSparks and PlayFab <!-- .element: class="fragment" -->

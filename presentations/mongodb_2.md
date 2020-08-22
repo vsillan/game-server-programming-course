@@ -1,4 +1,4 @@
-# MongoDB Part 2: Most important Queries, Updates and Aggregration
+# MongoDB: most important Queries, Updates and Aggregration
 
 ---
 
@@ -66,7 +66,7 @@ Almost every method on a cursor object returns the cursor itself so that you can
 ### Query cursor example
 
 ```C#
-SortDefinition<Player> sortDef = 
+SortDefinition<Player> sortDef =
     Builders<Player>.Sort.Ascending("Level");
 
 IFindFluent<Player, Player> cursor =
@@ -86,22 +86,22 @@ List<Player> players = await cursor.ToListAsync();
 
 ### Query selectors: Comparisons
 
-**$lt** == lower than (<)
+**\$lt** == lower than (<)
 
-**$lte** == lower than or equal (<=)
+**\$lte** == lower than or equal (<=)
 
-**$gt** == greater than (>)
+**\$gt** == greater than (>)
 
-**$gte** == greater than or equal (>=)
+**\$gte** == greater than or equal (>=)
 
 Example in C#:
 
 ```C#
-FilterDefinition<Player> filter = 
-    Builders<Player>.Filter.Gte("Level", 18) 
+FilterDefinition<Player> filter =
+    Builders<Player>.Filter.Gte("Level", 18)
     & Builders<Player>.Filter.Lte("Level", 30);
 
-List<Player> players = 
+List<Player> players =
     await collection.Find(filter).ToListAsync();
 ```
 
@@ -119,13 +119,13 @@ Note:
 
 Each takes a list of one or more values as predicate
 
-**$all** – returns a document if all of the given values match the search key
+**\$all** – returns a document if all of the given values match the search key
 
-**$in** - returns a document if any of the given values matches the search key
+**\$in** - returns a document if any of the given values matches the search key
 
-**$nin** – returns a document if none of the given values matches the search key
+**\$nin** – returns a document if none of the given values matches the search key
 
-``` C#
+```C#
 var filter =
     Builders<Player>.Filter.In(
         p => p.Level,
@@ -137,25 +137,25 @@ var filter =
 
 ### Query selectors: Boolean operators (1)
 
-**$ne** – not equal
+**\$ne** – not equal
 
-**$not** – negates the result of another MongoDB operator or regular expression query
+**\$not** – negates the result of another MongoDB operator or regular expression query
 
-**$exists** – used for querying documents containing a particular key, needed because collections don’t enforce schema
+**\$exists** – used for querying documents containing a particular key, needed because collections don’t enforce schema
 
 Note:
 
-- $ne can not take advantage of indexes
-- Do not use $not if there exists a negated form for the operator (e.g. $in and $nin)
-- If possible values are scoped to the same key, use $in instead
+- \$ne can not take advantage of indexes
+- Do not use $not if there exists a negated form for the operator (e.g. $in and \$nin)
+- If possible values are scoped to the same key, use \$in instead
 
 ---
 
 ### Query selectors: Boolean operators (2)
 
-**$or** – expresses a logical disjunction of two values for two different keys
+**\$or** – expresses a logical disjunction of two values for two different keys
 
-**$and** – both selectors match for the document
+**\$and** – both selectors match for the document
 
 ```C#
 var f1 = Builders<Player>.Filter.Eq(p => p.Name, "John");
@@ -166,7 +166,7 @@ var andFilter = Builders<Player>.Filter.And(f1, f2);
 Note:
 
 - $and and $or take array of query selectors, where each selector can be arbitrarily complexand may itself contain other query operators.
-- MongoDB interprets all query selectors containing more than one key by ANDing the conditions, you should use $and only when you can’t express an AND in a simpler way.
+- MongoDB interprets all query selectors containing more than one key by ANDing the conditions, you should use \$and only when you can’t express an AND in a simpler way.
 
 ---
 
@@ -174,13 +174,13 @@ Note:
 
 If you can’t express your query with the tools described thus far, you have an option to write some JavaScript
 
-**$where** operator is used to pass a JavaScript expression
+**\$where** operator is used to pass a JavaScript expression
 
 Adds substantial overhead because expressions need to be evaluated within a JavaScript interpreter context
 
 JavaScript expressions can’t use an index
 
-For security, use of "$where" clauses should be highly restricted or eliminated
+For security, use of "\$where" clauses should be highly restricted or eliminated
 
 Note:
 
@@ -202,13 +202,13 @@ var player =
     _collection.Find(filter).FirstAsync();
 ```
 
-**$size** – allows to query for an array by its size
+**\$size** – allows to query for an array by its size
 
 ---
 
 ### Querying sub-documents
 
-**$elemMatch** can be used to perform queries on the subdocuments
+**\$elemMatch** can be used to perform queries on the subdocuments
 
 ```C#
 var playersWithWeapons =
@@ -261,7 +261,7 @@ IFindFluent<Player, Player> cursor =
 - Beware of skipping large number of documents because it gets ineffective
 
 ```C#
-IFindFluent<Player, Player> cursor = 
+IFindFluent<Player, Player> cursor =
     collection.Find("").Limit(1).Skip(10);
 ```
 
@@ -307,17 +307,17 @@ Note:
 
 ### Standard update operators
 
-**$inc** – increment or decrement a numeric value
+**\$inc** – increment or decrement a numeric value
 
 - Can be used with an upsert
 
-**$set** – set value of any particular key to any valid BSON type
+**\$set** – set value of any particular key to any valid BSON type
 
-**$unset** – remove a key from the document
+**\$unset** – remove a key from the document
 
 - For an array, the value is merely set to null
 
-**$rename** – change the name of a key
+**\$rename** – change the name of a key
 
 - Works with subdocuments as well
 
@@ -325,15 +325,15 @@ Note:
 
 ### Array update operators
 
-**$push** and **$pushAll** – append value/list of values to an array
+**\$push** and **\$pushAll** – append value/list of values to an array
 
-**$addToSet** – only adds the value if it doesn’t exist in the array
+**\$addToSet** – only adds the value if it doesn’t exist in the array
 
-- Can be used in combination with $each to add multiple values
+- Can be used in combination with \$each to add multiple values
 
-**$pop** – Used for removing an item from an array based on position, does not return removed value
+**\$pop** – Used for removing an item from an array based on position, does not return removed value
 
-**$pull** and **$pullAll** – remove value/list of values by the value
+**\$pull** and **\$pullAll** – remove value/list of values by the value
 
 Note:
 
@@ -349,7 +349,7 @@ Any one document can be updated atomically
 
 Document structure in itself makes it possible to fit within a single document many things that might atomic processing
 
-When updating and removing documents a special option called $atomic can be used to make sure that the whole operation is performed before others read the touched documents
+When updating and removing documents a special option called \$atomic can be used to make sure that the whole operation is performed before others read the touched documents
 
 Note:
 
@@ -414,19 +414,19 @@ var levelCounts =
 
 Note:
 
-{“$project” : {“Level” : 1}}
+{“\$project” : {“Level” : 1}}
 
 - This projects the level field in each document
 
-{“$group” : {“_id” : “$Level”, “Count” “ {“$sum” : 1 }}}
+{“$group” : {“_id” : “$Level”, “Count” “ {“\$sum” : 1 }}}
 
 - This groups the levels by number and increments “Count" for each document a level appears in
 
-{"$sort" : {“Count" : -1}}
+{"\$sort" : {“Count" : -1}}
 
 - This reorders the result documents by the “Count" field from greatest to least
 
-{"$limit" : 3}
+{"\$limit" : 3}
 
 - This limits the result set to the first three result documents
 
@@ -472,12 +472,12 @@ Can be indexed and further optimized
 
 ### Aggregation pipeline operators
 
-**$match**
+**\$match**
 
 Filters documents so that you can run an aggregation on a subset of documents
 Can use all of the usual query operators
 
-**$sort**
+**\$sort**
 
 Similar as sort with normal querying
 
@@ -485,11 +485,11 @@ Similar as sort with normal querying
 
 ### Aggregation pipeline operators
 
-**$limit**
+**\$limit**
 
 Takes a number, n, and returns the first n resulting documents
 
-**$skip**
+**\$skip**
 
 Takes a number, n, and discards the first n documents from the result set
 
@@ -497,7 +497,7 @@ Takes a number, n, and discards the first n documents from the result set
 
 ### Aggregation pipeline operators
 
-**$unwind**
+**\$unwind**
 
 Unwinding turns each field of an array into a separate document
 
@@ -511,33 +511,38 @@ var allItems =
 
 ---
 
-### Aggregation pipeline: **$group**
+### Aggregation pipeline: **\$group**
 
 Grouping allows you to group documents based on certain fields and combine their values
 
-When you choose a field or fields to group by, you pass it to the $group function as the group’s "\_id" field
+When you choose a field or fields to group by, you pass it to the \$group function as the group’s "\_id" field
 
 ```C#
 _collection.Aggregate()
         .Project(p => p.Level)
-        .Group(l => l, p => new LevelCount { Id = p.Key, Count = p.Sum() })
+        .Group(l => l,
+            p => new LevelCount {
+                Id = p.Key,
+                Count = p.Sum()
+                }
+            )
 ```
 
 ---
 
-### Aggregation pipeline: **$group**
+### Aggregation pipeline: **\$group**
 
-There are several operators which can be used with **$group**, such as:
+There are several operators which can be used with **\$group**, such as:
 
-- $sum
-- $max
-- $min
-- $first
-- $last
+- \$sum
+- \$max
+- \$min
+- \$first
+- \$last
 
 ---
 
-### Aggregation pipeline: **$project**
+### Aggregation pipeline: **\$project**
 
 Much more powerful in the pipeline than it is in the “normal” query language
 
@@ -545,14 +550,14 @@ Allows to extract fields from subdocuments, rename fields, and perform operation
 
 ---
 
-### Aggregation pipeline: $project
+### Aggregation pipeline: \$project
 
 There are many expressions which can be applied when projecting
 
-- Math expressions - $add, $subtract, $mod…
-- Date expressions - $year, $month, $week…
-- String expressions - $subsctr, $concat, $toLower…
-- Logical expressions - $cmp, $eq, $gt…
+- Math expressions - $add, $subtract, \$mod…
+- Date expressions - $year, $month, \$week…
+- String expressions - $subsctr, $concat, \$toLower…
+- Logical expressions - $cmp, $eq, \$gt…
 
 ---
 
