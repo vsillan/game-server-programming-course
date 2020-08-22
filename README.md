@@ -13,18 +13,16 @@ The technologies chosen for this course are ASP.NET Core and MongoDB. The main r
 1. Intro to game server programming; C# for server development (part 1)
 2. C# for server development (part 2)
 3. ASP.NET Core Web API (part 1); REST-architecture
-4. ASP.NET Core Web API (part 2);
-5. Intro to NoSQL databases; MongoDB (part 1)
-6. MongoDB (part 2)
-7. Project work
-8. Student presentations
+4. ASP.NET Core Web API (part 2); MongoDB (part 1)
+5. Intro to NoSQL databases; MongoDB (part 2)
+6. Project work
+7. Student presentations
 
 ## Way of working
 
 Read the articles from the reading lists before the lectures where the concepts are presented.
 
-Try to complete the assignments on the same week they are presented. _Assignments need to be completed in order because they build on top of each other!_ By not completing the assignments in time, you make it harder for yourself to make progress in the course.
-
+Try to complete the assignments on the same week they are presented. IMPORTANT: **_Assignments need to be completed in order because they build on top of each other!_** By not completing the assignments in time, you make it harder for yourself to make progress in the course.
 
 Assignment solutions should be put inside your own GitHub (or similar) repository where I can have access to them.
 
@@ -35,18 +33,19 @@ The project assignment will be presented on week 2 and it's recommended to start
 - VSCode: https://code.visualstudio.com/download
 - .Net core SDK: https://www.microsoft.com/net/download
 - Omnisharp plugin for VSCode called `C#`: https://github.com/OmniSharp/omnisharp-vscode (you can download this inside VSCode from the extensions tab! Search for "C#".)
-- `C# Extensions` plugin for VSCode (you can download this from VSCode as well. Search for `C# extendsions`).
+- `C# Extensions` plugin for VSCode (you can download this from VSCode as well. Search for `C# extensions`).
 - MongoDb: https://www.mongodb.com/download-center/community
 - PostMan 2: https://www.getpostman.com/apps
 
-If you are running Windows and your VSCode uses `powershell` in the terminal, I recommend that you change it to `CMD`.
+If you are running Windows and your VSCode uses `powershell` in the terminal (I think it's the default), I recommend that you change it to `CMD`.
 
 ### Tips for using PostMan
 
 How to make a simple request:
-  - Add API url to the address bar (for example: http://localhost:5000/api/players)
-  - Select a suitable Http verb (for example: GET)
-  - When you want to add a request body: select the "body" tab -> choose "raw" -> change the format from "Text" to "JSON" -> add JSON to the body (for example: ```{ "name" : "test" }```)
+
+- Add API url to the address bar (for example: http://localhost:5000/api/players)
+- Select a suitable Http verb (for example: GET)
+- When you want to add a request body: select the "body" tab -> choose "raw" -> change the format from "Text" to "JSON" -> add JSON to the body (for example: `{ "name" : "test" }`)
 
 ## Grading
 
@@ -72,8 +71,8 @@ You can also affect your grade positively by participating actively in the lectu
 
 The deadlines for the assignments are the following:
 
-- Project: 10.10 2019
-- All assignments: 10.10 2019
+- Project: 07.10 2020
+- All assignments: 07.10 2020
 
 ## Completing the course without class room participation
 
