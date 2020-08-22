@@ -15,10 +15,10 @@
 # Include dlls if they're in the CommonReferences directory
 !*CommonReferences/*.dll
 ####################
-# VS Upgrade stuff #
+# VS game-server-example-code stuff #
 ####################
-UpgradeLog.XML
-_UpgradeReport_Files/
+game-server-example-codeLog.XML
+_game-server-example-codeReport_Files/
 ###############
 # Directories #
 ###############

@@ -4,11 +4,12 @@ using game_server.Validation;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using game_server.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace game_server.Players
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/players")]
     public class PlayersController : ControllerBase
     {
         private readonly ILogger<PlayersController> _logger;
@@ -22,17 +23,23 @@ namespace game_server.Players
 
         [HttpGet]
         [Route("")]
-        public Task<Player[]> GetAll()
+        public async Task<Player[]> GetAll(int minLevel)
         {
-            throw new NotImplementedException();
+            return new Player[] { new Player() { Level = minLevel }, new Player() { Level = (minLevel + 1) } };
         }
 
         [HttpGet]
         [Route("{playerId}")]
         public Task<Player> Get(string playerId)
         {
-
             throw new NotImplementedException();
+        }
+
+        [HttpGet]
+        [Route("level-counts")]
+        public Task<LevelCount[]> Get()
+        {
+            return _repository.Agg();
         }
 
         [HttpPost]
