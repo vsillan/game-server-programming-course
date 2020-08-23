@@ -12,15 +12,15 @@ Get familiar with **NoSQL** databases
 
 ### What do we actually do?
 
-Create Web APIs for games using **ASP.NET Core** (C#)
+Create Web APIs for games using **ASP.NET Core (C#)**
 
-Use **MongoDb** as a database for a Web API
+Use **MongoDb** as the database for the Web API
 
 Learn some best practices for server development
 
 Note:
 
-- APIs are more general purpose than real-time implementations
+- HTTP APIs are more general purpose than real-time implementations
 
 ---
 
@@ -28,20 +28,22 @@ Note:
 
 Web APIs play an important role in most online games
 
-NoSQL databases are more suited for **global scale products**
+NoSQL databases are more suited for global scale products
 
-A solid backend is a must for a succesful online game
+A solid backend is a requirement for a succesful online game
 
 Note:
 
 - Important to understand NoSQL databases especially in terms of performance, availability and scalability
-- These are things that generally apply to a great variety of projects - even outside games
+- What's great about this? Learnings can be applied to a great variety of projects - even outside games
 
 ---
 
-### I'm a client programmer / artist / designer / insert-a-role-here - **Why should I care about server programming?**
+### Why should you care?
 
-To understand: <!-- .element: class="fragment" -->
+If you are going to do backend programming as your day job, it's fairly obvious <!-- .element: class="fragment" -->
+
+Otherwise you still need to understand: <!-- .element: class="fragment" -->
 
 - the limitations <!-- .element: class="fragment" -->
 - the possibilities <!-- .element: class="fragment" -->
@@ -68,7 +70,7 @@ Persist the game data <!-- .element: class="fragment" -->
 
 Authorize player actions (prevent cheating) <!-- .element: class="fragment" -->
 
-Gather and analyze data analytics <!-- .element: class="fragment" -->
+Gather and analyze data <!-- .element: class="fragment" -->
 
 Do simulation that is too expensive for the client <!-- .element: class="fragment" -->
 
@@ -83,7 +85,7 @@ Note:
 
 ### The cost
 
-Programming and maintaining the server(s) as long as the game is alive <!-- .element: class="fragment" -->
+Developing and maintaining the server(s) as long as the game is alive <!-- .element: class="fragment" -->
 
 Server-side usually multiplies the complexity of the client <!-- .element: class="fragment" -->
 
@@ -113,7 +115,7 @@ Note:
 
 ---
 
-### Example: FPS game server architecture
+### Example: Imaginary FPS game server architecture
 
 ![FPS game server architecture](/resources/fps-server-architecture.png)
 
@@ -211,41 +213,43 @@ Note:
 
 ## Cloud Services
 
-These would require a course of their own...
+This subject would need its own course...
 
 ---
 
 ### Cloud services
 
-Nowadays **most online games are deployed to cloud**
+Nowadays **most online games are deployed to public cloud**
 
-Viable even for smaller game studios
+Viable even for smaller game studios <!-- .element: class="fragment" -->
 
-- No big initial investments - just pay for what you use
+- No big initial investments - just pay for what you use <!-- .element: class="fragment" -->
 
-Useful **out of the box solutions**
+Useful out of the box solutions <!-- .element: class="fragment" -->
 
-Cloud can scale up and down very quickly
+Cloud can scale up and down very quickly <!-- .element: class="fragment" -->
 
-Ease of deploying to datacenters around the world
+Ease of deploying to datacenters around the world <!-- .element: class="fragment" -->
 
-Most commonly used public clouds are Amazon AWS and Microsoft Azure
+Most commonly used public clouds are Amazon AWS and Microsoft Azure <!-- .element: class="fragment" -->
 
 ---
 
 ### Commonly used cloud services
 
-There are four different cloud computing service models: IaaS, PaaS, SaaS and FaaS
-
 PaaS solutions for the code run-time environment <!-- .element: class="fragment" -->
 
 SaaS databases <!-- .element: class="fragment" -->
 
-Load balancers & Automatic scaling <!-- .element: class="fragment" -->
+Data analytics related services <!-- .element: class="fragment" -->
 
-Various security features <!-- .element: class="fragment" -->
+Security and identity services <!-- .element: class="fragment" -->
 
 And many more… <!-- .element: class="fragment" -->
+
+Note:
+
+There are four different cloud computing service models: IaaS, PaaS, SaaS and FaaS
 
 ---
 
@@ -255,7 +259,7 @@ And many more… <!-- .element: class="fragment" -->
 
 ### Things you need to know
 
-How to create good Web APIs <!-- .element: class="fragment" -->
+How to build great Web APIs <!-- .element: class="fragment" -->
 
 Databases – both traditional SQL and NoSQL databases <!-- .element: class="fragment" -->
 
@@ -263,9 +267,9 @@ How to build scalable, stable, and fault tolerant systems <!-- .element: class="
 
 How to build security and cheat resistancy <!-- .element: class="fragment" -->
 
-How to use cloud services <!-- .element: class="fragment" -->
+How to utilize the publis cloud services <!-- .element: class="fragment" -->
 
-Creating robust realtime experiences <!-- .element: class="fragment" -->
+How to build robust realtime experiences <!-- .element: class="fragment" -->
 
 Note:
 
@@ -273,13 +277,13 @@ In this course we'll focus mostly on the first 2 - and bit on #3 and #4.
 
 ---
 
-## But wait, why to make your own solution when there are companies that provide backend as a service?
+## But, why to (learn to) make your own solution?
 
 ---
 
 ### 3rd party services
 
-Provide readymade solutions for the common problems:
+Provide readymade solutions for the common problems: <!-- .element: class="fragment" -->
 
 - Account management <!-- .element: class="fragment" -->
 - Realtime multiplayer <!-- .element: class="fragment" -->
@@ -301,10 +305,6 @@ Limits to your designs <!-- .element: class="fragment" -->
 Dependecy to the service provider <!-- .element: class="fragment" -->
 
 Trustworthiness of the service provider <!-- .element: class="fragment" -->
-
----
-
-### More considerations for 3rd party services
 
 Giving access to your valuable data <!-- .element: class="fragment" -->
 

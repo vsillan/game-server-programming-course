@@ -136,7 +136,7 @@ static void Main (string[] args) {
 		Console.WriteLine ("That's not a number!");
 	}
 	catch (Exception ex) {
-		Console.WriteLine ("We caught something else)
+		Console.WriteLine ("We caught something else")
 	}
 }
 ```
@@ -145,11 +145,11 @@ static void Main (string[] args) {
 
 ### The catch clause
 
-Specifies what type of exception to catch  <!-- .element: class="fragment" -->
+Specifies what type of exception to catch <!-- .element: class="fragment" -->
 
-Must either be System.Exception or a subclass of System.Exception  <!-- .element: class="fragment" -->
+Must either be System.Exception or a subclass of System.Exception <!-- .element: class="fragment" -->
 
-Catching System.Exception catches all possible errors  <!-- .element: class="fragment" -->
+Catching System.Exception catches all possible errors <!-- .element: class="fragment" -->
 
 ---
 
@@ -157,13 +157,13 @@ Catching System.Exception catches all possible errors  <!-- .element: class="fra
 
 Evaluating which catch clause to execute is done from top to bottom <!-- .element: class="fragment" -->
 
-Only one catch clause is executed  <!-- .element: class="fragment" -->
+Only one catch clause is executed <!-- .element: class="fragment" -->
 
 More specific exceptions must be placed above the more generic <!-- .element: class="fragment" -->
 
-Typically you catch more specific exception types  <!-- .element: class="fragment" -->
+Typically you catch more specific exception types <!-- .element: class="fragment" -->
 
-- Avoids dealing with situations you were not expecting (e.g. OutOfMemoryException)  <!-- .element: class="fragment" -->
+- Avoids dealing with situations you were not expecting (e.g. OutOfMemoryException) <!-- .element: class="fragment" -->
 
 ---
 
@@ -250,13 +250,13 @@ Thus, it’s important to know the basics of using Tasks <!-- .element: class="f
 **async** and **await** are keywords used for asynchronous programming in C#
 
 - These let you write asynchronous code with **same structure and simplicity as synchronous code**
-  
+
 You can apply await-keyword to tasks:
 
 ```C#
 public async Task GetPlayerAndPrintNameAsync(Guid id) {
     // GetPlayerAsync returns a Task<IPlayer>
-	IPlayer player = await database.GetPlayerAsync(id); 
+	IPlayer player = await database.GetPlayerAsync(id);
 	Console.WriteLine("Got player named: " +player.Name);
 }
 
@@ -269,13 +269,13 @@ public void GetPlayerAndPrintName(Guid id) {
 
 ---
 
-### Asynchronous functions (2)
+### Asynchronous functions
 
-The **async** modifier can be applied only to methods that return ```void or Task or Task<TResult>```
+The **async** modifier can be applied only to methods that return **void** or **Task** or **`Task<TResult>`** <!-- .element: class="fragment" -->
 
-- There is virtually no reason to return void ever though
+- There is virtually no reason to return void ever though <!-- .element: class="fragment" -->
 
-You can create your own asynchronous functions but that is out of the scope of this course
+You can create your own asynchronous IO functions but that is out of the scope of this course <!-- .element: class="fragment" -->
 
 ---
 
@@ -285,15 +285,15 @@ A simple example:
 
 ```json
 {
-	"_id" : "57ade8face4bf5361c4268d6", 
-	"Name" : "john",
-	"Score" : 7,  
-	"Items" : [
-		{ 
-			"_id" : "57ade921ce4bf5361c4268d7", 
-			"ItemType" : 0 
-		} 
-	] 
+  "_id": "57ade8face4bf5361c4268d6",
+  "Name": "john",
+  "Score": 7,
+  "Items": [
+    {
+      "_id": "57ade921ce4bf5361c4268d7",
+      "ItemType": 0
+    }
+  ]
 }
 ```
 
