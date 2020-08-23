@@ -1,42 +1,83 @@
-# Assignment 5
+# Assignment 6
 
-_This assignment builds on top of the ``GameWebApi`` project created in assignment 3 and extended in assignment 4._
+_This assignment builds on top of the ``GameWebApi`` project created in assignment 3 and extended in assignment 4 and 5._
 
-The purpose of this assignment is to learn to write code that accesses data in MongoDb database. You will create a class ``MongoDbRepository`` which has the responbility to do everything that is related accessing data in MongoDb. It will replace your existing ``FileRepository``.
+With these exercises you will learn more about creating queries and aggregation against MongoDb. You will also learn how to utilize more advanced query parameters with the Web API.
 
-``MongoDbRepository`` should also implement the ``IRepository`` interface - just like the ``FileRepository`` does.
+You can select from the following assignments the ones that interest you the most. Do atleast ``4 queries`` but doing more queries and aggregation exercises will yield you extra points.
 
-Currently your ``IRepository`` interface should look roughly like this:
+There is some help provided for some of the API urls but some of them you have to think on your own.
 
-```C#
-public interface IRepository
-{
-    Task<Player> CreatePlayer(Player player);
-    Task<Player> GetPlayer(Guid playerId);
-    Task<Player[]> GetAllPlayers();
-    Task<Player> UpdatePlayer(Player player);
-    Task<Player> DeletePlayer(Guid playerId;
+---
 
-    Task<Item> CreateItem(Guid playerId, Item item);
-    Task<Item> GetItem(Guid playerId, Guid itemId);
-    Task<Item[]> GetAllItems(Guid playerId);
-    Task<Item> UpdateItem(Guid playerId, Item item);
-    Task<Item> DeleteItem(Guid playerId, Item item);
-}
-```
+## Queries
 
-When it's time to run your application with MongoDb, remember to replace the ``FileRepository`` registeration with the new ``MongoDbRepository`` in the DI-Container! (in ``Startup.cs``)
+### 1. Ranges
 
-## MongoDb implementation
+Get ``Players`` who have more than x score
 
-To get the MongoDb driver installed, run the following command in the project folder: ``dotnet add package MongoDb.Driver``.
+**hints:**
 
-You need to create a connection to the MongoDb that should be running on your local development machine. If the MongoDb is running with default port, this should work as a connection string: ``mongodb://localhost:27017``.
+Specify the x in the query like this: ``...api/players?minScore=x``
 
-Look at the example code in this repository to get hints on how to use MongoDb with C#.
+### 2. Selector matching
 
-Your data should follow this format:
+Get ``Player`` with a name
 
-- You can name your database to ``game``
-- Players should be stored in a collection called ``players``
-- ``Items`` should be stored in a list inside ``Player`` model
+**hints:**
+
+Make sure the API can handle routes ``...api/players/{name}`` _and_ ``..api/players/{id}``
+
+You can use attribute constraints or use a query parameter like this: ``...api/players?name={name}``
+
+### 3. Set operators
+
+Add ``Tags`` for the ``Player`` model ( ``Tags`` can be a list of enum values) and create a query that returns the ``Players`` that have a certain tag.
+
+### 4. Sub documents queries
+
+Find ``Players`` who have ``Item`` with certain property
+
+### 5. Size
+
+Get ``Players`` with certain amount of ``Items`` by using size method
+
+### 6. Update
+
+Update ``Player`` name without fetching the ``Player``
+
+### 7. Increment
+
+Increment ``Player`` score without fetching the ``Player``
+
+### 8. Push
+
+Add ``Item`` to the item list propery on the ``Player``
+
+### 9. Pop and increment as an atomic operation
+
+Remove from ``Item`` from ``Player`` and add some score for the ``Player``. You can think of this as a ``Player`` selling an ``Item`` and getting score as a reward.
+
+**hints:**
+
+The route should be ``..api/players/{playerId}/items/`` with DELETE Http verb.
+
+### 10. Sorting
+
+Get top 10 ``Players`` by score in descending order
+
+---
+
+## Aggregation
+
+### 11. Aggregation exercise based on the example in the slides
+
+Find out what is the most common level for a player (example in the slides).
+
+### 12. Intermediate aggregation exercise
+
+Get the item counts for different prices for items.
+
+### 13. Difficult aggregation exercise
+
+Get the average score for players who were created between two dates using aggregation.

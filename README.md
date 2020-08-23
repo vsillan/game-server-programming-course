@@ -4,6 +4,8 @@ This is a course about game server programming made for Metropolia UAS Game Deve
 
 The technologies chosen for this course are ASP.NET Core and MongoDB. The main reasons for choosing these particular technologies are that they are open source and capable of handling demands of global scale online games.
 
+The online lectures will be held in Zoom. You will receive the link in the workspace at https://oma.metropolia.fi.
+
 ## Requirements
 
 - Basic object oriented programming skills (C# is not a prerequisite)
@@ -32,12 +34,11 @@ The project assignment will be presented on week 2 and it's recommended to start
 
 - VSCode: https://code.visualstudio.com/download
 - .Net core SDK: https://www.microsoft.com/net/download
-- Omnisharp plugin for VSCode called `C#`: https://github.com/OmniSharp/omnisharp-vscode (you can download this inside VSCode from the extensions tab! Search for "C#".)
-- `C# Extensions` plugin for VSCode (you can download this from VSCode as well. Search for `C# extensions`).
+- Omnisharp plugin for VSCode called "C#": https://github.com/OmniSharp/omnisharp-vscode (you can download this inside VSCode from the extensions tab! Search for "C#".)
 - MongoDb: https://www.mongodb.com/download-center/community
-- PostMan 2: https://www.getpostman.com/apps
+- PostMan: https://www.getpostman.com/apps
 
-If you are running Windows and your VSCode uses `powershell` in the terminal (I think it's the default), I recommend that you change it to `CMD`.
+If you are running Windows and your VSCode uses **powershell** in the terminal (I think it's the default), I recommend that you change it to **CMD**.
 
 ### Tips for using PostMan
 
@@ -69,12 +70,16 @@ You can also affect your grade positively by participating actively in the lectu
 
 ## Deadlines
 
-The deadlines for the assignments are the following:
+The deadlines for the assignments and project are the following:
 
-- Project: 07.10 2020
-- All assignments: 07.10 2020
+- Assignment 1 02.09 2020
+- Assignment 2 09.09 2020
+- Assignment 3 16.09 2020
+- Assignment 4 23.09 2020
+- Assignment 5 30.09 2020
+- Project 07.10 2020
 
-## Completing the course without class room participation
+## Completing the course without participating the lectures
 
 It's highly recommended to participate in the lectures because the concepts taught in the course have been generally hard for students to grasp - usually being able to ask questions and get personal support ensures success in the course. In addition to support, being present in the lectures gives you more chances to demonstrate your skills and affect your grade positively.
 
