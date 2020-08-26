@@ -53,17 +53,16 @@ Inside the project folder:
 
 ## 4. Create a class implementing the interface
 
-Create a class called RealTimeCityBikeDataFetcher which implements the ICityBikeDataFetcher and queries the API `http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental`
+Create a class called RealTimeCityBikeDataFetcher which implements the ICityBikeDataFetcher and queries the API `http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental` (You can copy paste the API Url into your browser and see what it returns)
 
 ### Hints for implementation:
 
-- You can use `System.Net.Http.HttpClient` to do the request with a method called `GetStringAsync`
-- Remember to use `async` and `await` keywords in the implementation of a asynchronous method
-- Copy paste the API Url into your browser and check what it returns
-- Next you need to define your own `BikeRentalStationList` class that correspond the Json the API returns
+- Create an instance from the class `System.Net.Http.HttpClient`, and use it to do a request with a method called `GetStringAsync`
+- There is an example how to use the `HttpClient` here: https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netcore-3.1
+- Remember to use `async` and `await` keywords in your implementation of a asynchronous method. You can make your `Main` method asynchronous as well! (make it return a **Task**).
+- Next you need to define your own `BikeRentalStationList` class that correspond the Json the API returns. That is, it should contain properties with same names and types as what is in the Json.
 - Deserialize the string to a C# object using `JsonConvert.DeserializeObject<BikeRentalStationList>`
-- Find the information you are looking for (bike count in a certain station) and return it as a result from the method
-- You can make your `Main` method asynchronous as well! (make it return a **Task**)
+- Find the information you are looking for from the `BikeRentalStationList` (bike count in a certain station) and return it as the result from the method
 
 ---
 
