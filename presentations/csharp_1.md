@@ -310,6 +310,7 @@ Many APIs communicate in JSON or XML (or both)
 Has the following datatypes:
 
 - Number
+- String
 - Object
 - Array
 - Boolean
