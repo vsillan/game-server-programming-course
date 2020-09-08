@@ -102,7 +102,6 @@ Connection: Keep-Alive
 
 ---
 
-
 ### HTTP response
 
 HTTP response contains:
@@ -184,7 +183,7 @@ Allows service to benefit from model binding, controller-specific and action-spe
 
 Actions can return anything
 
-- frequently return an instance of IActionResult (or ``Task<IActionResult>`` for async methods) that produces a response
+- frequently return an instance of IActionResult (or `Task<IActionResult>` for async methods) that produces a response
 
 ---
 
@@ -202,11 +201,11 @@ If no routing attribute is defined, convention based routing is used <!-- .eleme
 
 ## Routing to Controller Actions
 
-Web API routes are often defined with attribute route – convention based routes are often used for controllers serving HTML pages for browsers <!-- .element: class="fragment" -->
+Web API routes are often defined with attribute route <!-- .element: class="fragment" -->
 
-- Which is why we skip the convention based routes now <!-- .element: class="fragment" -->
+- There is also convention based routing but we skip it for now <!-- .element: class="fragment" -->
 
-Attribute routing is enabled when app.UseMvc(…) is called on the Startup.cs -file <!-- .element: class="fragment" -->
+Attribute routing is enabled when app.UseRouting(…) is called in the Startup.cs -file <!-- .element: class="fragment" -->
 
 ---
 
@@ -223,7 +222,7 @@ Route attribute are used to map actions directly to route templates
 
 Parameters are defined inside “{}” in the route
 
-- MVC tries to bind URI parameter -> method parameter
+- Web API tries to bind URI parameter -> method parameter
 
 Route can also use Http[verb]Attributes:
 
@@ -324,7 +323,7 @@ Request data can come in a variety of formats
 
 - including JSON, XML and many others
 
-MVC uses a configured set of formatters to handle the request data based on its content type
+ASP.NET Core Web API uses a configured set of formatters to handle the request data based on its content type
 
 - Supports only JSON by default
 
@@ -387,9 +386,8 @@ public class PlayersController : Controller {
 There is usually a class which creates all of the required dependencies for the application
 
 - This class is called Inversion of Control (IoC) container or Dependency Injection (DI) container
- 
-ASP.NET Core has a built-in DI-container
 
+ASP.NET Core has a built-in DI-container
 
 Note:
 
@@ -404,7 +402,7 @@ A single container instance must meet these criteria:
 - Be destroyed as one of the lst steps the application takes during shutdown
 
 ASP.NET Core container supports only constructor injection by default
-  
+
 ---
 
 ### Dependency injection: Implementation(2)
@@ -415,7 +413,6 @@ The ConfigureServices method in the Startup class is responsible for defining th
 public void ConfigureServices(IServiceCollection services){
     services.AddDbContext<ApplicationDbContext>(
 	options => options.UseInMemoryDatabase()); // Add database 	context using extension method
-    services.AddMvc(); // Add framework services using extension method
     services.AddScoped<IPlayerRepository, PlayerRepository>(); // Register class PlayerRepository as IPlayerRepository
 }
 ```
