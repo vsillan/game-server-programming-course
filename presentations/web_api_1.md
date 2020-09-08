@@ -24,11 +24,11 @@ ASP.NET Core is a framework for building web UI and web APIs
 
 Why ASP.NET Core?
 
-- Cross-platform
-- High-performance
-- Open-source framework
-- Many necessary features built-in such as logging, environment-based configuration, dependency injection etc.
-- Cloud-ready
+- Cross-platform <!-- .element: class="fragment" -->
+- High-performance <!-- .element: class="fragment" -->
+- Open-source framework <!-- .element: class="fragment" -->
+- Many necessary features built-in such as logging, environment-based configuration, dependency injection etc. <!-- .element: class="fragment" -->
+- Cloud-ready <!-- .element: class="fragment" -->
 
 ---
 
@@ -38,13 +38,13 @@ Why ASP.NET Core?
 
 ### HTTP messaging
 
-HTTP is a communication protocol, that is used to deliver data on the World Wide Web
+HTTP is a communication protocol, that is used to deliver data on the World Wide Web <!-- .element: class="fragment" -->
 
-HTTP is based on the client-server architecture model
+HTTP is based on the client-server architecture model <!-- .element: class="fragment" -->
 
-A stateless request/response protocol
+A stateless request/response protocol <!-- .element: class="fragment" -->
 
-Operates by exchanging messages across a reliable TCP/IP connection
+Operates by exchanging messages across a reliable TCP/IP connection <!-- .element: class="fragment" -->
 
 ---
 
@@ -308,12 +308,12 @@ How to force web api to change its behavior:
 
 Requirements for the class defining the model:
 
-- Public constructor
-- Public setter methods for the properties
+- Public constructor <!-- .element: class="fragment" -->
+- Public setter methods for the properties <!-- .element: class="fragment" -->
 
-It’s advisable to use request body to pass objects when possible
+It’s advisable to use request body to pass objects when possible <!-- .element: class="fragment" -->
 
-- Http verb GET does not allow request body
+- Http verb GET does not allow request body <!-- .element: class="fragment" -->
 
 ---
 
@@ -321,11 +321,11 @@ It’s advisable to use request body to pass objects when possible
 
 Request data can come in a variety of formats
 
-- including JSON, XML and many others
+- including JSON, XML and many others <!-- .element: class="fragment" -->
 
-ASP.NET Core Web API uses a configured set of formatters to handle the request data based on its content type
+ASP.NET Core Web API uses a configured set of formatters to handle the request data based on its content type <!-- .element: class="fragment" -->
 
-- Supports only JSON by default
+- Supports only JSON by default <!-- .element: class="fragment" -->
 
 ---
 
@@ -333,10 +333,10 @@ ASP.NET Core Web API uses a configured set of formatters to handle the request d
 
 Controller action can return any of the following:
 
-- Void
-- Any simple type (int, string etc…)
-- Any type used for data transferring
-- A class implementing IActionResult
+- Void <!-- .element: class="fragment" -->
+- Any simple type (int, string etc…) <!-- .element: class="fragment" -->
+- Any type used for data transferring <!-- .element: class="fragment" -->
+- A class implementing IActionResult <!-- .element: class="fragment" -->
 
 ---
 
@@ -344,12 +344,12 @@ Controller action can return any of the following:
 
 There are many predefined classes implementing **IActionResult** such as
 
-- OkResult
-- OkObjectResult
-- NotFoundResult
-- BadRequestResult
+- OkResult <!-- .element: class="fragment" -->
+- OkObjectResult <!-- .element: class="fragment" -->
+- NotFoundResult <!-- .element: class="fragment" -->
+- BadRequestResult <!-- .element: class="fragment" -->
 
-Action results define the body of the response and http status code
+Action results define the body of the response and http status code <!-- .element: class="fragment" -->
 
 Note:
 
@@ -365,11 +365,11 @@ Makes the intent of the controller action clearer, by hiding the low-level detai
 
 ### Dependency injection
 
-Software design pattern that implements inversion of control for resolving dependencies
+Software design pattern that implements inversion of control for resolving dependencies <!-- .element: class="fragment" -->
 
-Dependency Inversion Principle: _“high level modules should not depend on low level modules; both should depend on abstractions”_
+Dependency Inversion Principle: _“high level modules should not depend on low level modules; both should depend on abstractions”_ <!-- .element: class="fragment" -->
 
-Instead of referencing specific implementations, classes request abstractions (typically interfaces) which are provided to them when the class is constructed
+Instead of referencing specific implementations, classes request abstractions (typically interfaces) which are provided to them when the class is constructed <!-- .element: class="fragment" -->
 
 ---
 
@@ -383,11 +383,11 @@ public class PlayersController : Controller {
 }
 ```
 
-There is usually a class which creates all of the required dependencies for the application
+There is usually a class which creates all of the required dependencies for the application <!-- .element: class="fragment" -->
 
-- This class is called Inversion of Control (IoC) container or Dependency Injection (DI) container
+- This class is called Inversion of Control (IoC) container or Dependency Injection (DI) container <!-- .element: class="fragment" -->
 
-ASP.NET Core has a built-in DI-container
+ASP.NET Core has a built-in DI-container <!-- .element: class="fragment" -->
 
 Note:
 
