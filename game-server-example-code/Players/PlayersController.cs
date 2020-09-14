@@ -39,13 +39,13 @@ namespace game_server.Players
         [Route("level-counts")]
         public Task<LevelCount[]> Get()
         {
-            return _repository.Agg();
+            return _repository.GetLevelCounts();
         }
 
         [HttpPost]
         [Route("")]
         [ValidateModel]
-        public async Task<Player> Create(NewPlayer newPlayer)
+        public async Task<Player> Create([FromBody] NewPlayer newPlayer)
         {
             _logger.LogInformation("Creating player with name " + newPlayer.Name);
             var player = new Player()
@@ -55,13 +55,6 @@ namespace game_server.Players
             };
             await _repository.CreatePlayer(player);
             return player;
-        }
-
-        [HttpDelete]
-        [Route("{playerId}")]
-        public Task<Player> Ban(Guid playerId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace game_server.Repositories
         Task<Player[]> GetAllPlayers();
         Task<Player> UpdatePlayer(Player player);
         Task<Player> DeletePlayer(Guid playerId);
-        Task<LevelCount[]> Agg();
+        Task<LevelCount[]> GetLevelCounts();
 
         Task<Item> CreateItem(Guid playerId, Item item);
         Task<Item> GetItem(Guid playerId, Guid itemId);

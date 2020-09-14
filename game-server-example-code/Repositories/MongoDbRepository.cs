@@ -90,7 +90,7 @@ namespace game_server.Repositories
             return await _playerCollection.FindOneAndDeleteAsync(filter);
         }
 
-        public async Task<LevelCount[]> Agg()
+        public async Task<LevelCount[]> GetLevelCounts()
         {
             List<LevelCount> levelCounts =
                 await _playerCollection.Aggregate()
