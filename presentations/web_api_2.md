@@ -30,7 +30,7 @@ Can perform certain actions before and after the next middleware is invoked in t
 
 Here is the simplest possible middleware:
 
-``` C#
+```C#
 public class Startup {
     public void Configure(IApplicationBuilder app) {
         app.Run(async context => {
@@ -91,7 +91,7 @@ public class TimeCounterMiddleware{
         var watch = new Stopwatch();
         watch.Start();
         await _next(context);
-        context.Response.Headers.Add("X-Processing-Time-Milliseconds", 
+        context.Response.Headers.Add("X-Processing-Time-Milliseconds",
 		new[] { watch.ElapsedMilliseconds.ToString() });
     }
 }
@@ -141,7 +141,7 @@ There are many built-in middleware for handling errors such as
 
 - UseDeveloperExceptionPage() – Prints detailed error page with the call stack and much more
 - UseStatusCodePages() – Prints a friendly page defining the http status code
-- UseExceptionHandler() – Forwards the errored requests to another endpoint
+- UseExceptionHandler() – Forwards the errored requests to another route
 
 You can also create your own error handling middleware
 
@@ -156,8 +156,8 @@ public class CustomExceptionHandlerMiddleware {
 		_next = next;
 	}
 	public async Task Invoke(HttpContext context){
-	  try { 
-		await _next(context) 
+	  try {
+		await _next(context)
 	  };
 	  catch(Exception e){
 		//...

@@ -52,11 +52,11 @@ Define the following validations for the model using attributes:
 
 ## 4. Implement a game rule validation in Controller
 
-Implement a game rule validation for the `[POST]` (the one that creates a new item) endpoint in the `ItemsContoller`:
+Implement a game rule validation for the `[POST]` (the one that creates a new item) route in the `ItemsContoller`:
 
 The rule should be: an item of type of `Sword` should not be allowed for a `Player` below level 3.
 
-If the rule is not followed, throw your own custom exception (create the exception class) and catch the exception in an `exception filter`. The `exception filter` should write a response to the client with a _suitable error code_ and a _descriptive error message_. The `exception filter` should be only applied to that specific endpoint.
+If the rule is not followed, throw your own custom exception (create the exception class) and catch the exception in an `exception filter`. The `exception filter` should write a response to the client with a _suitable error code_ and a _descriptive error message_. The `exception filter` should be only applied to that specific route.
 
 ---
 

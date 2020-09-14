@@ -1,6 +1,6 @@
 # Assignment 3
 
-The purpose of the following exercises is to get you familiar with writing API-endpoints using a layered architecture. Layered architecture means that we divide the responsibilities related to handling the requests between different classes. In our application architecture we have two layers: a controller and a repository.
+The purpose of the following exercises is to get you familiar with writing API-routes using a layered architecture. Layered architecture means that we divide the responsibilities related to handling the requests between different classes. In our application architecture we have two layers: a controller and a repository.
 
 After the exercises we have implemented CRUD (Create, Read, Update, Delete) operations for the Players API.
 
@@ -76,7 +76,7 @@ You don't need to care about concurrent access to the file at this point.
 
 ## 3. Create a PlayersController class
 
-The first responsibility of the controller is to define the endpoints for the API. Define the routes using attribute.
+The first responsibility of the controller is to define the routes for the API. Define the routes using attribute.
 
 The second responsibility is to handle the business logic. This can include things such as generating IDs when creating a player, and deciding which properties to change when modifying a player.
 
@@ -104,4 +104,4 @@ Registering the `FileRepository` as `IRepository` into the dependency injection 
 
 ## 5. Test
 
-Use `PostMan` to test that the requests to all endpoints are processed succesfully.
+Use `PostMan` to test that the requests to all routes are processed succesfully.
