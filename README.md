@@ -44,7 +44,7 @@ If you are running Windows and your VSCode uses **powershell** in the terminal (
 
 How to make a simple request:
 
-- Add API url to the address bar (for example: http://localhost:5000/api/players)
+- Add API url to the address bar (for example: http://localhost:5000/players)
 - Select a suitable Http verb (for example: GET)
 - When you want to add a request body: select the "body" tab -> choose "raw" -> change the format from "Text" to "JSON" -> add JSON to the body (for example: `{ "name" : "test" }`)
 

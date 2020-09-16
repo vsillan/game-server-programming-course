@@ -58,7 +58,7 @@ Just syntactic sugar
 ## Attributes
 
 ```C#
-[Route("/api/players/", Name = "CreatePlayerRoute")]
+[Route("/players/", Name = "CreatePlayerRoute")]
 [ValidateModel]
 [HttpPost]
 public async Task<IHttpActionResult> CreatePlayer(

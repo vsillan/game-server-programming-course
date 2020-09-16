@@ -240,13 +240,13 @@ Route attributes on the controller are combined with route attributes on the ind
 - Makes routing less repetitive
 
 ```C#
-[Route("api/players")]
+[Route("players")]
 public class PlayersController : Controller {
 
-   [HttpGet] // Matches '/api/players'
+   [HttpGet] // Matches '/players'
    public IActionResult List() { ... }
 
-   [HttpPost("{id}")] // Matches '/api/players/{id}'
+   [HttpPost("{id}")] // Matches '/players/{id}'
    public IActionResult Edit(int id) { ... }
 }
 ```

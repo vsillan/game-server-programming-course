@@ -37,7 +37,7 @@ public interface IRepository
 
 Items should be owned by the players which means that we want to add a list of items (List<Item>) to the player class.
 
-All item routes should start with `.../api/players/{playerId}/items`.
+All item routes should start with `.../players/{playerId}/items`.
 
 ---
 

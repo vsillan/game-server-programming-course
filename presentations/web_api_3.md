@@ -238,7 +238,7 @@ For tracking the general flow of the application
 
 These logs typically have some long-term value
 
-Example: “Request received for path /api/players”
+Example: “Request received for path /players”
 
 ---
 
