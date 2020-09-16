@@ -125,7 +125,7 @@ Requests that are not handled by your app will be handled by the server
 
 General error handling can be done in a middleware
 
-In ASP.NET Core MVC pipeline the exceptions can be handled with filters
+In ASP.NET Core Web API pipeline the exceptions can be handled with filters
 
 Note:
 

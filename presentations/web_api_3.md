@@ -4,7 +4,7 @@
 
 ## Filters
 
-The filter pipeline runs after ASP.NET MVC selects the action to execute
+The filter pipeline runs after ASP.NET Web API selects the action to execute
 
 Filters are a way of implementing cross-cutting concerns
 
@@ -54,12 +54,14 @@ public void ConfigureServices(IServiceCollection services) {
 
 Most important is the execution order:
 
-- Filters run within the ASP.NET MVC filter pipeline
-- Middleware runs before ASP.NET MVC kicks in
+- Filters run within the Web API filter pipeline
+- Middleware runs before Web API kicks in
 
 Filters can be specified per action – middleware only per URI
 
-Filters can access the ASP.NET MVC context – Middleware can’t
+Note:
+
+Filters can access the Web API context – Middleware can’t
 
 ---
 
@@ -181,13 +183,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 Each of the log messages has a category, the category can be any string
 
-- Convention is to use fully qualified name of the class: ”GameApi.Controllers.PlayersController”	
+- Convention is to use fully qualified name of the class: ”GameApi.Controllers.PlayersController”
 
 Easiest way to set the category is to request the generic ILogger<T> in the class constructor which automatically sets the category
 
 ```C#
 private ILogger<PlayersController> _logger;
-public PlayersController(ILogger<PlayersController> logger) { 
+public PlayersController(ILogger<PlayersController> logger) {
 	_logger = logger;
 }
 ```
@@ -202,7 +204,7 @@ The log level indicates the degree of severity or importance
 
 ILogger has extension methods for writing logs with each log level:
 
-_logger.Information(...), _logger.LogWarning(...), etc...
+\_logger.Information(...), \_logger.LogWarning(...), etc...
 
 ---
 
