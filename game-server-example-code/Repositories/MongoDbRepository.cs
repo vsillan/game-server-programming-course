@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using MongoDB.Driver;
 using MongoDB.Bson;
 using game_server.Players;
 using System.Linq;
 using System.Collections.Generic;
+using MongoDB.Driver;
 
 namespace game_server.Repositories
 {
@@ -18,6 +18,7 @@ namespace game_server.Repositories
             var mongoClient = new MongoClient("mongodb://localhost:27017");
             var database = mongoClient.GetDatabase("game");
             _playerCollection = database.GetCollection<Player>("players");
+
             _bsonDocumentCollection = database.GetCollection<BsonDocument>("players");
         }
 
@@ -35,7 +36,7 @@ namespace game_server.Repositories
 
         public Task<Player> GetPlayer(Guid id)
         {
-            var filter = Builders<Player>.Filter.Eq(p => p.Id, id);
+            var filter = Builders<Player>.Filter.Eq(player => player.Id, id);
             return _playerCollection.Find(filter).FirstAsync();
         }
 

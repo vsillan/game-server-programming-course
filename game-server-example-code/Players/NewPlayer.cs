@@ -4,7 +4,7 @@ namespace game_server.Players
 {
     public class NewPlayer
     {
-        [Required]
+        [StringLength(5)]
         public string Name { get; set; }
     }
 }

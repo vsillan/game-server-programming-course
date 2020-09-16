@@ -1,3 +1,4 @@
+using System;
 using game_server.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,12 +30,25 @@ namespace game_server_example_code
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            Console.WriteLine("Is running development: " + env.IsDevelopment());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                // loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-                // loggerFactory.AddDebug();
             }
+
+            // Middleware example. You can also write this as classes.
+            app.Use(async (context, next) =>
+            {
+                // Do work that doesn't write to the Response.
+                Console.WriteLine("Before controller");
+
+                await next.Invoke();
+
+                // Do other work that doesn't write to the Response.
+                Console.WriteLine("After controller");
+            });
+
 
             app.UseRouting();
 
