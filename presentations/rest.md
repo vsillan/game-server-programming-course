@@ -203,7 +203,7 @@ Responses are usually made in JSON or XML
 
 ### JSON
 
-JSON’s popularity is growin
+JSON’s popularity is growing
 
 Less verbose (quicker to read and write)
 
@@ -213,7 +213,9 @@ Very easy to use with JavaScript
 
 ### XML
 
-More extension possibilities (not so relevant to web APIs)
+More extension possibilities
+
+More tools
 
 ---
 
