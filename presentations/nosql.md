@@ -21,21 +21,21 @@ Note:
 
 ## Definition
 
-Not any specific technology or theory – concepts that have evolved over many years
+Not any specific technology or theory – concepts that have evolved over many years <!-- .element: class="fragment" -->
 
-Ideas were adopted by independent groups of people who used them to solve their own data problems
+Ideas were adopted by independent groups of people who used them to solve their own data problems <!-- .element: class="fragment" -->
 
-By now, the NoSQL movement includes hundreds of database products – most of them solve a very specific set of problems
+By now, the NoSQL movement includes hundreds of database products – most of them solve a very specific set of problems <!-- .element: class="fragment" -->
 
 ---
 
-## History 2
+## History
 
-What changed: rise of the internet and sites with lots and lots of traffic
+What changed: rise of the internet and sites with lots and lots of traffic <!-- .element: class="fragment" -->
 
-Google’s and Amazon’s technologies inspired a new movement: NoSQL
+Google’s and Amazon’s technologies inspired a new movement: NoSQL <!-- .element: class="fragment" -->
 
-Original spark was the need for clustering
+Original spark was the need for clustering <!-- .element: class="fragment" -->
 
 Note:
 
@@ -61,14 +61,14 @@ Note:
 
 Can not be defined
 
-Common characteristics:
+Common characteristics: <!-- .element: class="fragment" -->
 
-- Schema agnostic
-- Cluster friendly
-- Commodity hardware
-- Nonrelational
-- Open-source
-- 21st century web
+- Schema agnostic <!-- .element: class="fragment" -->
+- Cluster friendly <!-- .element: class="fragment" -->
+- Commodity hardware <!-- .element: class="fragment" -->
+- Nonrelational <!-- .element: class="fragment" -->
+- Open-source <!-- .element: class="fragment" -->
+- 21st century web <!-- .element: class="fragment" -->
 
 Note:
 
@@ -90,17 +90,19 @@ Note:
 - Graph oriented make the data into even smaller units
 - Graph example: neo4j
 - Key-value: Just a hashmap but persisted on a disc
-- Column: Cassandra, which implements many of Dynamo’s scaling properties while providing a column-oriented data model inspired by Google’s BigTable. Cassandra is an open source version of a data store built by Facebook for its inbox search feature. The system scaled horizontally to index more than 50 TB of inbox data, allowing for searches on inbox keywords and recipients. Data was indexed by user ID, where each record consisted of an array of search terms for keyword searches and an array of recipient IDs for recipient searches.
+- Columnar: Cassandra, which implements many of Dynamo’s scaling properties while providing a column-oriented data model inspired by Google’s BigTable. Cassandra is an open source version of a data store built by Facebook for its inbox search feature. The system scaled horizontally to index more than 50 TB of inbox data, allowing for searches on inbox keywords and recipients. Data was indexed by user ID, where each record consisted of an array of search terms for keyword searches and an array of recipient IDs for recipient searches.
 
 ---
 
 ## Schema agnostic
 
-A database schema is the description of all possible data and data structures in a relational database
+A database schema is the description of all possible data and data structures in a relational database <!-- .element: class="fragment" -->
 
-With a NoSQL database a schema isn’t required
+With a NoSQL database (usually) a schema isn’t required <!-- .element: class="fragment" -->
 
-Development can be started without doing up‐front schema design
+Changing the structure of the data stored doesn’t need actions on a database level <!-- .element: class="fragment" -->
+
+Application still needs to know how the data is stored when reading the data <!-- .element: class="fragment" -->
 
 Note:
 
@@ -109,37 +111,23 @@ Note:
 
 ---
 
-## Schema agnostic (2)
-
-Changing the structure of data stored doesn’t need actions on database level
-
-Application still needs to know how the data is stored when reading the data
-
-There are exceptions to NoSQL databases being schema agnostic
-
-- Notable mentions are columnar databases such as HBase
-
----
-
 ## Cluster friendly
 
-Many NoSQL databases are designed to be distributed on multiples computers
+Many NoSQL databases are designed to be distributed on multiples computers <!-- .element: class="fragment" -->
 
-Storing the data in natural aggregates is the way to make the clustering feasible
+Storing the data in natural aggregates is the way to make the clustering feasible <!-- .element: class="fragment" -->
 
-Clustering makes adding _high availability_ easier
-
-Graph databases don’t save the data in aggregates and are generally not distributable
+Clustering makes adding _high availability_ easier <!-- .element: class="fragment" -->
 
 Note:
 
-- Draw on board
 - Natural aggregate -> Storing the combination of data that is commonly accessed together
 - High availability means keeping the data accessible even when a limited subset of the database servers are not available
+- Graph databases don’t save the data in aggregates and are generally not distributable <!-- .element: class="fragment" -->
 
 ---
 
-## How is the data distributed:
+## How the data is distributed:
 
 ![Data distribution](/resources/nosql-data-distribution.png)
 
@@ -153,11 +141,11 @@ Note:
 
 ## Nonrelational
 
-NoSQL databases don’t have the concept of relationships built in
+NoSQL databases don’t have the concept of relationships built in <!-- .element: class="fragment" -->
 
-NoSQL compensates this partly by having broader variety of data structures available
+NoSQL compensates this partly by having broader variety of data structures available <!-- .element: class="fragment" -->
 
-- Objects within objects, arrays etc…
+- Objects within objects, arrays etc… <!-- .element: class="fragment" -->
 
 Note:
 
@@ -168,40 +156,35 @@ Note:
 
 ## Nonrelational
 
-In relational databases the goal is to normalize the data (remove duplicate data)
+In relational databases the goal is to normalize the data (remove duplicate data) <!-- .element: class="fragment" -->
 
-- Easy to update (updates only to one place)
-- Queries might get complex to implement and slow to execute
+- Easy to update (updates only to one place) <!-- .element: class="fragment" -->
+- Queries might get complex to implement and slow to execute <!-- .element: class="fragment" -->
 
-In NoSQL data is often deliberately denormalized (stored multiple times)
+In NoSQL data is often deliberately denormalized (stored multiple times) <!-- .element: class="fragment" -->
 
-- Enables fast query speed and ease of query implementation
-- Updates have to be applied to all the places where a piece of data is stored
+- Enables fast query speed and ease of query implementation <!-- .element: class="fragment" -->
+- Updates have to be applied to all the places where a piece of data is stored <!-- .element: class="fragment" -->
 
 ---
 
 ## Consistency
 
-Consistency is a property which defines how well the read data matches the written data
+Consistency is a property which defines how well the read data matches the written data <!-- .element: class="fragment" -->
 
-There are two types of consistency: replication and logical consistency
+There are two implementation models of consistency for NoSQL databases <!-- .element: class="fragment" -->
 
-There are two implementation models of consistency for NoSQL databases
+**ACID** Consistency (ACID stands for Atomicity, Consistency, Isolation, Durability) <!-- .element: class="fragment" -->
 
----
+- Means that once data is written, reads are fully consistent <!-- .element: class="fragment" -->
 
-## Consistency types
+**BASE** (Eventual Consistency) <!-- .element: class="fragment" -->
 
-**ACID** Consistency (ACID stands for Atomicity, Consistency, Isolation, Durability)
-
-- Means that once data is written, reads are fully consistent
-
-**BASE** (Eventual Consistency)
-
-- Means that once data is written, it will eventually appear for reading
+- Means that once data is written, it will eventually appear for reading <!-- .element: class="fragment" -->
 
 Note:
 
+- There are two types of consistency: replication and logical consistency <!-- .element: class="fragment" -->
 - You don’t want to run into a situation where someone else uses the data while you are in the middle of writing it
 - Draw on the board why you can’t do just ACID in certain big scale systems anyways
 
@@ -209,21 +192,21 @@ Note:
 
 ## Availability
 
-Availability is a property which defines how much of the data can be accessed at any given time
+Availability is a property which defines how much of the data can be accessed at any given time <!-- .element: class="fragment" -->
 
-- Regardless of other parties accessing the data
-- Regardless of connections getting lost between the servers
-- The data can be stale (not consistent)
+- Regardless of other parties accessing the data <!-- .element: class="fragment" -->
+- Regardless of connections getting lost between the servers <!-- .element: class="fragment" -->
+- The data can be stale (not consistent) <!-- .element: class="fragment" -->
 
-Generally NoSQL databases are built for high availability
+Generally NoSQL databases are built for high availability <!-- .element: class="fragment" -->
 
-- High availability databases are built to eliminate single points of failure
-- Optimized to ensure that the end user does not experience an interruption in service
+- High availability databases are built to eliminate single points of failure <!-- .element: class="fragment" -->
+- Optimized to ensure that the end user does not experience an interruption in service <!-- .element: class="fragment" -->
 
 Note:
 
-Many NoSQL databases differentiate between read and write availability
-Some allow only writes when the connection between cluster nodes is interrupted to prevent serving stale data – some allow only reads to prevent conflicts between writes
+- Many NoSQL databases differentiate between read and write availability
+- Some allow only writes when the connection between cluster nodes is interrupted to prevent serving stale data – some allow only reads to prevent conflicts between writes
 
 ---
 
@@ -235,50 +218,44 @@ Some allow only writes when the connection between cluster nodes is interrupted 
 
 ## CAP-theorem
 
-CAP stands for Consistency, Availability, and Partitioning
+CAP stands for Consistency, Availability, and Partitioning <!-- .element: class="fragment" -->
 
-States that you cannot have all three completely at the same time
+States that you cannot have all three completely at the same time <!-- .element: class="fragment" -->
 
-Many NoSQL databases allow tuning between levels of consistency and availability
+Many NoSQL databases allow tuning between levels of consistency and availability <!-- .element: class="fragment" -->
 
-In clustered databases the partitioning is always present so the trade off needs to be made between consistency and availability
+In clustered databases the partitioning is always present so the trade off needs to be made between consistency and availability <!-- .element: class="fragment" -->
 
-- It’s a tunable sliding scale – not a binary decision
-
----
-
-## When to use
-
-For easier and faster development (generally)
-
-- Data can be stored as it is
-- Some typical NoSQL data structures can fit some applications inherently better than relational tables such as arrays, sorted sets and graphs
-
-For large scale data
-
-- When there is a need to scale the system horizontally
+- It’s a tunable sliding scale – not a binary decision <!-- .element: class="fragment" -->
 
 ---
 
 ## When to use
 
-When your business requirements are likely to change
+When you need one more of these:
 
-When NoSQL can reduce the technical depth of the system
+- Large scale data <!-- .element: class="fragment" -->
+- Scale the system horizontally <!-- .element: class="fragment" -->
+- An ability to adapt to changing business requirements quickly <!-- .element: class="fragment" -->
+- NoSQL data structures such as arrays, sorted sets and graphs <!-- .element: class="fragment" -->
 
-- Relational databases often contain more features
-- NoSQL databases usually have less and are more specific to certain use cases
-- Writing SQL queries can get relatively complex when the simultaneously queried data needs to be split in many tables
+And when NoSQL can reduce the technical complexity of the system <!-- .element: class="fragment" -->
+
+Note:
+
+- Relational databases often contain more features <!-- .element: class="fragment" -->
+- NoSQL databases usually have less and are more specific to certain use cases <!-- .element: class="fragment" -->
+- Writing SQL queries can get relatively complex when the simultaneously queried data needs to be split in many tables <!-- .element: class="fragment" -->
 
 ---
 
 ## When not to use
 
-When you have data that is actually highly relational
+When you have data that is actually highly relational <!-- .element: class="fragment" -->
 
-When you need ACID transactions
+When you need ACID transactions <!-- .element: class="fragment" -->
 
-When your team has strong relational database skills and it can get the job done
+When your team has strong relational database skills and it can get the job done <!-- .element: class="fragment" -->
 
 ---
 

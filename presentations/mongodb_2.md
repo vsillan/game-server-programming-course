@@ -25,15 +25,13 @@ Note:
 
 ### Queries: Find method
 
-The find method is used to perform queries in MongoDB
+The "find" method is used to perform queries <!-- .element: class="fragment" -->
 
-Querying returns a subset of documents in a collection
+Querying returns a subset of documents in a collection <!-- .element: class="fragment" -->
 
-Takes a query document specifying the query criteria as a parameter
+Takes a query document for filtering <!-- .element: class="fragment" -->
 
-Empty query document matches everything in the collection
-
-Queries can be restricted by adding key-value pairs to the query document
+Empty query document matches everything in the collection <!-- .element: class="fragment" -->
 
 ---
 
@@ -53,13 +51,15 @@ Player player =
 
 ### Query cursor
 
-When you call find, the database is _NOT_ queried immediately
+When you call find, the database is NOT queried immediately <!-- .element: class="fragment" -->
 
-The database returns results from find using a **cursor**
+The database returns the results from "find" by using a cursor <!-- .element: class="fragment" -->
 
-Cursor allows to control the eventual output of a query
+Cursor allows control of the eventual output of a query <!-- .element: class="fragment" -->
 
-Almost every method on a cursor object returns the cursor itself so that you can chain options in any order
+Almost every method on a cursor object returns the cursor itself <!-- .element: class="fragment" -->
+
+- It's possible chain options in any order <!-- .element: class="fragment" -->
 
 ---
 
@@ -110,8 +110,6 @@ Note:
 - Range queries will match only if they have same type as the value to be compared against
 - Generally you should not store more than one type for key within the same collection
 - (e.g. db.players.find({score: {$gte: 100, $lte: 200}})
-- When using the set operators, keep in mind that $in and $all can take advantage of indexes, but $nin can’t and thus requires a collection scan. If you use $nin, try to use it in combination with another query term that does use an index.
-- Make example of using set
 
 ---
 
@@ -132,6 +130,11 @@ var filter =
         new[] { 10, 20, 30 }
     );
 ```
+
+Note:
+
+- When using the set operators, keep in mind that $in and $all can take advantage of indexes, but $nin can’t and thus requires a collection scan. If you use $nin, try to use it in combination with another query term that does use an index.
+- Make example of using set
 
 ---
 
@@ -184,7 +187,7 @@ For security, use of "\$where" clauses should be highly restricted or eliminated
 
 Note:
 
-- Enables possibility of JavaScript injection attacks – malicious users can’t write or delete this way but they might be able to read sensitive data
+- Using where makes it possible to do JavaScript injection attacks – malicious users can’t write or delete this way but they might be able to read sensitive data
 
 ---
 
@@ -413,22 +416,6 @@ var levelCounts =
 ```
 
 Note:
-
-{“\$project” : {“Level” : 1}}
-
-- This projects the level field in each document
-
-{“$group” : {“_id” : “$Level”, “Count” “ {“\$sum” : 1 }}}
-
-- This groups the levels by number and increments “Count" for each document a level appears in
-
-{"\$sort" : {“Count" : -1}}
-
-- This reorders the result documents by the “Count" field from greatest to least
-
-{"\$limit" : 3}
-
-- This limits the result set to the first three result documents
 
 - Project: The syntax is similar to the field selector used in querying: you can select fields to project by specifying " fieldname" : 1 or exclude fields with " fieldname" : 0. After this operation, each document in the results looks like: {"\_id" : id, "author" : " authorName"}. These resulting documents only exists in memory and are not written to disk anywhere
 - Group: This groups the authors by name and increments "count" for each document an author appears in. First, we specify the field we want to group by, which is "author" . This is indicated by the "\_id" : "$author" field. You can picture this as: after the group there will be one result document per author, so "author" becomes the unique identifier("_id" ). The second field means to add 1 to a "count" field for each document in the group. Note that the incoming documents do not have a "count" field; this is a new field created by the "$group"
