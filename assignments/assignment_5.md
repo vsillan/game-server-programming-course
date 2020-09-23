@@ -32,7 +32,7 @@ You can use attribute constraints or use a query parameter like this: `...api/pl
 
 ### 3. Set operators
 
-Add `Tags` for the `Player` model ( `Tags` can be a list of enum values) and create a query that returns the `Players` that have a certain tag.
+Add `Tags` for the `Player` model ( `Tags` can be a list of strings) and create a query that returns the `Players` that have a certain tag.
 
 ### 4. Sub documents queries
 
