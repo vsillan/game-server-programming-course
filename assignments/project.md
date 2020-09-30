@@ -8,14 +8,14 @@ There are two outputs for this project: the implementation code and a presentati
 
 ## Teams
 
-You can work alone or have a team of 2-4 people.
+You can work alone or have a team of 2-4 people. I recommended doing this as a team project.
 
 ## Evaluation criteria
 
-- The utilization of the information taught on this course
-- Utilization of self-learned features used
-- The amount and quality of the features implemented
-- The quality of the presentation
+- The utilization of the information taught on this course. But the purpose is not to copy-paste the home assignments as they are! You should aim to apply your skill in a new context.
+- The amount and quality of the features implemented. And the size of the team of course matters. There are higher expectations for a team of four vs a team of two.
+- The quality of the presentation/report
+- Utilization of self-learned features used will earn you bonus points. So if you dive deep into the documentations of the libraries and frameworks and find new features and utilize those, you will be rewarded.
 
 ## Presentation / Report
 
