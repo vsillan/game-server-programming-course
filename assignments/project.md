@@ -35,3 +35,5 @@ If you don’t have an idea for a project you can choose from the following:
 - Admin interface for managing players (adding/modifying/querying/banning etc.)
 - A simple asynchronous game (for example tic-tac-toe)
 - A simple analytics service
+
+The focus should be in the server application! So the client side of the application is not relevant in the context of this course. But nevertheless, it would be important to be able to demonstrate the functionalities of the server (for example by using PostMan).
