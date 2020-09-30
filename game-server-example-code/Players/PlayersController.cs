@@ -27,6 +27,7 @@ namespace game_server.Players
             return new Player[] { new Player() { Level = minLevel }, new Player() { Level = (minLevel + 1) } };
         }
 
+        // Filter usage example
         [NotImplExceptionFilter]
         [HttpGet]
         [Route("{playerId}")]
