@@ -38,7 +38,7 @@ namespace game_server.Players
 
         [HttpGet]
         [Route("level-counts")]
-        public Task<LevelCount[]> Get()
+        public Task<LevelCount[]> GetLevelCounts()
         {
             return _repository.GetLevelCounts();
         }

@@ -91,12 +91,15 @@ namespace game_server.Repositories
             return await _playerCollection.FindOneAndDeleteAsync(filter);
         }
 
+        // Aggregation example
         public async Task<LevelCount[]> GetLevelCounts()
         {
-            List<LevelCount> levelCounts =
+            var levelCounts =
                 await _playerCollection.Aggregate()
-                    .Project(p => p.Level)
-                    .Group(l => l, p => new LevelCount { Id = p.Key, Count = p.Sum() })
+                    // Have to wrap projected property inside a class. Otherwise it will give an error about being unable to cast bson string to bson document.
+                    .Project(p => new LevelContainer { Level = p.Level })
+                    // Group LevelContainers so that we have one grouping for each level. Then a count of all documents in a group is performed
+                    .Group(levelContainer => levelContainer.Level, grouping => new LevelCount { Id = grouping.Key, Count = grouping.Select(levelContainer => levelContainer.Level).Count() })
                     .SortByDescending(l => l.Count)
                     .Limit(3)
                     .ToListAsync();
@@ -129,6 +132,11 @@ namespace game_server.Repositories
             throw new NotImplementedException();
         }
     }
+}
+
+public class LevelContainer
+{
+    public int Level { get; set; }
 }
 
 public class LevelCount
