@@ -7,10 +7,10 @@ namespace game_server.Repositories
     public interface IRepository
     {
         Task<Player> CreatePlayer(Player player);
-        Task<Player> GetPlayer(Guid playerId);
+        Task<Player> GetPlayer(string playerId);
         Task<Player[]> GetAllPlayers();
         Task<Player> UpdatePlayer(Player player);
-        Task<Player> DeletePlayer(Guid playerId);
+        Task<Player> DeletePlayer(string playerId);
         Task<LevelCount[]> GetLevelCounts();
 
         Task<Item> CreateItem(Guid playerId, Item item);

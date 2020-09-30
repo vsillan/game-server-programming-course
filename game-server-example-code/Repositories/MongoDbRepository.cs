@@ -34,7 +34,7 @@ namespace game_server.Repositories
             return players.ToArray();
         }
 
-        public Task<Player> GetPlayer(Guid id)
+        public Task<Player> GetPlayer(string id)
         {
             var filter = Builders<Player>.Filter.Eq(player => player.Id, id);
             return _playerCollection.Find(filter).FirstAsync();
@@ -48,7 +48,7 @@ namespace game_server.Repositories
         }
 
 
-        public Task<Player> IncreasePlayerScoreAndRemoveItem(Guid playerId, Guid itemId, int score)
+        public Task<Player> IncreasePlayerScoreAndRemoveItem(string playerId, Guid itemId, int score)
         {
             var pull = Builders<Player>.Update.PullFilter(p => p.Items, i => i.Id == itemId);
             var inc = Builders<Player>.Update.Inc(p => p.Score, score);
@@ -85,7 +85,7 @@ namespace game_server.Repositories
             return player;
         }
 
-        public async Task<Player> DeletePlayer(Guid playerId)
+        public async Task<Player> DeletePlayer(string playerId)
         {
             FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(p => p.Id, playerId);
             return await _playerCollection.FindOneAndDeleteAsync(filter);

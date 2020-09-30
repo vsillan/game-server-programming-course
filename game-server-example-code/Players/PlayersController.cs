@@ -47,10 +47,10 @@ namespace game_server.Players
         [ValidateModel]
         public async Task<Player> Create([FromBody] NewPlayer newPlayer)
         {
-            _logger.LogInformation("Creating player with name " + newPlayer.Name);
+            _logger.LogInformation("Creating a player with name " + newPlayer.Name);
             var player = new Player()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = newPlayer.Name
             };
             await _repository.CreatePlayer(player);

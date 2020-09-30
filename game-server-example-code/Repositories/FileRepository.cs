@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using game_server.Players;
 using game_server.Repositories;
 
-public class FileRepository : IRepository
+public class FileRepository //: IRepository
 {
     public Task<LevelCount[]> GetLevelCounts()
     {
